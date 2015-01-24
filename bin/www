@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+var debug = require('debug')('Job');
+var app = require('../app');
+
