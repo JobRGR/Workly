@@ -298,6 +298,14 @@ var ClientApi = function(){
                 });
 
             post(data, url, callback);
+        },
+        searchUser:function(){
+            var data = {
+                query: "Grammarly"
+            };
+            var url= "/api/search-user";
+
+            post(data, url, callback);
         }
     }
 }
@@ -477,4 +485,9 @@ function respondList(){
 function respondUser(){
     var api = new ClientApi();
     api.respondUser();
+}
+
+function searchUser(){
+    var api = new ClientApi();
+    api.searchUser();
 }
