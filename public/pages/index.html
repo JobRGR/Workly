@@ -16,11 +16,13 @@
     <script src="/js/controllers.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/landing.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body ng-controller="TemplateCtrl">
-    <p>{{hello}}</p>
+    <ng-include src="templatesUrl.landing"></ng-include>
     <div class="footer-container">
         <ng-include src="templatesUrl.footer"></ng-include>
     </div>
