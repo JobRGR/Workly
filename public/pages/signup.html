@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html ng-app="worklyApp">
+<html ng-app="signupApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>Sign up</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
 
     <script src="/vendor/bower_components/angular/angular.js"></script>
-    <script src="/vendor/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/vendor/bower_components/angular-route/angular-route.js"></script>
+    <script src="/vendor/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/signup.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body ng-controller ="TemplateCtrl">
-    <p>{{hello}}</p>
+<body ng-controller="TemplateCtrl">
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
     <div class="footer-container">
         <ng-include src="templatesUrl.footer"></ng-include>
     </div>

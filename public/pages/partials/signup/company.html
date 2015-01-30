@@ -1,0 +1,48 @@
+<div class="signup-state">
+    <img src="/images/mid_logo.png"/>
+    <div class="signup-state_actual">
+        <div class="signup-state_circle active-circle">1</div>
+        <div class="signup-state_circle small active-circle"></div>
+        <div class="signup-state_circle">2</div>
+        <div class="signup-state_circle small"></div>
+        <div class="signup-state_circle">3</div>
+    </div>
+</div>
+<div class="signup-headtext">
+    Реєстрація
+</div>
+<div class="signup">
+    <div class="signup_form">
+        <div class="signup_form-menu">
+            <div>Хто Ви?</div>
+            <a href="#/user"><div>Фахівець</div></a>
+            <a href="#/company"><div style="text-decoration: underline">Роботодавець</div></a>
+        </div>
+        <div class="signup_form-input">
+            <input type="text" placeholder="Назва компанії">
+            <input type="text" placeholder="Пошта">
+            <input type="text" placeholder="Логін">
+            <input type="password" placeholder="Пароль">
+            <input type="password" placeholder="Повторіть Пароль">
+            <div class="agreement">
+                <input type="checkbox" checked>
+                <div>{{info.agreement}}</div>
+            </div>
+            <span>Зареєструватись</span>
+        </div>
+    </div>
+    <div class="signup_info">
+        <div class="signup_info-box">
+            <div class="signup_whyhead">Що вам дає реєстрація:</div>
+            <div class="signup_whyexp" ng-repeat="benefit in info.company_benefits">
+                <div>
+                    <div class="signup-state_circle">{{$index + 1}}</div>
+                </div>
+                <div>
+                    <span>{{benefit.headtext}}</span>
+                    {{benefit.subtext}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

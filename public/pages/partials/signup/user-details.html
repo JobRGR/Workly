@@ -1,0 +1,74 @@
+<div class="signup-state">
+    <img src="/images/mid_logo.png"/>
+    <div class="signup-state_actual">
+        <div class="signup-state_circle active-circle">1</div>
+        <div class="signup-state_circle small active-circle"></div>
+        <div class="signup-state_circle active-circle">2</div>
+        <div class="signup-state_circle small active-circle"></div>
+        <div class="signup-state_circle">3</div>
+    </div>
+</div>
+<div class="signup-headtext">
+    Реєстрація: <span>Фахівець</span>
+</div>
+<div class="signup">
+    <div class="signup_form">
+        <div class="signup_form-bar">
+            <div>Додайте персональні дані</div>
+            <a href="#/user/congrats">Пропустити→</a>
+        </div>
+        <div class="signup_form-input">
+            <div class="avatar-box">
+                <div class="avatar">
+                    <div class="avatar-frame">
+
+                    </div>
+                    <span class="avatar-text">Завантажити</span>
+                </div>
+                <div class="right-input">
+                    <input name="birth" type="text" placeholder="Дата народження">
+                    <input name="city" type="text" placeholder="Місто">
+                    <input name="spec" type="text" placeholder="Спеціалізація">
+                    <input name="phone" type="text" placeholder="Телефон">
+                </div>
+            </div>
+            <textarea name="about" placeholder="Про себе"></textarea>
+            <textarea name="skills" placeholder="Навички"></textarea>
+            <div class="add-place">Навчання: <div>Додати</div></div>
+            <div class="place-block">
+                <div class="place-table">
+                    <input name="uniname" type="text" placeholder="Назва закладу">
+                    <div><span>Видалити</span></div>
+                </div>
+                <div class="place-table">
+                    <input class="date" name="startdate" type="text" placeholder="Дата початку">
+                    <div class="date-sep">-</div>
+                    <input class="date" name="enddate" type="text" placeholder="Дата завершення">
+                </div>
+                <input name="direction" type="text" placeholder="Напрям">
+            </div>
+            <div class="add-place">Робота: <div>Додати</div></div>
+            <div class="place-block">
+                <div class="place-table">
+                    <input name="company" type="text" placeholder="Компанія">
+                    <div><span>Видалити</span></div>
+                </div>
+                <div class="place-table">
+                    <input class="date" name="startdate" type="text" placeholder="Дата початку">
+                    <div class="date-sep">-</div>
+                    <input class="date" name="enddate" type="text" placeholder="Дата завершення">
+                </div>
+                <input name="spec" type="text" placeholder="Спеціальність">
+            </div>
+            <span>Завершити Реєстрацію</span>
+        </div>
+    </div>
+    <div class="signup_info">
+        <div class="signup_info-box">
+            <div class="signup_conviction" ng-repeat="conviction in info.user_convictions">
+                    <div>{{conviction.headtext}}</div>
+                   {{conviction.subtext}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
 module.exports = function(app) {
     app.get('/', require('./lib/frontpage').get);
-    app.get('/test', require('./lib/test').get);
+    app.get('/signup', require('./lib/signup').get);
 }
