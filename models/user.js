@@ -12,6 +12,11 @@ var schema = new Schema({
         required: true,
         default: " "
     },
+    position:{
+        type: String,
+        required: true,
+        default: " "
+    },
     firstname:{
         type: String,
         required: true,

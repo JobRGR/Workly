@@ -7,4 +7,5 @@ module.exports = function(app) {
     var Subscribe = require('./subscribe')(app);
     var DropDb = require('./drop')(app);
     var Respond = require('./respond')(app);
+    var Search = require('./search')(app);
 };
