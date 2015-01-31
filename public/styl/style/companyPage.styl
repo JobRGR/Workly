@@ -9,18 +9,20 @@
 .companyPage_cards-wrapper
 	margin-top 85px
 	margin-left 200px
-	width 526px
-	background-color #f9f9f9
-	border-radius 29px 5px 5px
 	position relative
 .compamyPage_info-card
-	width 100%
-	display block
+	width 526px
+	display inline-block
 	position relative
 	padding-bottom 40px
 	margin-bottom 80px
+	background-color #f9f9f9
+	border-radius 29px 5px 5px
+	float left
+	z-index 1
 .compamyPage_info-card_profile
 	margin-left 50px
+	margin-top 30px
 	padding-bottom 45px
 
 .compamyPage_info-card_profile-image
@@ -95,6 +97,8 @@
 	height 0
 	border-top: 30px solid #fff
 	border-right 30px solid #6dc780
+	z-index 2
+	position absolute
 
 .compamyPage_circles
 	height 12px
@@ -107,3 +111,32 @@
 	margin 0 50px
 	h1
 		font-size 18px
+
+.compamyPage_vacancy-card
+	width 361px
+	border-radius 5px
+	background-color #f9f9f9
+	display inline-block
+	margin-left 25px
+	padding-bottom 20px
+.compamyPage_vacancy-card_title
+	margin-left 23px
+	margin-top 23px
+	font-family "Open Sans"
+	font-size 18px
+	color #565656
+	font-weight bold
+
+.compamyPage_vacancy-card_list_item
+	margin 10px 0 10px 23px
+	a
+		font-family "Open Sans"
+		display block
+		font-size 14px
+		text-decoration underline
+		color #74ae80
+	span
+		font-family OpenSans
+		font-size 12px
+		font-style italic
+		color #565656
