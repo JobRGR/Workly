@@ -1,4 +1,5 @@
 {
   "landing":"/pages/partials/landing.html",
-  "footer":"/pages/partials/footer.html"
+  "footer":"/pages/partials/footer.html",
+  "companyPage":"/pages/partials/companyPage.html"
 }
