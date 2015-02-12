@@ -19,15 +19,18 @@
         </div>
         <div class="signup_form-input">
             <div class="logo-box">
-                <div class="logo">
-                </div>
+                <img src="{{signup.img}}"/>
             </div>
-            <div class="logo-load"><span>Завантажити</span></div>
-            <input type="text" placeholder="Адреса">
-            <input type="text" placeholder="Телефон">
-            <input type="text" placeholder="Сайт">
-            <textarea name="about" placeholder="Про компанію"></textarea>
-            <span>Завершити Реєстрацію</span>
+            <div class="logo-load">
+                <span>
+                    <input type="file" accept="image/*" ng-fileread="signup.img">Завантажити
+                </span>
+            </div>
+            <input type="text" placeholder="Адреса" ng-model="signup.contacts">
+            <input type="text" placeholder="Телефон" ng-model="signup.tel">
+            <input type="text" placeholder="Сайт" ng-model="signup.website">
+            <textarea name="about" placeholder="Про компанію" ng-model="signup.about"></textarea>
+            <span ng-click="signup.companyComplete()">Завершити Реєстрацію</span>
         </div>
     </div>
     <div class="signup_info">

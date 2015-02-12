@@ -68,7 +68,8 @@ var schema = new Schema({
         university: {type: String, default: ' '},
         direction: {type: String, default: ' '},
         start: {type: Date,  default: ' '},
-        end: {type: Date,  default: ' '}
+        end: {type: Date,  default: ' '},
+        degree: {type: String, default: ' '}
     }],
     hashedPassword: {
         type: String,

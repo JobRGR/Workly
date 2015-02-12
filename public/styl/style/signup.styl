@@ -112,9 +112,13 @@
           display block
           box-sizing border-box
           height 92px
+          padding 6px
           width 100%
           border 2px dashed rgb( 202, 202, 202 )
           border-radius 5px
+          & img
+              width 100%
+              height 100%
       & .logo-load
           display block
           width 100%
@@ -128,6 +132,14 @@
               height 22px
               line-height 22px
               width auto
+              & input
+                  display inline-block
+                  position absolute
+                  height 22px
+                  width 96px
+                  margin 0px
+                  padding 0px
+                  opacity 0
       & .avatar-box
           display table
           width 100%
@@ -140,11 +152,23 @@
               border-radius 5px
               width 92px
               height 92px
+              & img
+                  width 80px
+                  height 80px
+                  margin 6px
           & .avatar-text
               font normal 14px "OpenSans"
               margin 10px 0px
               height 22px
               line-height 22px
+              & input
+                  display inline-block
+                  position absolute
+                  height 22px
+                  width 96px
+                  margin 0px
+                  padding 0px
+                  opacity 0
       & .right-input
           display table-cell
           width 100%

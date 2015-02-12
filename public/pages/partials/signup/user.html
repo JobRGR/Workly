@@ -15,21 +15,21 @@
     <div class="signup_form">
         <div class="signup_form-menu">
             <div>Хто Ви?</div>
-            <a href="#/user"><div style="text-decoration: underline">Фахівець</div></a>
-            <a href="#/company"><div>Роботодавець</div></a>
+            <div ng-click="signup.isUser=true" style="text-decoration: underline">Фахівець</div>
+            <div ng-click="signup.isUser=false">Роботодавець</div>
         </div>
         <div class="signup_form-input">
-            <input type="text" placeholder="Ім'я">
-            <input type="text" placeholder="Прізвище">
-            <input type="text" placeholder="Логін">
-            <input type="text" placeholder="Пошта">
-            <input type="password" placeholder="Пароль">
-            <input type="password" placeholder="Повторіть Пароль">
+            <input type="text" placeholder="Ім'я" ng-model="signup.firstName">
+            <input type="text" placeholder="Прізвище" ng-model="signup.secondName">
+            <input type="text" placeholder="Логін" ng-model="signup.login">
+            <input type="text" placeholder="Пошта" ng-model="signup.mail">
+            <input type="password" placeholder="Пароль" ng-model="signup.pass">
+            <input type="password" placeholder="Повторіть Пароль" ng-model="signup.passR">
             <div class="agreement">
-                <input type="checkbox" checked>
+                <input type="checkbox" ng-model="signup.agreement" checked>
                 <div>{{info.agreement}}</div>
             </div>
-            <span>Зареєструватись</span>
+            <span ng-click="signup.userReg()">Зареєструватись</span>
         </div>
     </div>
     <div class="signup_info">

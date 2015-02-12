@@ -5,7 +5,7 @@ exports.post = function(req, res, next) {
         if (err) return res.send(err);
         var obj = {
             "message":"ok",
-            "user":user,
+            "user": user,
             "action":"edit user"
         };
 

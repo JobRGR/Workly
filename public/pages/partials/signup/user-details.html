@@ -21,46 +21,50 @@
             <div class="avatar-box">
                 <div class="avatar">
                     <div class="avatar-frame">
-
+                        <img src="{{signup.img}}"/>
                     </div>
-                    <span class="avatar-text">Завантажити</span>
+                    <span class="avatar-text">
+                        <input type="file" accept="image/*" ng-fileread="signup.img">Завантажити
+                    </span>
                 </div>
                 <div class="right-input">
-                    <input name="birth" type="text" placeholder="Дата народження">
-                    <input name="city" type="text" placeholder="Місто">
-                    <input name="spec" type="text" placeholder="Спеціалізація">
-                    <input name="phone" type="text" placeholder="Телефон">
+                    <input name="birth" type="date" placeholder="Дата народження" ng-model="signup.dob">
+                    <input name="city" type="text" placeholder="Місто" ng-model="signup.city">
+                    <input name="spec" type="text" placeholder="Спеціалізація" ng-model="signup.position">
+                    <input name="phone" type="text" placeholder="Телефон" ng-model="signup.tel">
                 </div>
             </div>
-            <textarea name="about" placeholder="Про себе"></textarea>
-            <textarea name="skills" placeholder="Навички"></textarea>
-            <div class="add-place">Навчання: <div>Додати</div></div>
-            <div class="place-block">
+            <textarea name="about" placeholder="Про себе" ng-model="signup.about"></textarea>
+            <textarea name="skills" placeholder="Навички" ng-model="signup.skills"></textarea>
+            <div class="add-place">Навчання: <div ng-click="signup.addPlace(signup.studies, 'study')">Додати</div></div>
+            <div class="place-block" ng-repeat="study in signup.studies">
                 <div class="place-table">
-                    <input name="uniname" type="text" placeholder="Назва закладу">
-                    <div><span>Видалити</span></div>
+                    <input name="uniname" type="text" placeholder="Назва закладу" ng-model="study.university">
+                    <div ng-click="signup.erasePlace(signup.studies, $index)"><span>Видалити</span></div>
                 </div>
                 <div class="place-table">
-                    <input class="date" name="startdate" type="text" placeholder="Дата початку">
+                    <input class="date" name="startdate" type="date" placeholder="Дата початку" ng-model="study.startDate">
                     <div class="date-sep">-</div>
-                    <input class="date" name="enddate" type="text" placeholder="Дата завершення">
+                    <input class="date" name="enddate" type="date" placeholder="Дата завершення" ng-model="study.endDate">
                 </div>
-                <input name="direction" type="text" placeholder="Напрям">
+                <input name="direction" type="text" placeholder="Напрям" ng-model="study.direction">
+                <input name="degree" type="text" placeholder="Набута ступінь" ng-model="study.degree">
             </div>
-            <div class="add-place">Робота: <div>Додати</div></div>
-            <div class="place-block">
+            <div class="add-place" ng-click="signup.addPlace(signup.works, 'work')">Робота: <div>Додати</div></div>
+            <div class="place-block" ng-repeat="work in signup.works">
                 <div class="place-table">
-                    <input name="company" type="text" placeholder="Компанія">
-                    <div><span>Видалити</span></div>
+                    <input name="company" type="text" placeholder="Компанія" ng-model="work.company">
+                    <div ng-click="signup.erasePlace(signup.works, $index)"><span>Видалити</span></div>
                 </div>
                 <div class="place-table">
-                    <input class="date" name="startdate" type="text" placeholder="Дата початку">
+                    <input class="date" name="startdate" type="date" placeholder="Дата початку" ng-model="work.startDate">
                     <div class="date-sep">-</div>
-                    <input class="date" name="enddate" type="text" placeholder="Дата завершення">
+                    <input class="date" name="enddate" type="date" placeholder="Дата завершення" ng-model="work.endDate">
                 </div>
-                <input name="spec" type="text" placeholder="Спеціальність">
+                <input name="speciality" type="text" placeholder="Спеціальність" ng-model="work.job">
+                <input name="description" type="text" placeholder="Обов'язки\Про проект" ng-model="work.description">
             </div>
-            <span>Завершити Реєстрацію</span>
+            <span ng-click="signup.userComplete()">Завершити Реєстрацію</span>
         </div>
     </div>
     <div class="signup_info">

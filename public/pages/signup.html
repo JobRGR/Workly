@@ -14,14 +14,24 @@
     <script src="/vendor/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
+    <script src="/js/directives.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/style/signup.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 <body ng-controller="TemplateCtrl">
-    <div class="view-container signup-container">
-        <div ng-view class="view-frame"></div>
+    <div ng-controller="SignupCtrl as signup" class="view-container signup-container">
+        <div ng-if="signup.isUser">
+            <ng-include src="templatesUrl.signup.user1" ng-if="!signup.isCongrats && !signup.isAdditional"></ng-include>
+            <ng-include src="templatesUrl.signup.user2" ng-if="signup.isAdditional"></ng-include>
+            <ng-include src="templatesUrl.signup.user3" ng-if="signup.isCongrats"></ng-include>
+        </div>
+        <div ng-if="!signup.isUser">
+            <ng-include src="templatesUrl.signup.company1" ng-if="!signup.isCongrats && !signup.isAdditional"></ng-include>
+            <ng-include src="templatesUrl.signup.company2" ng-if="signup.isAdditional"></ng-include>
+            <ng-include src="templatesUrl.signup.company3" ng-if="signup.isCongrats"></ng-include>
+        </div>
     </div>
     <div class="footer-container">
         <ng-include src="templatesUrl.footer"></ng-include>
