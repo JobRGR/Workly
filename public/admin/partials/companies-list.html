@@ -1,0 +1,9 @@
+<h4 ng-if="!isData()">{{dataObj.message}}</h4>
+<div class="panel panel-default" ng-if="isData()">
+    <ul class="list-group">
+        <li class="list-group-item"  ng-repeat="company in dataObj.data">
+            <span>{{company.mail}} - {{company.companyName}}</span>
+        </li>
+    </ul>
+</div>
+

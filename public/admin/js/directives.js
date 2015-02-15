@@ -24,3 +24,27 @@ adminDirectives.directive("modellist", function () {
         controller: 'mainCtrl'
     };
 });
+
+adminDirectives.directive("userslist", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/users-list.html",
+        controller: 'modelCtrl'
+    };
+});
+
+adminDirectives.directive("companieslist", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/companies-list.html",
+        controller: 'modelCtrl'
+    };
+});
+
+adminDirectives.directive("postslist", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/posts-list.html",
+        controller: 'modelCtrl'
+    };
+});
