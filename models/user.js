@@ -144,8 +144,11 @@ schema.statics.edit =  function(req, callback) {
     var editUser = req.body;
     var user = req.user;
 
+    var isNotEdit = ['mail','password'];
+
     for(var k in editUser)
-        user[k] = editUser[k]
+        if(!(isNotEdit.indexOf(k) > -1))
+            user[k] = editUser[k].length() ?  editUser[k] : " ";
 
     user.save(function(err) {
         if (err) return callback(err);

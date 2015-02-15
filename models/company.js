@@ -105,17 +105,20 @@ schema.statics.registration = function(req, callback) {
 
     var Company = this;
 
-    var company = new Company({
-        companyName: companyName,
-        password: password,
-        mail: mail
-    });
+    Company.findOne({'companyName': companyName},function(err, isFind){
+       if(isFind) return callback(new AuthError("Company with such name is Sign-Up"));
 
-    company.save(function(err) {
-        if (err) return callback(err);
-        callback(null, company);
-    });
+        var company = new Company({
+            companyName: companyName,
+            password: password,
+            mail: mail
+        });
 
+        company.save(function(err) {
+            if (err) return callback(err);
+            callback(null, company);
+        });
+    });
 };
 
 schema.statics.password = function(req, callback) {
@@ -135,8 +138,11 @@ schema.statics.edit =  function(req, callback) {
     var editCompany = req.body;
     var company = req.company;
 
+    var isNotEdit = ['mail','password','companyName'];
+
     for(var k in editCompany)
-        company[k] = editCompany[k]
+        if(!(isNotEdit.indexOf(k) > -1))
+            company[k] = editCompany[k];
 
     company.save(function(err) {
         if (err) return callback(err);

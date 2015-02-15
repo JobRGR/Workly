@@ -1,0 +1,10 @@
+<div class="admin-main">
+    <ul class="nav nav-tabs">
+        <li role="presentation" ng-repeat="item in navModelItems"
+            ng-click="changeModel($event, $index)"
+            ng-class="{'active': item.active}">
+            <a>{{item.text}}</a>
+        </li>
+    </ul>
+</div>
+
