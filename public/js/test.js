@@ -70,7 +70,7 @@ var ClientApi = function(){
             var data = {
                 companyName: "AlexInc",
                 password: "1111",
-                mail: "alex.inc@mail.com"
+                mail: "alex.incf@mail.com"
             };
 
             var url = "/api/sign-up-company";
@@ -143,6 +143,7 @@ var ClientApi = function(){
             data.city = "Kiev";
             data.contacts = "Cupertion";
             data.about = "The Best";
+            data.kiev = "Kiev";
 
             var url = "/api/edit-company";
 
