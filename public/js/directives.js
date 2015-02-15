@@ -2,9 +2,9 @@
 
 /* Directives*/
 
-var fileReader = angular.module('fileReader',[]);
+var formFilling = angular.module('formFilling',[]);
 
-fileReader.directive("ngFileread", [function () {
+formFilling.directive("ngFileread", [function () {
     return {
         scope: {
             ngFileread: "="
@@ -22,3 +22,28 @@ fileReader.directive("ngFileread", [function () {
         }
     }
 }]);
+
+formFilling.directive('ngRepeatPass', function (){
+    return {
+        require: 'ngModel',
+        scope:{
+            ngRepeatPass: '='
+        },
+        link: function(scope, elem, attr, ngModel) {
+            if (!ngModel) return;
+
+            scope.$watch('ngRepeatPass', function() {
+                CheckValidity(ngModel.$viewValue);
+            });
+
+            ngModel.$parsers.unshift(CheckValidity);    //For DOM -> model validation
+            ngModel.$formatters.unshift();              //For DOM -> model validation
+
+            function CheckValidity(value){
+                var valid = value === scope.ngRepeatPass;
+                ngModel.$setValidity('repeatPass', valid);
+                return value;
+            }
+        }
+    };
+});

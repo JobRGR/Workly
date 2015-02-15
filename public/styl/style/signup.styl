@@ -50,6 +50,7 @@
   display table
 
 .signup_form
+  position relative
   display inline-block
   vertical-align top
   font bold 18px "OpenSans"
@@ -64,6 +65,7 @@
           width 30%
           height 60px
           line-height 60px
+          cursor pointer
       & a
           color rgb( 86, 86, 86 )
   & .signup_form-bar
@@ -72,16 +74,10 @@
       color rgb( 86, 86, 86 )
       & div
           display table-cell
+          cursor pointer
           width 100%
           height 60px
           line-height 60px
-      & a
-          display table-cell
-          height 60px
-          line-height 60px
-          font-weight normal
-          text-decoration underline
-          color rgb( 86, 86, 86 )
   & .signup_form-input
       display block
       margin 0px 15%
@@ -90,35 +86,51 @@
       & input
           display block
           outline none
+          border none
           box-sizing border-box
           width 100%
           height 25px
           padding 0px 7px
           margin 15px 0px
           color rgb( 86, 86, 86 )
+          &.ng-dirty.ng-invalid
+             box-shadow 0px 0px 5px 1px rgb( 200, 50, 50 )
       & .agreement
           display table
           color rgb( 86, 86, 86 )
           & div
               display table-cell
-          & input[type="checkbox"]
-              display table-cell
               vertical-align top
-              padding 0
-              margin 3px
-              width 19px
-              height 19px
+              position relative
+              & input[type="checkbox"]
+                  display block
+                  opacity 0
+                  cursor pointer
+                  position absolute
+                  vertical-align top
+                  margin 3px
+                  width 19px
+                  height 19px
+                  &:checked + span
+                      background rgb( 255, 255, 255 ) url('/images/signup/mark.png') center no-repeat
+              & span
+                  display block
+                  margin 3px
+                  width 19px
+                  height 19px
+                  border-radius 5px
+                  background-color rgb( 255, 255, 255 )
       & .logo-box
           display block
           box-sizing border-box
           height 92px
-          padding 6px
           width 100%
           border 2px dashed rgb( 202, 202, 202 )
           border-radius 5px
           & img
               width 100%
               height 100%
+              background transparent url('/images/signup/company_logo.png') center no-repeat
       & .logo-load
           display block
           width 100%
@@ -127,13 +139,19 @@
               display inline-block
               text-align center
               font normal 14px "OpenSans"
-              padding 0 10px
-              margin 10px
               height 22px
               line-height 22px
-              width auto
+              width 120px
+              margin-top 7px
+              border-radius 3px
+              background-color rgb( 109, 199, 128 )
+              box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+              color rgb( 255, 255, 255 )
+              &:hover
+                  background-color rgb( 51, 176, 97 )
+              &:active
+                  box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
               & input
-                  display inline-block
                   position absolute
                   height 22px
                   width 96px
@@ -153,21 +171,33 @@
               width 92px
               height 92px
               & img
-                  width 80px
-                  height 80px
-                  margin 6px
+                  width 92px
+                  height 92px
+                  background transparent url('/images/signup/user_logo.png') center no-repeat
           & .avatar-text
+              display block
+              cursor pointer
               font normal 14px "OpenSans"
-              margin 10px 0px
               height 22px
               line-height 22px
+              width 100%
+              margin-top 7px
+              text-align center
+              border-radius 3px
+              background-color rgb( 109, 199, 128 )
+              box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+              color rgb( 255, 255, 255 )
+              &:hover
+                  background-color rgb( 51, 176, 97 )
+              &:active
+                  box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
               & input
                   display inline-block
                   position absolute
                   height 22px
                   width 96px
-                  margin 0px
-                  padding 0px
+                  margin 0
+                  padding 0
                   opacity 0
       & .right-input
           display table-cell
@@ -182,6 +212,7 @@
           width 100%
           height 60px
           outline none
+          border none
       & .add-place
           font-weight bold
           color rgb( 116, 174, 128 )
@@ -199,16 +230,20 @@
               width 100%
               & span
                   display inline-block
+                  cursor pointer
                   font normal 14px "OpenSans"
-                  padding 0px
-                  margin 0px
+                  text-align center
+                  color rgb( 255, 255, 255 )
+                  width 100%
                   height 24px
                   line-height 24px
                   border-radius 5px
                   background-color rgb( 218, 109, 109 )
                   box-shadow 0px 4px 1px 0px rgb( 196, 81, 81 )
                   &:hover
-                    background-color rgb( 196, 81, 81 )
+                      background-color rgb( 196, 81, 81 )
+                  &:active
+                      box-shadow 0px 4px 1px 0px rgb( 218, 109, 109 )
               & div
                   display table-cell
                   padding 10px
@@ -221,22 +256,60 @@
           & .date-sep
               display table-cell
               text-align center
-  & span
+  & button
       display block
       cursor pointer
-      font-size 16px
+      font normal 16px "Open Sans"
       width 100%
       height 32px
       line-height 32px
       margin 20px 0px
       text-align center
+      border none
+      outline none
       border-radius 5px
       background-color rgb( 109, 199, 128 )
       box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
       color rgb( 255, 255, 255 )
       &:hover
-        background-color rgb( 50, 172, 95 )
-
+          background-color rgb( 51, 176, 97 )
+      &:active
+          margin 25px 0px 15px 0px
+          box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+  & .form-error
+      position absolute
+      top 104%
+      display block
+      text-align center
+      width 100%
+      height 40px
+      font normal 16px "OpenSans"
+      color rgb( 255, 255, 255 )
+      line-height 40px
+      border-radius 5px
+      background-color rgb( 218, 109, 109 )
+      & span
+          position absolute
+          display block
+          left 15%
+          top -11px
+          width 28px
+          height 28px
+          background-color inherit
+          border-radius 4px
+          transform rotate(45deg)
+          &::before
+              content '!'
+              display block
+              width 23px
+              height 23px
+              margin-left 14px
+              margin-top 14px
+              font normal 17px "OpenSans"
+              color rgb( 218, 109, 109 )
+              border-radius 50%
+              background-color rgb( 255, 255, 255 )
+              transform rotate(-45deg)
 
 .signup_info
   display inline-block

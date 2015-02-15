@@ -1,0 +1,80 @@
+<div class="signup-state">
+    <img src="/images/signup/mid_logo.png"/>
+    <div class="signup-state_actual">
+        <div class="signup-state_circle active-circle">1</div>
+        <div class="signup-state_circle small active-circle"></div>
+        <div class="signup-state_circle active-circle">2</div>
+        <div class="signup-state_circle small active-circle"></div>
+        <div class="signup-state_circle">3</div>
+    </div>
+</div>
+<div class="signup-headtext">
+    Реєстрація: <span>Фахівець</span>
+</div>
+<div class="signup">
+    <div class="signup_form">
+        <div class="signup_form-bar">
+            <div>Додайте персональні дані</div>
+            <div ng-click="signup.isCongrats=true;signup.isAdditional=false">Пропустити→</div>
+        </div>
+        <div class="signup_form-input">
+            <form ng-submit="signup.userComplete()">
+                <div class="avatar-box">
+                    <div class="avatar">
+                        <div class="avatar-frame">
+                            <img src="{{signup.userExt.img}}"/>
+                        </div>
+                        <span class="avatar-text">
+                            <input type="file" accept="image/*" ng-fileread="signup.userExt.img">Завантажити
+                        </span>
+                    </div>
+                    <div class="right-input">
+                        <input name="birth" type="date" placeholder="Дата народження" ng-model="signup.userExt.dob">
+                        <input name="city" type="text" placeholder="Місто" ng-model="signup.userExt.city">
+                        <input name="spec" type="text" placeholder="Спеціалізація" ng-model="signup.userExt.position">
+                        <input name="phone" type="text" placeholder="Телефон" ng-model="signup.userExt.tel">
+                    </div>
+                </div>
+                <textarea name="about" placeholder="Про себе" ng-model="signup.userExt.about"></textarea>
+                <textarea name="skills" placeholder="Навички" ng-model="signup.userExt.skills"></textarea>
+                <div class="add-place">Навчання: <div ng-click="signup.addPlace(signup.userExt.study)">Додати</div></div>
+                <div class="place-block" ng-repeat="study in signup.userExt.study">
+                    <div class="place-table">
+                        <input name="uniname" type="text" placeholder="Назва закладу" ng-model="study.university">
+                        <div ng-click="signup.erasePlace(signup.userExt.study, $index)"><span>Видалити</span></div>
+                    </div>
+                    <div class="place-table">
+                        <input class="date" name="startdate" type="date" placeholder="Дата початку" ng-model="study.start">
+                        <div class="date-sep">-</div>
+                        <input class="date" name="enddate" type="date" placeholder="Дата завершення" ng-model="study.end">
+                    </div>
+                    <input name="direction" type="text" placeholder="Напрям" ng-model="study.direction">
+                    <input name="degree" type="text" placeholder="Набута ступінь" ng-model="study.degree">
+                </div>
+                <div class="add-place" ng-click="signup.addPlace(signup.userExt.work)">Робота: <div>Додати</div></div>
+                <div class="place-block" ng-repeat="work in signup.userExt.work">
+                    <div class="place-table">
+                        <input name="company" type="text" placeholder="Компанія" ng-model="work.company">
+                        <div ng-click="signup.erasePlace(signup.userExt.work, $index)"><span>Видалити</span></div>
+                    </div>
+                    <div class="place-table">
+                        <input class="date" name="startdate" type="date" placeholder="Дата початку" ng-model="work.start">
+                        <div class="date-sep">-</div>
+                        <input class="date" name="enddate" type="date" placeholder="Дата завершення" ng-model="work.end">
+                    </div>
+                    <input name="speciality" type="text" placeholder="Спеціальність" ng-model="work.job">
+                    <input name="description" type="text" placeholder="Обов'язки\Про проект" ng-model="work.description">
+                </div>
+                <button type="submit">Завершити Реєстрацію</button>
+            </form>
+        </div>
+    </div>
+    <div class="signup_info">
+        <div class="signup_info-box">
+            <div class="signup_conviction" ng-repeat="conviction in info.user_convictions">
+                    <div>{{conviction.headtext}}</div>
+                   {{conviction.subtext}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,5 +7,5 @@ angular.module('worklyApp', [
 var signupApp = angular.module('signupApp', [
     'worklyControllers',
     'signupControllers',
-    'fileReader'
+    'formFilling'
 ]);

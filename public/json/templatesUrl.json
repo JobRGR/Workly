@@ -1,13 +1,13 @@
 {
-  "landing":"/pages/partials/landing.html",
-  "footer":"/pages/partials/footer.html",
+  "landing":"/partials/landing.html",
+  "footer":"/partials/footer.html",
   "signup":{
-    "user1":"/pages/partials/signup/user.html",
-    "user2":"/pages/partials/signup/user-details.html",
-    "user3":"/pages/partials/signup/user-congrats.html",
-    "company1":"/pages/partials/signup/company.html",
-    "company2":"/pages/partials/signup/company-details.html",
-    "company3":"/pages/partials/signup/company-congrats.html"
+    "user1":"/partials/signup/user.html",
+    "user2":"/partials/signup/user-details.html",
+    "user3":"/partials/signup/user-congrats.html",
+    "company1":"/partials/signup/company.html",
+    "company2":"/partials/signup/company-details.html",
+    "company3":"/partials/signup/company-congrats.html"
   },
-  "companyPage":"/pages/partials/companyPage.html"
+  "companyPage":"/partials/companyPage.html"
 }

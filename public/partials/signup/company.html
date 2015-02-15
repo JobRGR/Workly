@@ -1,5 +1,5 @@
 <div class="signup-state">
-    <img src="/images/mid_logo.png"/>
+    <img src="/images/signup/mid_logo.png"/>
     <div class="signup-state_actual">
         <div class="signup-state_circle active-circle">1</div>
         <div class="signup-state_circle small active-circle"></div>
@@ -19,16 +19,19 @@
             <div ng-click="signup.isUser=false" style="text-decoration: underline">Роботодавець</div>
         </div>
         <div class="signup_form-input">
-            <input type="text" placeholder="Назва компанії" ng-model="signup.companyName">
-            <input type="text" placeholder="Пошта" ng-model="signup.mail">
-            <input type="password" placeholder="Пароль" ng-model="signup.pass">
-            <input type="password" placeholder="Повторіть Пароль" ng-model="signup.passR">
-            <div class="agreement">
-                <input type="checkbox" ng-model="signup.agreement" checked>
-                <div>{{info.agreement}}</div>
-            </div>
-            <span ng-click="signup.companyReg()">Зареєструватись</span>
+            <form name="formCompany" ng-submit="signup.companyReg(formCompany.$valid)" novalidate>
+                <input type="text" placeholder="Назва компанії" ng-model="signup.company.companyName" required>
+                <input type="email" placeholder="Пошта" ng-model="signup.company.mail" required>
+                <input type="password" placeholder="Пароль" ng-model="signup.company.password" required>
+                <input type="password" placeholder="Повторіть Пароль" ng-model="signup.repeatPassword" ng-repeat-pass="signup.company.password" required>
+                <div class="agreement">
+                    <div><input type="checkbox" ng-model="signup.agreement" required><span></span></div>
+                    <div>{{info.agreement}}</div>
+                </div>
+                <button type="submit">Зареєструватись</button>
+            </form>
         </div>
+        <span ng-show="signup.formBadMsg" class="form-error"><span></span>{{signup.formBadMsg}}</span>
     </div>
     <div class="signup_info">
         <div class="signup_info-box">
