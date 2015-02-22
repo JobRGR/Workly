@@ -4,6 +4,7 @@
 
 var worklyControllers = angular.module('worklyControllers', []);
 var signupControllers = angular.module('signupControllers', []);
+var companyPageControllers = angular.module('companyPageControllers', []);
 
 worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
     function($scope, $http) {
@@ -15,6 +16,59 @@ worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
                 console.log(err);
             });
     }]);
+
+companyPageControllers.controller('companyPageCtrl', ['$scope', '$http', '$routeParams',
+    function($scope, $http, $routeParams) {
+        var id = $routeParams.companyId;
+        $http.get("/api/company/"+id)
+            .success(function (resp) {
+                $scope.vacancies = resp.company.vacancies;
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+    }]);
+
+companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http', '$routeParams',
+    function($scope, $http, $routeParams){
+        $http.get("/api/post/"+$scope.id)
+            .success(function (resp) {
+                $scope.authorName = resp.post.authorName;
+                $scope.city = resp.post.city;
+                $scope.date = resp.post.date;
+                $scope.companyId = $routeParams.companyId;
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+    }]);
+
+
+//function getPost(ind) {
+//    var deferred = $q.defer();
+//
+//    deferred.notify('Start');
+//
+//    $http.get("/api/post/"+resp.company.vacancies[ind])
+//        .success(function (post) {
+//            $scope.vacancies.push(post);
+//            deferred.resolve('good' + ind);
+//        })
+//        .error(function (err) {
+//            deferred.reject(err);
+//        });
+//    return deferred.promise;
+//};
+//
+//$scope.promise  = getPost;
+//promise.then(function(greeting) {
+//    alert('Success: ' + greeting);
+//}, function(reason) {
+//    alert('Failed: ' + reason);
+//}, function(update) {
+//    alert('Got notification: ' + update);
+//});
+
 
 signupControllers.controller('SignupCtrl', ['$scope', '$http',
     function($scope, $http){

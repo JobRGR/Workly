@@ -2,7 +2,7 @@ var Search = require('./search').searchModel;
 
 exports.post = function(req, res, next) {
     var keyObj = {
-        inString: [ 'authorName','job','city', 'tags'],
+        inString: [ 'authorName','job','city','tags'],
         inObj: [],
         type: "post"
     };

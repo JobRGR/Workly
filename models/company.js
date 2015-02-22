@@ -57,6 +57,10 @@ var schema = new Schema({
         type: Array,
         required: true,
         default: [null]
+    },
+    vacancies: {
+        type: Array,
+        default: []
     }
 });
 

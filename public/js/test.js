@@ -70,7 +70,7 @@ var ClientApi = function(){
             var data = {
                 companyName: "AlexInc",
                 password: "1111",
-                mail: "alex.incf@mail.com"
+                mail: "aldfdex.incf@mail.com"
             };
 
             var url = "/api/sign-up-company";
@@ -92,7 +92,7 @@ var ClientApi = function(){
         },
         signInCompany: function(){
             var data = {
-                mail: "alex.inc@mail.com",
+                mail: "aldfdex.incf@mail.com",
                 password: "1111"
             };
 
@@ -105,7 +105,7 @@ var ClientApi = function(){
             get(url, callback);
         },
         getInfoCompany: function(){
-            var url = "/api/company/54c14a09c718c94f721b7765"
+            var url = "/api/company/54e9cc04718bd1f00ec0d510"
             get(url, callback);
         },
         getAuth: function(){
@@ -154,7 +154,7 @@ var ClientApi = function(){
             get(url, callback);
         },
         removeCompany: function(){
-            var url = "/api/remove-company/54c01f02344272dc6e60b729"
+            var url = "/api/remove-company/54e9060fdaea42a41f5b9b88"
             get(url, callback);
         },
         dropUser: function(){
