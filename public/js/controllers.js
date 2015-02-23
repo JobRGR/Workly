@@ -17,12 +17,18 @@ worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
             });
     }]);
 
-companyPageControllers.controller('companyPageCtrl', ['$scope', '$http', '$routeParams',
+companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$routeParams',
     function($scope, $http, $routeParams) {
         var id = $routeParams.companyId;
         $http.get("/api/company/"+id)
             .success(function (resp) {
                 $scope.vacancies = resp.company.vacancies;
+                $scope.companyName = resp.company.companyName;
+                $scope.contacts = resp.company.contacts;
+                $scope.mail = resp.company.mail;
+                $scope.tel = resp.company.tel;
+                $scope.website = resp.company.website;
+                $scope.about = resp.company.about;
             })
             .error(function (err) {
                 console.log(err);
@@ -44,30 +50,6 @@ companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http
     }]);
 
 
-//function getPost(ind) {
-//    var deferred = $q.defer();
-//
-//    deferred.notify('Start');
-//
-//    $http.get("/api/post/"+resp.company.vacancies[ind])
-//        .success(function (post) {
-//            $scope.vacancies.push(post);
-//            deferred.resolve('good' + ind);
-//        })
-//        .error(function (err) {
-//            deferred.reject(err);
-//        });
-//    return deferred.promise;
-//};
-//
-//$scope.promise  = getPost;
-//promise.then(function(greeting) {
-//    alert('Success: ' + greeting);
-//}, function(reason) {
-//    alert('Failed: ' + reason);
-//}, function(update) {
-//    alert('Got notification: ' + update);
-//});
 
 
 signupControllers.controller('SignupCtrl', ['$scope', '$http',
