@@ -1,0 +1,29 @@
+<div class="row control-line">
+    <div class="col-xs-12 col-sm-6 col-lg-8">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default"
+                        type="button"
+                        ng-click="searchModel()">Find {{type}}</button>
+            </span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Search for {{type}}"
+                   ng-model="query"
+                   ng-keyup="isSearch($event)">
+        </div>
+    </div>
+    <div class="col-xs-6 col-lg-4">
+        <div class="btn-div">
+            <button type="button"
+                    class="btn btn-success add-model-btn"
+                    ng-click="">Add {{type}}</button>
+            <button type="button"
+                    class="btn btn-warning drop-model-btn"
+                    ng-click="dropModel()">Drop {{type}}</button>
+            <button type="button"
+                    class="btn btn-danger"
+                    ng-click="dropDB()">Drop DB</button>
+        </div>
+    </div>
+</div>

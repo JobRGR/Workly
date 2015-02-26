@@ -2,8 +2,8 @@
 
 var adminControllers = angular.module('adminControllers', []);
 
-adminControllers.controller('mainCtrl', ['$scope',
-    function ($scope) {
+adminControllers.controller('mainCtrl', ['$scope', '$http',
+    function ($scope, $http) {
         $scope.type = "user";
 
         $scope.isUser = function(){
@@ -19,8 +19,8 @@ adminControllers.controller('mainCtrl', ['$scope',
         };
     }]);
 
-adminControllers.controller('navCtrl', ['$scope',
-    function ($scope) {
+adminControllers.controller('navCtrl', ['$scope', '$http',
+    function ($scope, $http) {
         $scope.navModelItems = [
             {
                 data: 'user',
@@ -48,6 +48,7 @@ adminControllers.controller('navCtrl', ['$scope',
             $scope.navModelItems[$index].active = true;
             $scope.index = $index;
         };
+
     }]);
 
 adminControllers.controller('modelCtrl', ['$scope', '$http',
@@ -59,6 +60,8 @@ adminControllers.controller('modelCtrl', ['$scope', '$http',
             message: "",
             data: []
         };
+
+        $scope.query = "";
 
         $http.get(url+add).
           success(function(data, status, headers, config) {
@@ -72,6 +75,75 @@ adminControllers.controller('modelCtrl', ['$scope', '$http',
 
         $scope.isData = function(){
             return $scope.dataObj.data.length
+        };
+
+        $scope.deleteItem = function($event, $index){
+            var id = $scope.dataObj.data[$index]._id
+              , url = '/api/remove-' + $scope.type + '/' + id;
+
+            $scope.dataObj.data.splice($index,1);
+            if(!$scope.dataObj.data.length)
+                $scope.dataObj.message = "No Data";
+
+            $http.get(url).
+              success(function(data, status, headers, config) {
+                  console.log(arguments);
+              }).
+              error(function(data, status, headers, config) {
+                  console.log(arguments);
+              });
+        };
+
+        $scope.dropModel = function(){
+            var url = url = '/api/drop-' + $scope.type;
+
+            $scope.dataObj.data = [];
+            $scope.dataObj.message = "No Data";
+
+            $http.get(url).
+              success(function(data, status, headers, config) {
+                  console.log(arguments);
+              }).
+              error(function(data, status, headers, config) {
+                  console.log(arguments);
+              });
+        };
+
+        $scope.dropDB = function(){
+            var url = '/api/drop-db';
+
+            $scope.dataObj.data = [];
+            $scope.dataObj.message = "No Data";
+
+            $http.get(url).
+              success(function(data, status, headers, config) {
+                  console.log(arguments);
+              }).
+              error(function(data, status, headers, config) {
+                  console.log(arguments);
+              });
+        };
+
+        $scope.isSearch = function ($event){
+          var isKey = $event.keyCode == 13;
+          if(isKey) $scope.searchModel()
+        };
+
+        $scope.searchModel = function(){
+            var url = '/api/search-' + $scope.type
+              , add = $scope.type == "user" ? 'users' : $scope.type == "company" ? 'companies' : 'posts';
+
+            $http.post(url, {query: $scope.query}).
+              success(function(data, status, headers, config) {
+                  console.log(arguments);
+                  $scope.dataObj.data = data[add] ? data[add] : [];
+                  $scope.dataObj.message = $scope.dataObj.data.length ? "ok" : "No Data";
+              }).
+              error(function(data, status, headers, config) {
+                  console.log(arguments);
+                  $scope.dataObj.message = "Request Error";
+                  $scope.dataObj.data = [];
+              });
         }
     }]);
 

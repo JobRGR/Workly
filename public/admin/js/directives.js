@@ -9,7 +9,7 @@ adminDirectives.directive("header", function () {
     };
 });
 
-adminDirectives.directive("selectmodel", function () {
+adminDirectives.directive("selectModel", function () {
     return {
         restrict: 'E',
         templateUrl: "partials/select-models.html",
@@ -17,7 +17,7 @@ adminDirectives.directive("selectmodel", function () {
     };
 });
 
-adminDirectives.directive("modellist", function () {
+adminDirectives.directive("modelList", function () {
     return {
         restrict: 'E',
         templateUrl: "partials/model-list.html",
@@ -25,7 +25,7 @@ adminDirectives.directive("modellist", function () {
     };
 });
 
-adminDirectives.directive("userslist", function () {
+adminDirectives.directive("usersList", function () {
     return {
         restrict: 'E',
         templateUrl: "partials/users-list.html",
@@ -33,7 +33,7 @@ adminDirectives.directive("userslist", function () {
     };
 });
 
-adminDirectives.directive("companieslist", function () {
+adminDirectives.directive("companiesList", function () {
     return {
         restrict: 'E',
         templateUrl: "partials/companies-list.html",
@@ -41,10 +41,18 @@ adminDirectives.directive("companieslist", function () {
     };
 });
 
-adminDirectives.directive("postslist", function () {
+adminDirectives.directive("postsList", function () {
     return {
         restrict: 'E',
         templateUrl: "partials/posts-list.html",
+        controller: 'modelCtrl'
+    };
+});
+
+adminDirectives.directive("controlLine", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/control-line.html",
         controller: 'modelCtrl'
     };
 });

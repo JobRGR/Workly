@@ -92,7 +92,7 @@ var ClientApi = function(){
         },
         signInCompany: function(){
             var data = {
-                mail: "alex.inc@mail.com",
+                mail: "alex.incf@mail.com",
                 password: "1111"
             };
 

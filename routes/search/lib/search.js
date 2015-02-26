@@ -1,6 +1,6 @@
 var User = require('../../../models/user').User;
-var Post = require('../../../models/user').Post;
-var Company = require('../../../models/user').Company;
+var Post = require('../../../models/post').Post;
+var Company = require('../../../models/company').Company;
 
 var async = require('async');
 

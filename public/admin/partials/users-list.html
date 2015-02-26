@@ -1,8 +1,11 @@
+<control-line></control-line>
+
 <h4 ng-if="!isData()">{{dataObj.message}}</h4>
 <div class="panel panel-default" ng-if="isData()">
         <ul class="list-group">
             <li class="list-group-item"  ng-repeat="user in dataObj.data">
                 <span>{{user.mail}} - {{user.firstname}} {{user.secondname}}</span>
+                <i class="glyphicon glyphicon-remove pull-right" ng-click="deleteItem($event,$index)"></i>
             </li>
         </ul>
     </div>
