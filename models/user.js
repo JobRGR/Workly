@@ -148,7 +148,7 @@ schema.statics.edit =  function(req, callback) {
 
     for(var k in editUser)
         if(!(isNotEdit.indexOf(k) > -1))
-            user[k] = editUser[k].length() ?  editUser[k] : " ";
+            user[k] = editUser[k].length ?  editUser[k] : " ";
 
     user.save(function(err) {
         if (err) return callback(err);

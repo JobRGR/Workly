@@ -1,4 +1,4 @@
-var Search = require('./search').searchModel;
+    var Search = require('./search').searchModel;
 
 exports.post = function(req, res, next) {
     var keyObj = {

@@ -104,10 +104,24 @@ schema.statics.create = function(req, callback) {
     post.authorId = company.id;
     post.authorName = company.companyName;
 
-    post.save(function(err) {
-        if (err) return callback(err);
-        callback(null,post)
-    });
+    company.vacancies.push(post.id);
+
+    async.waterfall([
+        function(callback){
+            company.save(function(err) {
+                if (err) return callback(err);
+                callback(null);
+            });
+        },
+        function(callback){
+            post.save(function(err) {
+                if (err) return callback(err);
+                callback(null,post)
+            });
+        }
+    ],callback);
+
+
 };
 
 schema.statics.edit =  function(req, callback) {

@@ -4,6 +4,7 @@
 
 var worklyControllers = angular.module('worklyControllers', []);
 var signupControllers = angular.module('signupControllers', []);
+var companyPageControllers = angular.module('companyPageControllers', []);
 
 worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
     function($scope, $http) {
@@ -15,6 +16,41 @@ worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
                 console.log(err);
             });
     }]);
+
+companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$routeParams',
+    function($scope, $http, $routeParams) {
+        var id = $routeParams.companyId;
+        $http.get("/api/company/"+id)
+            .success(function (resp) {
+                $scope.vacancies = resp.company.vacancies;
+                $scope.companyName = resp.company.companyName;
+                $scope.contacts = resp.company.contacts;
+                $scope.mail = resp.company.mail;
+                $scope.tel = resp.company.tel;
+                $scope.website = resp.company.website;
+                $scope.about = resp.company.about;
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+    }]);
+
+companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http', '$routeParams',
+    function($scope, $http, $routeParams){
+        $http.get("/api/post/"+$scope.id)
+            .success(function (resp) {
+                $scope.authorName = resp.post.authorName;
+                $scope.city = resp.post.city;
+                $scope.date = resp.post.date;
+                $scope.companyId = $routeParams.companyId;
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+    }]);
+
+
+
 
 signupControllers.controller('SignupCtrl', ['$scope', '$http',
     function($scope, $http){

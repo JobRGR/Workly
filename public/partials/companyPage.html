@@ -1,9 +1,8 @@
-
 <div class="companyPage">
 	<div class="companyPage_logo">
 		<img src="/images/mid_logo.png">
 	</div>
-	<div class="companyPage_cards-wrapper">
+	<div class="companyPage_cards-wrapper" ng-controller="companyPageProfileCtrl">
 		<div class="companyPage_tiangle"></div>
 
 		<div class="compamyPage_info-card">
@@ -12,15 +11,13 @@
 					<img src="/images/companies/wargaming.png">
 				</div>
 	
-				<div class="compamyPage_info-card_profile-title">
-					Wargaming.net
-				</div>
+				<div class="compamyPage_info-card_profile-title">{{companyName}}</div>
 	
 				<div class="compamyPage_info-card_profile-contacts">
-					<div class="compamyPage_info-card_profile-contacts_adress">Киев, ул. Амосова, 12</div>
-					<div class="compamyPage_info-card_profile-contacts_email">hrspb@wargaming.net</div>
-					<div class="compamyPage_info-card_profile-contacts_tel">+3806673073</div>
-					<div class="compamyPage_info-card_profile-contacts_website">www.wargaming.com</div>
+					<div class="compamyPage_info-card_profile-contacts_adress">{{contacts}}</div>
+					<div class="compamyPage_info-card_profile-contacts_email">{{mail}}</div>
+					<div class="compamyPage_info-card_profile-contacts_tel">{{tel}}</div>
+					<div class="compamyPage_info-card_profile-contacts_website">{{website}}</div>
 				</div>
 	
 				<div class="compamyPage_info-card_profile-button">
@@ -28,43 +25,17 @@
 				</div>
 			</div>
 			<div class="compamyPage_circles"></div>
-			<div class="compamyPage_info-card_info">
-				<h1>Про компанію</h1>
-Оглядаючись на СТАРТ<br><br>
-На сьогоднішній день Persha Studia - найбільша в Україні студія, що займається ігровий розробкою.<br><br>
-Зараз у нашій команді вже більше 300 професіоналів, а починалося все в далекому 2000 році, коли 15 чоловік об'єдналися для спільної роботи в індустрії виробництва ігор. Початковим профілем студії був аутсорсинг для відомих західних компаній. Electronic Arts, Activision, Sony Online Entertainment, Disney Interactive, Cryptic Studios - ось лише деякі з тих гігантів, з якими нас пов'язує багаторічна плідна співпраця.<br><br>
-Радикальні зміни в житті Persha Studia відбулися в 2010 році, з початком роботи над активно набирає обертів проектом World of Tanks від компанії Wargaming. У наших стінах був створений арт для французької гілки «Танків», при цьому обидві сторони залишилися більше, ніж задоволені співпрацею. Після низки переговорів у вересні 2011 року Persha Studia стала стратегічним партнером Wargaming.<br><br>
-Зараз у рамках нашої студії повністю розробляється відразу два проекти.
-			</div>
+			<div class="compamyPage_info-card_info"><h1>Про компанію</h1>{{about}}</div>
 		</div>
 		<div class="compamyPage_vacancy-card">
-			<div class="compamyPage_vacancy-card_title">Вакансії у Wargaming</div>
-			<div class="compamyPage_vacancy-card_list">
+			<div class="compamyPage_vacancy-card_title">Вакансії у {{companyName}}</div>
+			<div class="compamyPage_vacancy-card_list"  ng-repeat="id in vacancies">
 
-				<div class="compamyPage_vacancy-card_list_item">
-					<a href="#">HelpDesc specialist</a>
-					<span>Київ</span> | <span>Сьогодні</span>
+				<div class="compamyPage_vacancy-card_list_item" ng-controller="companyPageVacLoadingCtrl">
+					<a href="#/company/{{companyId}}">{{authorName}}</a>
+					<span>{{city}}</span> | <span>{{date}}</span>
 				</div>
 
-				<div class="compamyPage_vacancy-card_list_item">
-					<a href="#">HelpDesc specialist</a>
-					<span>Київ</span> | <span>Сьогодні</span>
-				</div>
-
-				<div class="compamyPage_vacancy-card_list_item">
-					<a href="#">HelpDesc specialist</a>
-					<span>Київ</span> | <span>Сьогодні</span>
-				</div>
-
-				<div class="compamyPage_vacancy-card_list_item">
-					<a href="#">HelpDesc specialist</a>
-					<span>Київ</span> | <span>Сьогодні</span>
-				</div>
-
-				<div class="compamyPage_vacancy-card_list_item">
-					<a href="#">HelpDesc specialist</a>
-					<span>Київ</span> | <span>Сьогодні</span>
-				</div>
 			</div>
 		</div>
 	</div>

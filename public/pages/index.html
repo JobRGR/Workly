@@ -13,19 +13,18 @@
     <script src="/vendor/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/vendor/bower_components/angular-route/angular-route.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/test.js"></script>
     <script src="/js/controllers.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style/companyPage.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/style/landing.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 </head>
-<body ng-controller="TemplateCtrl">
-    <ng-include src="templatesUrl.companyPage"></ng-include>
-    <div class="footer-container">
-        <ng-include src="templatesUrl.footer"></ng-include>
-    </div>
+<body  ng-controller="TemplateCtrl">
+    <div  ng-view autoscroll="true"></div>
+    <ng-include src="templatesUrl.footer"></ng-include>
 </body>
 </html>
