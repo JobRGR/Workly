@@ -1,6 +1,6 @@
 <div class="companyPage">
 	<div class="companyPage_logo">
-		<img src="/images/mid_logo.png">
+		<a href="/"><img src="/images/mid_logo.png"></a>
 	</div>
 	<div class="companyPage_cards-wrapper" ng-controller="companyPageProfileCtrl">
 		<div class="companyPage_tiangle"></div>
@@ -8,7 +8,7 @@
 		<div class="compamyPage_info-card">
 			<div class="compamyPage_info-card_profile">
 				<div class="compamyPage_info-card_profile-image">
-					<img src="/images/companies/wargaming.png">
+					<img src="/images/companies/{{img}}">
 				</div>
 	
 				<div class="compamyPage_info-card_profile-title">{{companyName}}</div>
@@ -17,17 +17,17 @@
 					<div class="compamyPage_info-card_profile-contacts_adress">{{contacts}}</div>
 					<div class="compamyPage_info-card_profile-contacts_email">{{mail}}</div>
 					<div class="compamyPage_info-card_profile-contacts_tel">{{tel}}</div>
-					<div class="compamyPage_info-card_profile-contacts_website">{{website}}</div>
+					<div class="compamyPage_info-card_profile-contacts_website"><a href="{{website}}">{{website}}</a></div>
 				</div>
 	
-				<div class="compamyPage_info-card_profile-button">
-					Підписатись
+				<div class="compamyPage_info-card_profile-button" ng-contoller="companyPageFollowCtrl">
+					{{text}}
 				</div>
 			</div>
 			<div class="compamyPage_circles"></div>
 			<div class="compamyPage_info-card_info"><h1>Про компанію</h1>{{about}}</div>
 		</div>
-		<div class="compamyPage_vacancy-card">
+		<div class="compamyPage_vacancy-card" ng-if="vacancies.length!=0">
 			<div class="compamyPage_vacancy-card_title">Вакансії у {{companyName}}</div>
 			<div class="compamyPage_vacancy-card_list"  ng-repeat="id in vacancies">
 

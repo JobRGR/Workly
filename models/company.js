@@ -141,7 +141,6 @@ schema.statics.edit =  function(req, callback) {
     if(!req.company) return callback(new AuthError("Company is not Authorized"));
     var editCompany = req.body;
     var company = req.company;
-
     var isNotEdit = ['mail','password','companyName'];
 
     for(var k in editCompany)
