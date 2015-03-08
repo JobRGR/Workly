@@ -3,6 +3,9 @@ var checkAuth = require('../../middleware/checkAuth');
 module.exports = function(app) {
     app.post('/api/sign-in', checkAuth.notAuth, require('./lib/sign-in').post)
 
+    app.post('/api/create-user', checkAuth.checkAdmin,require('./lib/user/create').post);
+    app.post('/api/create-company', checkAuth.checkAdmin,require('./lib/company/create').post);
+
     app.post('/api/sign-up-user', checkAuth.notAuth,require('./lib/user/sign-up').post);
     app.post('/api/sign-up-company', checkAuth.notAuth,require('./lib/company/sign-up').post);
 

@@ -2,17 +2,23 @@
 
 var adminDirectives = angular.module('adminDirectives', []);
 
+
+/*Common Components*/
+
 adminDirectives.directive("header", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/header.html"
+        templateUrl: "partials/common/header.html",
+        controller: 'headerCtrl'
     };
 });
+
+/*Main Components*/
 
 adminDirectives.directive("selectModel", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/select-models.html",
+        templateUrl: "partials/main/model-list/select-models.html",
         controller: 'navCtrl'
     };
 });
@@ -20,7 +26,7 @@ adminDirectives.directive("selectModel", function () {
 adminDirectives.directive("modelList", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/model-list.html",
+        templateUrl: "partials/main/model-list/model-list.html",
         controller: 'mainCtrl'
     };
 });
@@ -28,7 +34,7 @@ adminDirectives.directive("modelList", function () {
 adminDirectives.directive("usersList", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/users-list.html",
+        templateUrl: "partials/main/model-list/users-list.html",
         controller: 'modelCtrl'
     };
 });
@@ -36,7 +42,7 @@ adminDirectives.directive("usersList", function () {
 adminDirectives.directive("companiesList", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/companies-list.html",
+        templateUrl: "partials/main/model-list/companies-list.html",
         controller: 'modelCtrl'
     };
 });
@@ -44,7 +50,7 @@ adminDirectives.directive("companiesList", function () {
 adminDirectives.directive("postsList", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/posts-list.html",
+        templateUrl: "partials/main/model-list/posts-list.html",
         controller: 'modelCtrl'
     };
 });
@@ -52,7 +58,33 @@ adminDirectives.directive("postsList", function () {
 adminDirectives.directive("controlLine", function () {
     return {
         restrict: 'E',
-        templateUrl: "partials/control-line.html",
+        templateUrl: "partials/main/model-list/control-line.html",
         controller: 'modelCtrl'
+    };
+});
+
+/*Sign Components*/
+
+adminDirectives.directive("signTitle", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/sign/sign-components/sign-title.html",
+        controller: 'signCtrl'
+    };
+});
+
+adminDirectives.directive("signForm", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/sign/sign-components/sign-form.html",
+        controller: 'signCtrl'
+    };
+});
+
+adminDirectives.directive("signNotification", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/sign/sign-components/sign-notification.html",
+        controller: 'signCtrl'
     };
 });

@@ -8,16 +8,16 @@ exports.post = function(req, res, next) {
     };
 
     Search(keyObj, req, callback);
-    function callback(err, users){
+    function callback(err, posts){
         if(err) return res.send({
-            action: 'search users',
+            action: 'search posts',
             message: err
         });
 
         return res.send({
-            action: 'search users',
+            action: 'search posts',
             message: 'ok',
-            users: users
+            posts: posts
         });
     };
 };

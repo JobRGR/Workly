@@ -8,4 +8,7 @@ module.exports = function(app) {
     var DropDb = require('./drop')(app);
     var Respond = require('./respond')(app);
     var Search = require('./search')(app);
+
+    //ADMIN KEY = 1234567
+    var Admin = require('./admin')(app);
 };
