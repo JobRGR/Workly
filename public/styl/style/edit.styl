@@ -1,0 +1,388 @@
+.edit-container
+  display block
+  width 100%
+  max-width 1100px
+  margin auto
+
+.edit-headtext
+  display block
+  font normal 24px "OpenSans"
+  margin 30px 0px
+  color rgb( 86, 86, 86 )
+  height 30px
+  line-height 30px
+  & span
+    color rgb( 86, 86, 86 )
+
+.edit
+  display table
+  margin-bottom 90px
+
+.edit_form
+  position relative
+  display inline-block
+  vertical-align top
+  font bold 18px "OpenSans"
+  width 49%
+  background-color rgb( 239, 239, 239 )
+  & .edit_form-menu
+    display block
+    background-color rgb( 255, 255, 255)
+    color rgb( 86, 86, 86 )
+    & div
+      display inline-block
+      width 30%
+      height 60px
+      line-height 60px
+      cursor pointer
+    & a
+      color rgb( 86, 86, 86 )
+  & .edit_form-input
+    display block
+    margin 0px 10%
+    padding 20px 0
+    font normal 14px "OpenSans"
+    & input
+      display block
+      outline none
+      border none
+      box-sizing border-box
+      width 100%
+      height 25px
+      padding 0px 7px
+      margin 15px 0px
+      color rgb( 86, 86, 86 )
+      &.ng-dirty.ng-invalid
+        box-shadow 0px 0px 5px 1px rgb( 200, 50, 50 )
+    & .searching
+      display table
+      margin 15px 0px
+      font normal 12px "OpenSans"
+      color rgb( 86, 86, 86 )
+      & div
+        display table-cell
+        vertical-align top
+        position relative
+        & input[type="checkbox"]
+          display block
+          opacity 0
+          cursor pointer
+          position absolute
+          vertical-align top
+          margin 3px
+          width 11px
+          height 11px
+          &:checked + span
+            background rgb( 109, 199, 128 ) url('/images/edit/mark.png') center no-repeat
+        & span
+          display block
+          cursor pointer
+          margin 3px
+          width 11px
+          height 11px
+          border-radius 3px
+          background-color rgb( 109, 199, 128 )
+    & .logo-box
+      display block
+      box-sizing border-box
+      height 92px
+      width 100%
+      border 2px dashed rgb( 202, 202, 202 )
+      border-radius 5px
+      & img
+        width 100%
+        height 100%
+        background transparent url('/images/edit/company_logo.png') center no-repeat
+    & .logo-load
+      display block
+      width 100%
+      text-align right
+      & span
+        display inline-block
+        text-align center
+        cursor pointer
+        user-select none
+        font normal 14px "OpenSans"
+        height 22px
+        line-height 22px
+        width 120px
+        margin-top 7px
+        border-radius 3px
+        background-color rgb( 109, 199, 128 )
+        box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+        color rgb( 255, 255, 255 )
+        &:hover
+          background-color rgb( 51, 176, 97 )
+        &:active
+          box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+        & input
+          position absolute
+          height 22px
+          width 96px
+          margin 0px
+          padding 0px
+          opacity 0
+    & .avatar-box
+      display table
+      width 100%
+    & .avatar
+      display table-cell
+      padding-right 25px
+      vertical-align top
+      & .avatar-frame
+        border 2px dashed rgb( 202, 202, 202 )
+        border-radius 5px
+        width 110px
+        height 120px
+        & img
+          width 110px
+          height 120px
+          background transparent url('/images/edit/user_logo.png') center no-repeat
+      & .avatar-text
+        display block
+        cursor pointer
+        font normal 14px "OpenSans"
+        height 22px
+        line-height 22px
+        width 100%
+        margin-top 7px
+        text-align center
+        border-radius 3px
+        background-color rgb( 109, 199, 128 )
+        box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+        color rgb( 255, 255, 255 )
+        &:hover
+          background-color rgb( 51, 176, 97 )
+        &:active
+          box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+        & input
+          display inline-block
+          cursor pointer
+          position absolute
+          height 22px
+          width 96px
+          margin 0
+          padding 0
+          opacity 0
+    & .right-input
+      display table-cell
+      width 100%
+      vertical-align top
+      & input
+        margin 0px 0px 5px 0px
+      & div
+        font bold 16px "OpenSans"
+        color rgb( 116, 174, 128 )
+        margin-bottom 15px
+    & textarea
+      font normal 14px "OpenSans"
+      box-sizing border-box
+      resize vertical
+      padding 1% 2%
+      width 100%
+      height 60px
+      outline none
+      border none
+    & .add-place
+      font-weight bold
+      color rgb( 116, 174, 128 )
+      & div
+        display inline-block
+        cursor pointer
+        font-weight normal
+        font-style italic
+        text-decoration underline
+        color rgb( 86, 86, 86 )
+    & .place-block
+      display block
+      & .place-table
+        display table
+        width 100%
+        & span
+          display inline-block
+          cursor pointer
+          user-select none
+          font normal 14px "OpenSans"
+          text-align center
+          color rgb( 255, 255, 255 )
+          width 100%
+          height 24px
+          line-height 24px
+          border-radius 5px
+          background-color rgb( 218, 109, 109 )
+          box-shadow 0px 4px 1px 0px rgb( 196, 81, 81 )
+          &:hover
+            background-color rgb( 196, 81, 81 )
+          &:active
+            box-shadow 0px 4px 1px 0px rgb( 218, 109, 109 )
+        & div
+          display table-cell
+          padding 10px
+        & input
+          display table-cell
+          margin 0px
+      & .date
+        display table-cell
+        width 100%
+      & .date-sep
+        display table-cell
+        text-align center
+  & button
+    display block
+    cursor pointer
+    user-select none
+    font normal 16px "Open Sans"
+    width 100%
+    height 32px
+    line-height 32px
+    margin 20px 0px
+    text-align center
+    border none
+    outline none
+    border-radius 5px
+    background-color rgb( 109, 199, 128 )
+    box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+    color rgb( 255, 255, 255 )
+    &:hover
+      background-color rgb( 51, 176, 97 )
+    &:active
+      margin 25px 0px 15px 0px
+      box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+  & .form-error
+    position absolute
+    top 103%
+    display block
+    text-align center
+    width 100%
+    height 40px
+    font normal 16px "OpenSans"
+    color rgb( 255, 255, 255 )
+    line-height 40px
+    border-radius 5px
+    background-color rgb( 218, 109, 109 )
+    &.ng-hide-add
+      transition all linear .7s
+      display block!important
+    &.ng-hide-remove
+      transition all linear .7s
+      display block!important
+    &.ng-hide-add.ng-hide-add-active
+      opacity 0
+    &.ng-hide-remove
+      opacity 0
+    &.ng-hide-add
+      opacity 1
+    &.ng-hide-remove.ng-hide-remove-active
+      opacity 1
+    & span
+      position absolute
+      display block
+      left 15%
+      top -11px
+      width 28px
+      height 28px
+      background-color inherit
+      border-radius 4px
+      transform rotate(45deg)
+      &::before
+        content '!'
+        display block
+        width 23px
+        height 23px
+        margin-left 14px
+        margin-top 14px
+        font normal 17px "OpenSans"
+        color rgb( 218, 109, 109 )
+        border-radius 50%
+        background-color rgb( 255, 255, 255 )
+        transform rotate(-45deg)
+
+.edit_main-info
+  position relative
+  display inline-block
+  vertical-align top
+  float right
+  font bold 18px "OpenSans"
+  width 49%
+  background-color rgb( 239, 239, 239 )
+  & .range
+    display block
+    width 100%
+    height 14px
+    background url('/images/edit/link.png') center repeat-x
+  & .main-info_input
+    display block
+    margin 0px 10%
+    padding 20px 0
+    font normal 14px "OpenSans"
+    & .text
+      font bold 16px "OpenSans"
+      color rgb( 114, 172, 126 )
+    & .data-table
+      display table
+      width 100%
+      & .field
+        display table-cell
+        & input
+          display block
+          outline none
+          border none
+          box-sizing border-box
+          width 100%
+          height 25px
+          padding 0px 7px
+          margin 15px 0px
+          color rgb( 86, 86, 86 )
+          &.ng-dirty.ng-invalid
+            box-shadow 0px 0px 5px 1px rgb( 200, 50, 50 )
+      & .confirm
+        display table-cell
+        width 120px
+        padding-left 10px
+        & button
+          display block
+          position relative
+          cursor pointer
+          user-select none
+          font normal 14px "Open Sans"
+          width 100%
+          height 24px
+          line-height 24px
+          text-align center
+          border none
+          outline none
+          border-radius 5px
+          background-color rgb( 109, 199, 128 )
+          box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+          color rgb( 255, 255, 255 )
+          &:hover
+            background-color rgb( 51, 176, 97 )
+          &:active
+            top 3px
+            box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+        & .change-error
+          display block
+          position relative
+          opacity 1
+          margin-top 10px
+          text-align center
+          width 100%
+          font normal 12px "OpenSans"
+          color rgb( 255, 255, 255 )
+          line-height 18px
+          border-radius 3px
+          background-color rgb( 218, 109, 109 );
+          &.ng-hide-add
+            transition all linear .7s
+            display block!important
+          &.ng-hide-remove
+            transition all linear .7s
+            display block!important
+          &.ng-hide-add.ng-hide-add-active
+            opacity 0
+          &.ng-hide-remove
+            opacity 0
+          &.ng-hide-add
+            opacity 1
+          &.ng-hide-remove.ng-hide-remove-active
+            opacity 1

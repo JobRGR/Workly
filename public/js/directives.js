@@ -47,3 +47,22 @@ formFilling.directive('ngRepeatPass', function (){
         }
     };
 });
+
+formFilling.directive('input', [function() {
+    return {
+        restrict: 'E',
+        require: '?ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            if (
+                'undefined' !== typeof attrs.type
+                && 'date' === attrs.type
+                && ngModel
+            ) {
+                ngModel.$formatters.push(function(modelValue) {
+                    if (!modelValue) return undefined;
+                    return new Date(modelValue);
+                });
+            }
+        }
+    }
+}]);

@@ -14,8 +14,7 @@ var schema = new Schema({
     },
     position:{
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     firstname:{
         type: String,
@@ -28,48 +27,42 @@ var schema = new Schema({
         default: " "
     },
     dob:{
-        type: String,
-        required: true,
-        default: " "
+        type: Date,
+        required: false
     },
     city:{
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     tel:{
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     img: {
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     about: {
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     skills: {
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     work:[{
-        job: {type: String, default: ' '},
-        company: {type: String, default: ' '},
-        start: {type: Date,  default: ' '},
-        end: {type: Date,  default: ' '},
-        description: {type: String, default: ' '}
+        job: {type: String, required: false},
+        company: {type: String, required: false},
+        start: {type: String, required: false},
+        end: {type: String, required: false},
+        description: {type: String, required: false}
     }],
     study:[{
-        university: {type: String, default: ' '},
-        direction: {type: String, default: ' '},
-        start: {type: Date,  default: ' '},
-        end: {type: Date,  default: ' '},
-        degree: {type: String, default: ' '}
+        university: {type: String, required: false},
+        direction: {type: String, required: false},
+        start: {type: String, required: false},
+        end: {type: String, required: false},
+        degree: {type: String, required: false}
     }],
     hashedPassword: {
         type: String,
@@ -144,11 +137,8 @@ schema.statics.edit =  function(req, callback) {
     var editUser = req.body;
     var user = req.user;
 
-    var isNotEdit = ['mail','password'];
-
     for(var k in editUser)
-        if(!(isNotEdit.indexOf(k) > -1))
-            user[k] = editUser[k].length ?  editUser[k] : " ";
+        user[k] = editUser[k];
 
     user.save(function(err) {
         if (err) return callback(err);

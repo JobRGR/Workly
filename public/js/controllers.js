@@ -141,6 +141,7 @@ signupControllers.controller('SignupCtrl', ['$scope', '$http',
         };
 
         this.userComplete = function(){
+            console.log(this.userExt);
             $http.post("/api/edit-user", this.userExt)
                 .success(function (resp) {
                     console.log(resp);

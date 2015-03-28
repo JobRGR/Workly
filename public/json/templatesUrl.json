@@ -9,5 +9,9 @@
     "company2":"/partials/signup/company-details.html",
     "company3":"/partials/signup/company-congrats.html"
   },
+  "edit":{
+    "user":"/partials/edit/user.html",
+    "company":"/partials/edit/company.html"
+  },
   "companyPage":"/partials/companyPage.html"
 }

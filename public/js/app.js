@@ -22,3 +22,29 @@ var signupApp = angular.module('signupApp', [
     'signupControllers',
     'formFilling'
 ]);
+
+var editApp = angular.module('editApp', [
+    'worklyControllers',
+    'editControllers',
+    'formFilling'
+]).run(['$rootScope', '$location', '$http', '$window',
+    function($rootScope, $location, $http, $window) {
+        $rootScope.redirectOut = function(){
+            var redirectUrl = 'http://' + $window.location.host;
+            $window.location.href = redirectUrl;
+        }
+
+        $http.get('/api/get-status')
+            .success(function(resp) {
+                if (resp.user != undefined)
+                    $rootScope.user = resp.user;
+                if (resp.company != undefined)
+                    $rootScope.company = resp.company;
+                if (resp.message != 'ok')
+                    $rootScope.redirectOut();
+            })
+            .error(function(err){
+                console.log(err);
+            });
+    }]);
+

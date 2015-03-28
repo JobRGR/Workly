@@ -1,0 +1,100 @@
+<div class="edit-headtext">
+    Сторінка редагування профілю
+</div>
+<div class="edit">
+    <div class="edit_form">
+        <div class="edit_form-input">
+            <form name="editForm" ng-submit="edit.userEdit(editForm.$valid)">
+                <div class="avatar-box">
+                    <div class="avatar">
+                        <div class="avatar-frame">
+                            <img src="{{edit.user.img}}"/>
+                        </div>
+                        <span class="avatar-text">
+                            <input type="file" accept="image/*" ng-fileread="edit.user.img">Змінити фото
+                        </span>
+                        <div class="searching">
+                            <div><input type="checkbox"><span></span></div>
+                            <div>В активному пошуку роботи</div>
+                        </div>
+                    </div>
+                    <div class="right-input">
+                        <div>Персональні дані</div>
+                        <input name="firstname" type="text" placeholder="Ім'я" ng-model="edit.user.firstname">
+                        <input name="secondname" type="text" placeholder="Прізвище" ng-model="edit.user.secondname">
+                        <input name="city" type="text" placeholder="Місто" ng-model="edit.user.city">
+                        <input name="birth" type="date" title="Дата народження" ng-model="edit.user.dob">
+                        <input name="spec" type="text" placeholder="Спеціалізація" ng-model="edit.user.position">
+                        <input name="phone" type="text" placeholder="Телефон" ng-model="edit.user.tel">
+                    </div>
+                </div>
+                <textarea name="about" placeholder="Про себе" ng-model="edit.user.about"></textarea>
+                <textarea name="skills" placeholder="Навички" ng-model="edit.user.skills"></textarea>
+                <div class="add-place">Навчання: <div ng-click="edit.addPlace(edit.user.study)">Додати</div></div>
+                <div class="place-block" ng-repeat="study in edit.user.study">
+                    <div class="place-table">
+                        <input name="uniname" type="text" placeholder="Назва закладу" ng-model="study.university">
+                        <div ng-click="edit.erasePlace(edit.user.study, $index)"><span>Видалити</span></div>
+                    </div>
+                    <div class="place-table">
+                        <input class="date" name="startdate" type="date" title="Дата початку" ng-model="study.start">
+                        <div class="date-sep">-</div>
+                        <input class="date" name="enddate" type="date" title="Дата завершення" ng-model="study.end">
+                    </div>
+                    <input name="direction" type="text" placeholder="Напрям" ng-model="study.direction">
+                    <input name="degree" type="text" placeholder="Набута ступінь" ng-model="study.degree">
+                </div>
+                <div class="add-place" ng-click="edit.addPlace(edit.user.work)">Робота: <div>Додати</div></div>
+                <div class="place-block" ng-repeat="work in edit.user.work">
+                    <div class="place-table">
+                        <input name="company" type="text" placeholder="Компанія" ng-model="work.company">
+                        <div ng-click="edit.erasePlace(edit.user.work, $index)"><span>Видалити</span></div>
+                    </div>
+                    <div class="place-table">
+                        <input class="date" name="startdate" type="date" title="Дата початку" ng-model="work.start">
+                        <div class="date-sep">-</div>
+                        <input class="date" name="enddate" type="date" title="Дата завершення" ng-model="work.end">
+                    </div>
+                    <input name="speciality" type="text" placeholder="Спеціальність" ng-model="work.job">
+                    <input name="description" type="text" placeholder="Обов'язки\Про проект" ng-model="work.description">
+                </div>
+                <button type="submit">Змінити дані</button>
+            </form>
+        </div>
+        <span ng-show="edit.formBadMsg" class="form-error"><span></span>{{edit.formBadMsg}}</span>
+    </div>
+    <div class="edit_main-info">
+        <form name="passForm" ng-submit="edit.passwordEdit(passForm.$valid)">
+            <div class="main-info_input">
+                <div class="text">Змінити пароль</div>
+                <div class="data-table">
+                    <div class="field">
+                        <input type="password" placeholder="Пароль" ng-model="edit.password" required>
+                        <input type="password" placeholder="Повторіть Пароль" ng-model="edit.repeatPassword" ng-repeat-pass="edit.password" required>
+                    </div>
+                    <div class="confirm">
+                        <button type="submit">Змінити</button>
+                        <span ng-show="edit.passBadMsg" class="change-error">{{edit.passBadMsg}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="range">
+        </div>
+        <form name="mailForm" ng-submit="edit.mailEdit(mailForm.$valid)">
+            <div class="main-info_input">
+                <div class="text">Змінити пошту</div>
+                <div class="data-table">
+                    <div class="field">
+                        <input name="email" type="email" placeholder="Пошта" ng-model="edit.mail" required>
+                        <input type="password" placeholder="Введіть пароль" ng-model="edit.mailPassword" required>
+                    </div>
+                    <div class="confirm">
+                        <button type="submit">Змінити</button>
+                        <span ng-show="edit.mailBadMsg" class="change-error">{{edit.mailBadMsg}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="edit-headtext">
+    Реєстрація: <span>Роботодавець</span>
+</div>
+<div class="edit">
+    <div class="edit_form">
+        <div class="edit_form-bar">
+            <div>Додайте персональні дані</div>
+            <div ng-click="edit.isCongrats=true;edit.isAdditional=false">Пропустити→</div>
+        </div>
+        <div class="edit_form-input">
+            <form name="formCC" ng-submit="edit.companyComplete(formCC.$valid)" novalidate>
+                <div class="logo-box">
+                    <img border="0" src="{{edit.companyExt.img}}"/>
+                </div>
+                <div class="logo-load">
+                    <span>
+                        <input type="file" accept="image/*" ng-fileread="edit.companyExt.img">Завантажити
+                    </span>
+                </div>
+                <input type="text" placeholder="Адреса" ng-model="edit.companyExt.contacts">
+                <input type="text" placeholder="Телефон" ng-model="edit.companyExt.tel">
+                <input type="text" placeholder="Сайт" ng-model="edit.companyExt.website">
+                <textarea name="about" placeholder="Про компанію" ng-model="edit.companyExt.about"></textarea>
+                <button type="submit">Завершити Реєстрацію</button>
+            </form>
+        </div>
+    </div>
+</div>
