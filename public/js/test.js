@@ -21,8 +21,8 @@ var ClientApi = function(){
         signUpUser: function(){
             var data = {
                 password: "1111",
-                mail: "alex@mail.com",
-                firstname: "Alex",
+                mail: "user@user0",
+                firstname: "user0",
                 secondname: "Lennon"
             };
 
@@ -82,7 +82,7 @@ var ClientApi = function(){
         },
         signInUser: function(){
             var data = {
-                mail: "alex@mail.com",
+                mail: "user@user0",
                 password: "1111"
             };
 
@@ -115,23 +115,34 @@ var ClientApi = function(){
         editUser: function(){
             var data = {};
 
-            data.firstname = "Alex";
-            data.secondname = "Best";
-            data.contacts = "Kiev";
-            data.work = [{
-                job:  "intern Front-end",
-                company:  "Grammarly",
-                start:   new Date("12/6/14"),
-                end:  new Date("2/29/14"),
-                description: "study to make app"
-            },{
-                job:  "Front-end Dev",
-                company:  "Grammarly",
-                start:   new Date("2/29/14"),
-                end:  new Date(),
-                description: "make app"
-            }];
+            //data.firstname = "Alex";
+            //data.secondname = "Best";
+            //data.contacts = "Kiev";
+            //data.work = [{
+            //    job:  "intern Front-end",
+            //    company:  "Grammarly",
+            //    start:   new Date("12/6/14"),
+            //    end:  new Date("2/29/14"),
+            //    description: "study to make app"
+            //},{
+            //    job:  "Front-end Dev",
+            //    company:  "Grammarly",
+            //    start:   new Date("2/29/14"),
+            //    end:  new Date(),
+            //    description: "make app"
+            //}];
 
+            data = {
+                about: "user",
+                city: "user",
+                dob: "Wed Oct 10 1010 00:00:00GMT + 0300(Финляндия(лето))",
+                position: "user0",
+                skills: "user0",
+                tel: "user0",
+                img: "data:image/jpeg;base64,/9j/4A",
+                work: [],
+                study: []
+            };
 
             var url = "/api/edit-user";
 

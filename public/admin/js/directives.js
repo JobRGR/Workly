@@ -88,3 +88,37 @@ adminDirectives.directive("signNotification", function () {
         controller: 'signCtrl'
     };
 });
+
+/*Edit Components*/
+
+adminDirectives.directive("edit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editUser", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-user.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editCompany", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-company.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editPost", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-post.html",
+        controller: 'editCtrl'
+    };
+});

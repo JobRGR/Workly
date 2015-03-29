@@ -28,6 +28,13 @@ adminApp.
     }]).
   run([ '$rootScope', '$location', '$http',
     function($rootScope, $location, $http) {
+          $rootScope.edit = {
+            status: false,
+            model: {},
+            type: "",
+            editModel: []
+          };
+
         $http.get('/api/admin/get-status').
             success(function(data, status, headers, config) {
               console.log(arguments);

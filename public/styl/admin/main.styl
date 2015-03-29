@@ -1,3 +1,6 @@
+body
+  overflow-x hidden
+
 .nav-tabs
     li
       cursor pointer
@@ -9,8 +12,17 @@
   margin-top 30px
   margin-bottom 30px
 
-.glyphicon-remove
+.glyphicon-remove, .glyphicon-pencil
    cursor pointer
+
+.glyphicon-pencil
+  margin-right 7px
+
+.glyphicon-pencil:hover
+    color #0000ff
+
+.glyphicon-remove:hover
+  color #ff0000
 
 .drop-model-btn,
 .add-model-btn
@@ -26,6 +38,31 @@
 .logout
   margin-left 5px
   cursor pointer
+
+.edit
+  &-bg
+    width 100%
+    height 100%
+    background rgba(0,0,0, 0.4)
+    position absolute
+    top 0px
+    left 0px
+    z-index 1000
+    min-height 580px
+  &-div
+    box-shadow 0 1px 3px rgba(0,0,0,.44), inset 0 2px 0
+    width: 50%
+    height 100%
+    position absolute
+    top: -2px
+    padding-left 50px
+    right 0px
+    padding-top 20px
+    background #fff
+    z-index 1000
+    min-height 580px
+  &-close
+    font-size 25px
 
 @media (max-width: 1000px)
   .btn-div

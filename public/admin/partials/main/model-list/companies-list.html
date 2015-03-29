@@ -5,8 +5,12 @@
     <ul class="list-group">
         <li class="list-group-item"  ng-repeat="company in dataObj.data">
             <span>{{company.mail}} - {{company.companyName}}</span>
-            <span class = "glyphicon glyphicon-remove pull-right"
-                  ng-click="deleteItem($event,$index)"></span>
+            <div class="pull-right">
+                <span class = "glyphicon glyphicon-pencil"
+                      ng-click="editItem($event,$index)"></span>
+                <span class = "glyphicon glyphicon-remove"
+                      ng-click="deleteItem($event,$index)"></span>
+            </div>
         </li>
     </ul>
 </div>

@@ -15,15 +15,23 @@
     <script src="/vendor/bower_components/angular-route/angular-route.js"></script>
 
     <script src="/admin/js/app.js"></script>
+
+    <script src="/admin/js/controllers/index.js"></script>
+    <script src="/admin/js/controllers/lib/header.js"></script>
+    <script src="/admin/js/controllers/lib/model.js"></script>
+    <script src="/admin/js/controllers/lib/main.js"></script>
+    <script src="/admin/js/controllers/lib/nav.js"></script>
+    <script src="/admin/js/controllers/lib/sign.js"></script>
+    <script src="/admin/js/controllers/lib/edit.js"></script>
+
     <script src="/admin/js/directives.js"></script>
-    <script src="/admin/js/controllers.js"></script>
 
     <script src="/js/test.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/admin/main.css"/>
 </head>
-<body>
+<body ng-cloak>
     <ng-view></ng-view>
 </body>
 </html>

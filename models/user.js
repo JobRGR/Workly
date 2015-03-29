@@ -144,7 +144,6 @@ schema.statics.edit =  function(req, callback) {
         if (err) return callback(err);
         callback(null, user);
     });
-
 };
 
 schema.statics.registration = function(req, callback) {

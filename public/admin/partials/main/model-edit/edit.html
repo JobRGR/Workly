@@ -1,0 +1,17 @@
+<div class="edit" ng-if="edit.status">
+    <div class="edit-bg" ng-click="closeEdit()"></div>
+    <div class="edit-div">
+        <span class="glyphicon glyphicon-remove edit-close" ng-click="closeEdit()"></span>
+        <edit-user ng-if="editUserTime()"></edit-user>
+        <edit-company ng-if="editCompanyTime()"></edit-company>
+        <edit-post ng-if="editPostTime()"></edit-post>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit"
+                        class="btn btn-success"
+                        data-loading-text="Sending..."
+                        ng-click="saveData()">Save Data</button>
+            </div>
+        </div>
+    </div>
+</div>

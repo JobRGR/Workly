@@ -5,7 +5,12 @@
     <ul class="list-group">
         <li class="list-group-item"  ng-repeat="post in dataObj.data">
             <span>{{post.job}} - {{post.city}}, {{post.authorName}}</span>
-            <i class = "glyphicon glyphicon-remove pull-right" ng-click="deleteItem($event,$index)"></i>
+            <div class="pull-right">
+                <span class = "glyphicon glyphicon-pencil"
+                      ng-click="editItem($event,$index)"></span>
+                <span class = "glyphicon glyphicon-remove"
+                      ng-click="deleteItem($event,$index)"></span>
+            </div>
         </li>
     </ul>
 </div>
