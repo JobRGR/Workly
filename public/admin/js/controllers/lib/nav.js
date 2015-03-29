@@ -19,6 +19,11 @@ adminControllers.controller('navCtrl', ['$scope', '$http', '$rootScope',
         data: 'post',
         text: 'Posts',
         active: false
+      },
+      {
+        data: 'admin',
+        text: 'Admins',
+        active: false
       }
     ];
 

@@ -18,6 +18,7 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       if($scope.editUserTime()) editUserData();
       else if($scope.editPostTime()) editPostData();
       else if($scope.editCompanyTime()) editCompanyData();
+      else if($scope.editAdminTime()) editAdminData();
     });
 
     function editUserData(){
@@ -32,6 +33,11 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
 
     function editPostData(){
       var type = ['job', 'about', 'city', 'offer', 'requirements', 'tags'];
+      $rootScope.edit.editModel = getData(type);
+    }
+
+    function editAdminData(){
+      var type = ['login','password'];
       $rootScope.edit.editModel = getData(type);
     }
 
@@ -58,6 +64,10 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       return $rootScope.edit.type  == 'post';
     };
 
+    $scope.editAdminTime = function(){
+      return $rootScope.edit.type  == 'admin';
+    };
+
     $scope.closeEdit = function(){
       $rootScope.edit = {
         status: false,
@@ -72,7 +82,7 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
           res[cur.name] = cur.value
           return res
         },{})
-        , url = '/api/admin/edit-'+$rootScope.edit.type+'/'
+        , url = ($scope.editAdminTime() ? '/api/admin/edit/' : '/api/admin/edit-'+$rootScope.edit.type+'/')
           + $rootScope.edit.model['_id'];
 
       $http.post(url, data).

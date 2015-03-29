@@ -85,13 +85,18 @@ schema.statics.registration = function(req, callback) {
 schema.statics.edit =  function(req, callback) {
   var login = req.body.login;
   var password = req.body.password;
+  var id = req.params.id;
 
-  admin.login = login;
-  admin.hashedPassword = admin.encryptPassword(password);
+  var Admin = this;
 
-  admin.save(function(err) {
-    if (err) return callback(err);
-    callback(null, admin);
+  Admin.findById(id, function(err, admin){
+    admin.login = login;
+    admin.hashedPassword = admin.encryptPassword(password);
+
+    admin.save(function(err) {
+      if (err) return callback(err);
+      callback(null, admin);
+    });
   });
 };
 

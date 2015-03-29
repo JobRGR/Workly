@@ -1,4 +1,4 @@
-var Admin = require('../../../models/user').Admin;
+var Admin = require('../../../models/admin').Admin;
 
 exports.get = function(req, res, next) {
     var id = req.params.id;

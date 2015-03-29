@@ -55,6 +55,14 @@ adminDirectives.directive("postsList", function () {
     };
 });
 
+adminDirectives.directive("adminsList", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-list/admins-list.html",
+        controller: 'modelCtrl'
+    };
+});
+
 adminDirectives.directive("controlLine", function () {
     return {
         restrict: 'E',
@@ -119,6 +127,14 @@ adminDirectives.directive("editPost", function () {
     return {
         restrict: 'E',
         templateUrl: "partials/main/model-edit/edit-post.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editAdmin", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-admin.html",
         controller: 'editCtrl'
     };
 });

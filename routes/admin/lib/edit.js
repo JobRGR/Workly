@@ -1,4 +1,4 @@
-var Admin = require('../../../models/user').Admin;
+var Admin = require('../../../models/admin').Admin;
 
 exports.post = function(req, res, next) {
     Admin.edit(req, function (err, admin) {

@@ -17,4 +17,8 @@ adminControllers.controller('mainCtrl', ['$scope', '$http',
     $scope.isCompany = function(){
       return $scope.type == "company"
     };
+
+    $scope.isAdmin = function(){
+      return $scope.type == "admin"
+    }
   }]);

@@ -5,7 +5,7 @@
 adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
   function ($scope, $http, $rootScope) {
     var url = '/api/get-'
-      , add = $scope.type == "user" ? 'users' : $scope.type == "company" ? 'companies' : 'posts';
+      , add = $scope.type == "user" ? 'users' : $scope.type == "company" ? 'companies' : $scope.type == 'post' ? 'posts' : 'admins';
 
     $scope.dataObj = {
       message: "",
@@ -30,7 +30,8 @@ adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
 
     $scope.deleteItem = function($event, $index){
       var id = $scope.dataObj.data[$index]._id
-        , url = '/api/remove-' + $scope.type + '/' + id;
+        , url =  ($scope.isAdmin() ? '/api/admin/remove-admin/' : '/api/remove-' + $scope.type + '/')
+          + id;
 
       $scope.dataObj.data.splice($index,1);
       if(!$scope.dataObj.data.length)
@@ -60,8 +61,7 @@ adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
     };
 
     $scope.dropModel = function(){
-      var url = url = '/api/drop-' + $scope.type;
-
+      var url = url = $scope.isAdmin() ? '/api/admin/drop-admin' : '/api/drop-' + $scope.type;
       $scope.dataObj.data = [];
       $scope.dataObj.message = "No Data";
 
