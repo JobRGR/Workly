@@ -13,5 +13,13 @@
                         ng-click="saveData()">Save Data</button>
             </div>
         </div>
+        <div ng-if="edit.notification.status"
+             class="alert alert-{{edit.notification.type}}"
+             role="alert">
+
+            <strong ng-if="edit.notification.type == 'danger'">Error! </strong>
+            <strong ng-if="edit.notification.type == 'info'">{{edit.notification.text}}</strong>
+            <strong ng-if="edit.notification.type == 'success'">Well done! </strong>
+        </div>
     </div>
 </div>

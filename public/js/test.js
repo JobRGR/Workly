@@ -135,7 +135,6 @@ var ClientApi = function(){
             data = {
                 about: "user",
                 city: "user",
-                dob: "Wed Oct 10 1010 00:00:00GMT + 0300(Финляндия(лето))",
                 position: "user0",
                 skills: "user0",
                 tel: "user0",

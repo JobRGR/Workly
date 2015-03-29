@@ -17,6 +17,7 @@ exports.post = function(req, res, next) {
             message.message = err.message;
             return res.send(message);
         }
+
         message.admin = admin;
         req.session.admin = admin._id;
         return res.send(message);

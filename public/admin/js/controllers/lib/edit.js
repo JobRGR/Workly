@@ -4,17 +4,16 @@
 
 adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
   function ($scope, $http, $rootScope) {
+    $scope.edit.notification = {
+      status: false,
+      text: "",
+      type: 'success'
+    };
 
     $rootScope.$watch(function(){
-      var isLen = $rootScope.edit.editModel.length;
+      var isLen = $rootScope.edit.editModel ?
+        ($rootScope.edit.editModel.length ? true : false) : false;
       if(isLen) return;
-
-      //$scope.edit = {
-      //  isEdit: $rootScope.edit ? $rootScope.edit.status : false,
-      //  model: $rootScope.edit ? $rootScope.edit.model : {},
-      //  type: $rootScope.edit ? $rootScope.edit.type : "",
-      //  editModel: []
-      //};
 
       if($scope.editUserTime()) editUserData();
       else if($scope.editPostTime()) editPostData();
@@ -22,40 +21,30 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
     });
 
     function editUserData(){
-      var type = ['firstname', 'secondname', 'city', 'tel', 'position','about', 'skills']
-        , data = type.map(function(item){
-            return {
-              name: item,
-              value: $rootScope.edit.model[item].trim()
-            }
-          });
-      console.log(data);
-      $rootScope.edit.editModel = data;
+      var type = ['firstname', 'secondname', 'city', 'tel', 'position','about', 'skills'];
+      $rootScope.edit.editModel = getData(type);
     }
 
     function editCompanyData(){
-      var type = ['companyName', 'about', 'tel', 'website', 'website']
-        , data = type.map(function(item){
-          return {
-            name: item,
-            value: $rootScope.edit.model[item].trim()
-          }
-        });
-
-      $rootScope.edit.editModel = data;
+      var type = ['companyName', 'about', 'tel', 'website', 'website'];
+      $rootScope.edit.editModel = getData(type);
     }
 
     function editPostData(){
-      var type = ['job', 'about', 'city', 'offer', 'requirements', 'tags']
-        , data = type.map(function(item){
-          return {
-            name: item,
-            value: $rootScope.edit.model[item].trim()
-          }
-        });
-
-      $rootScope.edit.editModel = data;
+      var type = ['job', 'about', 'city', 'offer', 'requirements', 'tags'];
+      $rootScope.edit.editModel = getData(type);
     }
+
+
+    function getData(type){
+      return type.map(function(item){
+        return {
+          name: item,
+          value: $rootScope.edit.model[item] ? $rootScope.edit.model[item].trim() : ""
+        }
+      });
+    }
+
 
     $scope.editUserTime = function(){
       return $rootScope.edit.type  == 'user';
@@ -78,7 +67,30 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       };
     };
 
-    $scope.saveData = function(){
-      console.log($rootScope.edit)
+    $scope.saveData = function() {
+      var data = $rootScope.edit.editModel.reduce(function (res, cur) {
+          res[cur.name] = cur.value
+          return res
+        },{})
+        , url = '/api/admin/edit-'+$rootScope.edit.type+'/'
+          + $rootScope.edit.model['_id'];
+
+      $http.post(url, data).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+          $scope.edit.notification = {
+            status: true,
+            text: data.message == "ok" ? 'Success save' : data.message,
+            type: data.message == "ok" ? 'success' : 'info'
+          };
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+          $scope.edit.notification = {
+            status: true,
+            text: data.message == "ok" ? 'Success save' : data.message,
+            type: data.message == "ok" ? 'success' : 'danger'
+          };
+        });
     }
   }]);

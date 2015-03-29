@@ -108,7 +108,7 @@ adminControllers.controller('signCtrl', ['$scope', '$http', '$location', '$rootS
 
       if(!isCheck.res) return makeErrorFunc("Incorrect "+isCheck.name);
       if(send.confirm != send.password) return makeErrorFunc("Confirm password don't equal with password value");
-      delete data.confirm;
+      delete send.confirm;
 
       makeInfoFunc();
 

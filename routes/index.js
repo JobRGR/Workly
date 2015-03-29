@@ -11,4 +11,5 @@ module.exports = function(app) {
 
     //ADMIN KEY = 1234567
     var Admin = require('./admin')(app);
+    var AdminEditModel = require('./edit-admin-model')(app);
 };

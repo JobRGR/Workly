@@ -51,10 +51,10 @@ schema.statics.authorize = function(login, password, callback) {
         if (admin.checkPassword(password)) {
           callback(null, admin);
         } else {
-          callback(null,new AuthError("Wrong Password"));
+          callback(new AuthError("Wrong Password"), null);
         }
       } else {
-        callback(null,new AuthError("Wrong name"));
+        callback(new AuthError("Wrong name"), null);
       }
     }
   ], callback);

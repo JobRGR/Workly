@@ -10,7 +10,7 @@ exports.post = function(req, res) {
 
         for(var k in editUser)
             if(!(isNotEdit.indexOf(k) > -1))
-                post[k] = editUser[k];
+                user[k] = editUser[k];
 
         user.save(function(err) {
             var obj = {
