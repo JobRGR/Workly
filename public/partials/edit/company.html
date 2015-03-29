@@ -1,28 +1,76 @@
 <div class="edit-headtext">
-    Реєстрація: <span>Роботодавець</span>
+    Сторінка редагування профілю
 </div>
 <div class="edit">
     <div class="edit_form">
-        <div class="edit_form-bar">
-            <div>Додайте персональні дані</div>
-            <div ng-click="edit.isCongrats=true;edit.isAdditional=false">Пропустити→</div>
-        </div>
         <div class="edit_form-input">
-            <form name="formCC" ng-submit="edit.companyComplete(formCC.$valid)" novalidate>
+            <div class="edit_form-text">Персональні дані</div>
+            <form name="editForm" ng-submit="edit.companyEdit(editForm.$valid)" novalidate>
                 <div class="logo-box">
-                    <img border="0" src="{{edit.companyExt.img}}"/>
+                    <div ng-show="edit.company.img" class="logo-del" ng-click="edit.eraseImg()">×</div>
+                    <img ng-show="edit.company.img" src="{{edit.company.img}}"/>
                 </div>
                 <div class="logo-load">
                     <span>
-                        <input type="file" accept="image/*" ng-fileread="edit.companyExt.img">Завантажити
+                        <input type="file" accept="image/*" ng-fileread="edit.company.img">Змінити фото
                     </span>
                 </div>
-                <input type="text" placeholder="Адреса" ng-model="edit.companyExt.contacts">
-                <input type="text" placeholder="Телефон" ng-model="edit.companyExt.tel">
-                <input type="text" placeholder="Сайт" ng-model="edit.companyExt.website">
-                <textarea name="about" placeholder="Про компанію" ng-model="edit.companyExt.about"></textarea>
-                <button type="submit">Завершити Реєстрацію</button>
+                <input type="text" placeholder="Адреса" ng-model="edit.company.contacts">
+                <input type="text" placeholder="Телефон" ng-model="edit.company.tel">
+                <input type="text" placeholder="Сайт" ng-model="edit.company.website">
+                <textarea name="about" placeholder="Про компанію" ng-model="edit.company.about"></textarea>
+                <button type="submit">Змінити дані</button>
             </form>
         </div>
+        <span ng-show="edit.formBadMsg" class="form-error"><span></span>{{edit.formBadMsg}}</span>
+    </div>
+    <div class="edit_main-info">
+        <form name="nameForm" ng-submit="edit.nameEdit(nameForm.$valid)">
+            <div class="main-info_input">
+                <div class="text">Змінити назву</div>
+                <div class="data-table">
+                    <div class="field">
+                        <input name="text" type="text" placeholder="Назва компанії" ng-model="edit.name" required>
+                        <input type="password" placeholder="Введіть пароль" ng-model="edit.namePassword" required>
+                    </div>
+                    <div class="confirm">
+                        <button type="submit">Змінити</button>
+                        <span ng-show="edit.mailBadMsg" class="change-error">{{edit.nameBadMsg}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="range"></div>
+        <form name="passForm" ng-submit="edit.passwordEdit(passForm.$valid)">
+            <div class="main-info_input">
+                <div class="text">Змінити пароль</div>
+                <div class="data-table">
+                    <div class="field">
+                        <input type="password" placeholder="Пароль" ng-model="edit.password" required>
+                        <input type="password" placeholder="Повторіть Пароль" ng-model="edit.repeatPassword" ng-repeat-pass="edit.password" required>
+                    </div>
+                    <div class="confirm">
+                        <button type="submit">Змінити</button>
+                        <span ng-show="edit.passBadMsg" class="change-error">{{edit.passBadMsg}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="range"></div>
+        <form name="mailForm" ng-submit="edit.mailEdit(mailForm.$valid)">
+            <div class="main-info_input">
+                <div class="text">Змінити пошту</div>
+                <div class="data-table">
+                    <div class="field">
+                        <input name="email" type="email" placeholder="Пошта" ng-model="edit.mail" required>
+                        <input type="password" placeholder="Введіть пароль" ng-model="edit.mailPassword" required>
+                    </div>
+                    <div class="confirm">
+                        <button type="submit">Змінити</button>
+                        <span ng-show="edit.mailBadMsg" class="change-error">{{edit.mailBadMsg}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

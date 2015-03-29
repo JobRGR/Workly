@@ -16,6 +16,7 @@
 
 .edit
   display table
+  width 100%
   margin-bottom 90px
 
 .edit_form
@@ -79,22 +80,44 @@
           cursor pointer
           margin 3px
           width 11px
-          height 11px
+          height 11 px
           border-radius 3px
           background-color rgb( 109, 199, 128 )
+    & .edit_form-text
+      font bold 16px "OpenSans"
+      color rgb( 116, 174, 128 )
+      margin-bottom 15px
     & .logo-box
+      position relative
       display block
       box-sizing border-box
-      height 92px
+      height 120px
       width 100%
-      border 2px dashed rgb( 202, 202, 202 )
-      border-radius 5px
+      max-width 240px
+      background transparent url('/images/edit/company_logo.png') center no-repeat
       & img
-        width 100%
         height 100%
-        background transparent url('/images/edit/company_logo.png') center no-repeat
+        width 100%
+      & .logo-del
+        position absolute
+        user-select none
+        cursor pointer
+        top 0%
+        left 100%
+        transform translate(-50%, -50%);
+        display block
+        text-align center
+        font bold 19px "OpenSans"
+        color rgb( 255, 255, 255 )
+        width 21px
+        height 21px
+        line-height 21px
+        border 3px  solid rgb( 255, 255, 255 )
+        border-radius 50%
+        background-color rgb( 218, 109, 109 )
     & .logo-load
       display block
+      max-width 240px
       width 100%
       text-align right
       & span
@@ -106,7 +129,7 @@
         height 22px
         line-height 22px
         width 120px
-        margin-top 7px
+        margin-top 9px
         border-radius 3px
         background-color rgb( 109, 199, 128 )
         box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
@@ -114,7 +137,7 @@
         &:hover
           background-color rgb( 51, 176, 97 )
         &:active
-          box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+          box-shadow 0px 4px 1px 0px rgb( 14, 129, 21 )
         & input
           position absolute
           height 22px
@@ -130,14 +153,30 @@
       padding-right 25px
       vertical-align top
       & .avatar-frame
-        border 2px dashed rgb( 202, 202, 202 )
-        border-radius 5px
-        width 110px
-        height 120px
+        position relative
+        width 120px
+        height 140px
+        background transparent url('/images/edit/user_logo.png') center no-repeat
         & img
-          width 110px
-          height 120px
-          background transparent url('/images/edit/user_logo.png') center no-repeat
+          width 120px
+          height 140px
+        & .logo-del
+          position absolute
+          user-select none
+          cursor pointer
+          top 0%
+          left 100%
+          transform translate(-50%, -50%);
+          display block
+          text-align center
+          font bold 19px "OpenSans"
+          color rgb( 255, 255, 255 )
+          width 21px
+          height 21px
+          line-height 21px
+          border 3px  solid rgb( 255, 255, 255 )
+          border-radius 50%
+          background-color rgb( 218, 109, 109 )
       & .avatar-text
         display block
         cursor pointer
@@ -154,7 +193,7 @@
         &:hover
           background-color rgb( 51, 176, 97 )
         &:active
-          box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+          box-shadow 0px 4px 1px 0px rgb( 14, 129, 21 )
         & input
           display inline-block
           cursor pointer
@@ -213,8 +252,6 @@
           box-shadow 0px 4px 1px 0px rgb( 196, 81, 81 )
           &:hover
             background-color rgb( 196, 81, 81 )
-          &:active
-            box-shadow 0px 4px 1px 0px rgb( 218, 109, 109 )
         & div
           display table-cell
           padding 10px
@@ -247,7 +284,7 @@
       background-color rgb( 51, 176, 97 )
     &:active
       margin 25px 0px 15px 0px
-      box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+      box-shadow 0px 4px 1px 0px rgb( 14, 129, 21 )
   & .form-error
     position absolute
     top 103%
@@ -359,7 +396,7 @@
             background-color rgb( 51, 176, 97 )
           &:active
             top 3px
-            box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+            box-shadow 0px 4px 1px 0px rgb( 14, 129, 21 )
         & .change-error
           display block
           position relative

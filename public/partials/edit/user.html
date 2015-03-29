@@ -8,7 +8,8 @@
                 <div class="avatar-box">
                     <div class="avatar">
                         <div class="avatar-frame">
-                            <img src="{{edit.user.img}}"/>
+                            <div ng-show="edit.user.img" class="logo-del" ng-click="edit.eraseImg()">×</div>
+                            <img ng-show="edit.user.img" src="{{edit.user.img}}"/>
                         </div>
                         <span class="avatar-text">
                             <input type="file" accept="image/*" ng-fileread="edit.user.img">Змінити фото

@@ -11,14 +11,16 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
             edit.company = $rootScope.company;
         });
 
-        this.formBadMsg = '';
-        this.mailBadMsg = '';
-        this.passBadMsg = '';
-
         this.resetBadMsg = function(){
             this.formBadMsg = '';
             this.mailBadMsg = '';
             this.passBadMsg = '';
+            this.nameBadMsg = '';
+        }
+
+        this.eraseImg = function(){
+            if (this.user) this.user.img = '';
+            if (this.company) this.company.img = '';
         }
 
         this.isUser = function(){
@@ -43,7 +45,7 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
                 return false;
             }
 
-            $http.post("/api/sign-up-company", this.company)
+            $http.post("/api/edit-company", this.company)
                 .success(function (resp) {
                     console.log(resp);
                     if (resp.message != 'ok') edit.formBadMsg = 'Щось пішло не так...';
@@ -73,14 +75,12 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
 
         this.passwordEdit = function() {
             if (this.password != this.repeatPassword) this.passBadMsg = 'Паролі не співпадають!';
-            if (this.password == undefined) this.passBadMsg = 'Введіть пароль!';
             if (this.passBadMsg) return false;
 
-            var req = {
-                password: this.password
-            }
+            var req = {password: this.password};
+            var url = (this.user ? '/api/change-password-user':'/api/change-password-company');
 
-            $http.post("/api/change-password-user", req)
+            $http.post(url, req)
                 .success(function (resp) {
                     console.log(resp);
                     if (resp.message != 'ok') edit.passBadMsg = 'Щось пішло не так...';
@@ -93,19 +93,40 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
 
         this.mailEdit = function(isValid){
             if (!isValid) this.mailBadMsg = 'Неправильно вказана пошта!';
-            if (this.mailPassword == undefined) this.mailBadMsg = 'Введіть пароль!';
-            if (this.mail == undefined) this.mailBadMsg = 'Введіть пошту!';
             if (this.mailBadMsg) return false;
 
             var req = {
                 mail: this.mail,
                 password: this.mailPassword
-            }
+            };
+            var url = (this.user ? '/api/change-mail-user':'/api/change-mail-company');
 
-            $http.post("/api/change-mail-user", req)
+            $http.post(url, req)
                 .success(function (resp) {
                     console.log(resp);
                     if (resp.message == 'Mail is already used') edit.mailBadMsg = 'Така пошта вже існує!';
+                    if (resp.message == 'Incorrect password') edit.mailBadMsg = 'Невірний пароль!';
+                })
+                .error(function (err) {
+                    edit.mailBadMsg = 'Щось пішло не так...';
+                    console.log(err);
+                });
+        };
+
+        this.nameEdit = function(isValid){
+            if (this.namePassword == undefined) this.mailBadMsg = 'Введіть пароль!';
+            if (this.name == undefined) this.mailBadMsg = 'Введіть назву!';
+            if (this.nameBadMsg) return false;
+
+            var req = {
+                name: this.name,
+                password: this.namePassword
+            };
+
+            $http.post("/api/edit-company", req)
+                .success(function (resp) {
+                    console.log(resp);
+                    if (resp.message == 'Name is already used') edit.nameBadMsg = 'Така назва вже існує!';
                     if (resp.message == 'Incorrect password') edit.mailBadMsg = 'Невірний пароль!';
                 })
                 .error(function (err) {

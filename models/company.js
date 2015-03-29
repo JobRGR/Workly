@@ -14,36 +14,31 @@ var schema = new Schema({
         required: true,
         default: " "
     },
-    img: {
-        type: String,
-        required: true,
-        default: " "
-    },
-    contacts:{
-        type: String,
-        required: true,
-        default: " "
-    },
     mail:{
         type: String,
         unique: true,
         required: true,
         default: " "
     },
+    img: {
+        type: String,
+        required: false
+    },
+    contacts:{
+        type: String,
+        required: false
+    },
     tel:{
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     website:{
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     about:{
         type: String,
-        required: true,
-        default: " "
+        required: false
     },
     hashedPassword: {
         type: String,
@@ -141,11 +136,9 @@ schema.statics.edit =  function(req, callback) {
     if(!req.company) return callback(new AuthError("Company is not Authorized"));
     var editCompany = req.body;
     var company = req.company;
-    var isNotEdit = ['mail','password','companyName'];
 
     for(var k in editCompany)
-        if(!(isNotEdit.indexOf(k) > -1))
-            company[k] = editCompany[k];
+        company[k] = editCompany[k];
 
     company.save(function(err) {
         if (err) return callback(err);
