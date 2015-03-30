@@ -13,5 +13,6 @@
     "user":"/partials/edit/user.html",
     "company":"/partials/edit/company.html"
   },
+  "createPost":"/partials/create-post.html",
   "companyPage":"/partials/companyPage.html"
 }

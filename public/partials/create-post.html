@@ -1,0 +1,77 @@
+<div class="post-headtext">
+    Відкриття вакансії
+</div>
+<div class="post">
+    <form name="postForm" ng-submit="post.createPost(postForm.$valid)">
+        <div class="post_form">
+            <div class="post_form-input">
+                <div class="post_form-text"> Загальна інформація</div>
+                <input type="text" placeholder="Посада" ng-model="post.newPost.job" required>
+                <input type="text" placeholder="Місто" ng-model="post.newPost.city" required>
+                <textarea placeholder="Вимоги" ng-model="post.newPost.requirements" required></textarea>
+                <textarea placeholder="Обов'язки" ng-model="post.newPost.responsibilities" required></textarea>
+                <textarea placeholder="Ми пропонуємо" ng-model="post.newPost.offer" required></textarea>
+                <textarea placeholder="Про проект" ng-model="post.newPost.about" required></textarea>
+                <input type="text" placeholder="Мітки \ Теги" ng-model="post.newPost.tags" required>
+                <button type="submit">Відкрити вакансію</button>
+            </div>
+            <span ng-show="post.formBadMsg" class="form-error"><span></span>{{post.formBadMsg}}</span>
+        </div>
+        <div class="post_tests">
+            <div class="test-wrap">
+                <div class="test-text"> Тести</div>
+                <div class="test-add">
+                    Додати запитання:
+                    <span ng-click="post.addOpenQ()">Відкрите</span>
+                    <span ng-click="post.addTestQ()">Тестове</span>
+                </div>
+            </div>
+            <div class="test" ng-repeat="q in post.newPost.testQuestion">
+                <div class="range"></div>
+                <div class="test-wrap">
+                    <div class="test_head">
+                        Тестове запитання
+                        <span ng-click="post.eraseTest(post.newPost.testQuestion, $index)">Видалити</span>
+                    </div>
+                    <textarea placeholder="Умова" ng-model="q.question" required></textarea>
+                    <div class="test_control">
+                        Відповідь:
+                        <div class="test_add" ng-click="post.addVariant(q.answers)">+</div>
+                    </div>
+                    <div class="test_variant" ng-repeat="answer in q.answers track by $index">
+                        <div class="table-cell_wrap">
+                            <div class="test_variant_select">
+                                <input type="radio" name="radio{{post.newPost.testQuestion.indexOf(q)}}" required><span></span>
+                            </div>
+                        </div>
+                        <input placeholder="Варіант {{$index + 1}}" ng-model="q.answers[$index]" required>
+                        <div class="table-cell_wrap">
+                            <div class="test_variant_del" ng-click="post.eraseVariant(q.answers, $index)">×</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="test" ng-repeat="q in post.newPost.openQuestion">
+                <div class="range"></div>
+                <div class="test-wrap">
+                    <div class="test_head">
+                        Відкрите запитання
+                        <span ng-click="post.eraseTest(post.newPost.openQuestion, $index)">Видалити</span>
+                    </div>
+                    <textarea placeholder="Умова" ng-model="q.question" required></textarea>
+                    <div class="test_control">
+                        <input type="checkbox" ng-model="q.isChecked"><span></span>
+                        <div class="test_tip-text">Відповідь повинна бути точною чи ні?</div>
+                        <div class="test_tip">?</div>
+                        <span class="tip">
+                            Це означає що відповідь не буду враховуватись
+                            при підведенні загального рейтингу, вона є творчою.
+                            Вона буде перевірятись автором.
+                        </span>
+                    </div>
+                    <textarea placeholder="Відповідь" ng-model="q.correct" required></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
