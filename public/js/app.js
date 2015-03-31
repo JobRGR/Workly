@@ -21,7 +21,22 @@ var signupApp = angular.module('signupApp', [
     'worklyControllers',
     'signupControllers',
     'formFilling'
-]);
+]).run(['$rootScope', '$location', '$http', '$window',
+    function($rootScope, $location, $http, $window) {
+        $rootScope.redirectOut = function(){
+            var redirectUrl = 'http://' + $window.location.host;
+            $window.location.href = redirectUrl;
+        }
+
+        $http.get('/api/get-status')
+            .success(function(resp) {
+                if (resp.message != 'No Authorized Account')
+                    $rootScope.redirectOut();
+            })
+            .error(function(err){
+                console.log(err);
+            });
+    }]);;
 
 var editApp = angular.module('editApp', [
     'worklyControllers',
