@@ -31,6 +31,11 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
     function editUserData(){
       var type = ['firstname', 'secondname', 'city', 'tel', 'position','about', 'skills'];
       $rootScope.edit.editModel = getData(type);
+      $rootScope.edit.editModel.push({
+        name: "dob",
+        value: $rootScope.edit.model["dob"] ? new Date($rootScope.edit.model["dob"]) : new Date(),
+        type: "date"
+      });
       $rootScope.edit.study = getObjVal('study');
       $rootScope.edit.work = getObjVal('work');
     }
@@ -55,7 +60,8 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       return type.map(function(item){
         return {
           name: item,
-          value: $rootScope.edit.model[item] ? $rootScope.edit.model[item].trim() : ""
+          value: $rootScope.edit.model[item] ? $rootScope.edit.model[item].trim() : "",
+          type: "text"
         }
       });
     }
@@ -63,6 +69,8 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
     function getObjVal(type){
       return $rootScope.edit.model[type].map(function(item){
         delete item._id;
+        item.start = new Date(item.start) || new Date();
+        item.end = new Date(item.end) || new Date();
         return item
       })
     }

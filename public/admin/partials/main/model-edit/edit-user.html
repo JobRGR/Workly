@@ -11,7 +11,7 @@
 
         <div class="col-lg-8">
             <input name='{{item.name}}'
-                   type="text"
+                   type="{{item.type}}"
                    ng-model='edit.editModel[$index].value'
                    class="{{item.name}} form-control"
                    id="input-{{item.name}}"
