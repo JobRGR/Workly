@@ -33,6 +33,8 @@ exports.post = function(req, res, next) {
                     return res.send(message);
                 }
                 message.message = "ok";
+                delete company.hashedPassword;
+                delete company.salt;
                 message.company = company;
                 return res.send(message);
             });

@@ -17,7 +17,11 @@ exports.get = function(req, res, next) {
         };
 
         message.message = "ok";
-        message.users = users;
+        message.users = users.map(function(user){
+            delete user.hashedPassword;
+            delete user.salt;
+            return user
+        });
 
         return res.send(message);
     })

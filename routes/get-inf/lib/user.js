@@ -17,6 +17,8 @@ exports.get = function(req, res, next) {
         }
 
         message.message = "ok";
+        delete user.hashedPassword;
+        delete user.salt;
         message.user = user;
 
         return res.send(message);

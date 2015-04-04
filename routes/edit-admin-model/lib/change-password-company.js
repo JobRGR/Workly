@@ -14,6 +14,8 @@ exports.post = function(req, res, next) {
             message.message = err;
         } else {
             message.message = "ok";
+            delete company.hashedPassword;
+            delete company.salt;
             message.company = company;
         }
         return res.send(message);

@@ -30,7 +30,7 @@ exports.post = function(req, res, next) {
         };
 
         company.save(function(err) {
-            if (err) obj.message = err
+            if (err) obj.message = err;
             else obj.company = company;
 
             return res.send(obj);

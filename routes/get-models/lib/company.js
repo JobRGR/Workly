@@ -20,7 +20,11 @@ exports.get = function(req, res, next) {
         };
 
         message.message = "ok";
-        message.companies = companies;
+        message.companies = companies.map(function(company){
+            delete company.hashedPassword;
+            delete company.salt;
+            return company
+        });
 
 
         return res.send(message);

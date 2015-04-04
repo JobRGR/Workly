@@ -25,6 +25,8 @@ exports.get = function(req, res, next) {
             }
 
             message.message = "ok";
+            delete company.hashedPassword;
+            delete company.salt;
             message.company = company;
             message.user = req.user ? true : false;
             message.subscribe = req.user ? company.subscribe.indexOf(req.user['id']) > -1 : false;

@@ -11,7 +11,7 @@ exports.post = function(req, res, next) {
         req.session.company = company._id;
 
         company.save(function(err) {
-            if (err) obj.message = err
+            if (err) obj.message = err;
             else obj.company = company;
 
             return res.send(obj);

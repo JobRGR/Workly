@@ -13,6 +13,8 @@ exports.post = function(req, res) {
                 company[k] = editCompany[k];
 
         company.save(function(err) {
+            delete company.hashedPassword;
+            delete company.salt;
             var obj = {
                 message: err ? err.message : "ok",
                 action: "edit company",

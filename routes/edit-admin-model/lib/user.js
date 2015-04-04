@@ -13,6 +13,8 @@ exports.post = function(req, res) {
                 user[k] = editUser[k];
 
         user.save(function(err) {
+            delete user.hashedPassword;
+            delete user.salt;
             var obj = {
                 message: err ? err.message : "ok",
                 action: "edit user",
