@@ -22,5 +22,9 @@
             <strong ng-if="edit.notification.type == 'info'">{{edit.notification.text}}</strong>
             <strong ng-if="edit.notification.type == 'success'">Well done! </strong>
         </div>
+        <div ng-if="editUserTime() || editCompanyTime()">
+            <edit-password></edit-password>
+            <edit-mail></edit-mail>
+        </div>
     </div>
 </div>

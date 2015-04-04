@@ -132,6 +132,18 @@ schema.statics.password = function(req, callback) {
     });
 };
 
+schema.statics.changePassword = function(id, password, callback) {
+    var User = this;
+    User.findById(id, function(err, user){
+        if(err) return callback(err);
+        user.hashedPassword = user.encryptPassword(password);
+        user.save(function(err) {
+            if (err) return callback(err);
+            callback(null, user);
+        });
+    });
+};
+
 schema.statics.edit =  function(req, callback) {
     if(!req.user) return callback(new AuthError("User is not Authorized"));
     var editUser = req.body;

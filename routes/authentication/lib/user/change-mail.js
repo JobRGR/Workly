@@ -22,8 +22,6 @@ exports.post = function(req, res, next) {
         var user = req.user;
         user['mail'] = mail;
 
-
-
         req.session.user = user._id;
 
         var obj = {

@@ -138,3 +138,36 @@ adminDirectives.directive("editAdmin", function () {
         controller: 'editCtrl'
     };
 });
+
+adminDirectives.directive("editWork", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-work.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editStudy", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-study.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editPassword", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-password.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editMail", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-mail.html",
+        controller: 'editCtrl'
+    };
+});
+

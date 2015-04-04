@@ -139,7 +139,19 @@ var ClientApi = function(){
                 skills: "user0",
                 tel: "user0",
                 img: "data:image/jpeg;base64,/9j/4A",
-                work: [],
+                work: [{
+                    job:  "intern Front-end",
+                    company:  "Grammarly",
+                    start:   new Date("12/6/14"),
+                    end:  new Date("2/29/14"),
+                    description: "study to make app"
+                },{
+                    job:  "Front-end Dev",
+                    company:  "Grammarly",
+                    start:   new Date("2/29/14"),
+                    end:  new Date(),
+                    description: "make app"
+                }],
                 study: []
             };
 

@@ -10,6 +10,13 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       type: 'success'
     };
 
+    $scope.edit.password = {
+      password: "",
+      confirm: ""
+    };
+
+    $scope.edit.mail = "";
+
     $rootScope.$watch(function(){
       var isLen = $rootScope.edit.editModel ?
         ($rootScope.edit.editModel.length ? true : false) : false;
@@ -24,6 +31,8 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
     function editUserData(){
       var type = ['firstname', 'secondname', 'city', 'tel', 'position','about', 'skills'];
       $rootScope.edit.editModel = getData(type);
+      $rootScope.edit.study = getObjVal('study');
+      $rootScope.edit.work = getObjVal('work');
     }
 
     function editCompanyData(){
@@ -51,6 +60,40 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       });
     }
 
+    function getObjVal(type){
+      return $rootScope.edit.model[type].map(function(item){
+        delete item._id;
+        return item
+      })
+    }
+
+    $scope.addWork = function(){
+      $rootScope.edit.work.push({
+        job: "",
+        company: "",
+        start: "",
+        end: "",
+        description: ""
+      })
+    };
+
+    $scope.addStudy = function(){
+      $rootScope.edit.study.push({
+        university: "",
+        direction: "",
+        start: "",
+        end: "",
+        degree: ""
+      })
+    };
+
+    $scope.delStudy = function($index){
+      $rootScope.edit.study.splice($index,1)
+    };
+
+    $scope.delWork = function($index){
+      $rootScope.edit.work.splice($index,1)
+    };
 
     $scope.editUserTime = function(){
       return $rootScope.edit.type  == 'user';
@@ -79,11 +122,26 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
 
     $scope.saveData = function() {
       var data = $rootScope.edit.editModel.reduce(function (res, cur) {
-          res[cur.name] = cur.value
+          res[cur.name] = cur.value;
           return res
         },{})
         , url = ($scope.editAdminTime() ? '/api/admin/edit/' : '/api/admin/edit-'+$rootScope.edit.type+'/')
           + $rootScope.edit.model['_id'];
+
+      if($scope.editUserTime()) {
+        data.study = $rootScope.edit.study.filter(function (item) {
+          return item.university.length || item.direction.length ||
+            item.start.length || item.end.length || item.degree.length
+        });
+
+        data.work = $rootScope.edit.work.filter(function (item) {
+          return item.job.length || item.company.length ||
+            item.start.length || item.end.length || item.description.length
+        });
+      }
+
+      for(var key in data)
+        $rootScope.edit.model[key] = data[key];
 
       $http.post(url, data).
         success(function(data, status, headers, config) {
@@ -102,5 +160,37 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
             type: data.message == "ok" ? 'success' : 'danger'
           };
         });
+    };
+
+    $scope.changePassword = function(){
+      var isConfirm = $scope.edit.password.password == $scope.edit.password.confirm
+          && $scope.edit.password.password.length
+        , data = {password: $scope.edit.password.password}
+        , url = '/api/admin/change-password-'+$rootScope.edit.type+'/' + $rootScope.edit.model['_id'];
+
+      if(!isConfirm) return;
+      $http.post(url, data).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
+    };
+
+    $scope.changeMail = function(){
+      var data = {mail: $scope.edit.mail}
+        , regex = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test($scope.edit.mail)
+        , url = '/api/admin/change-mail-'+$rootScope.edit.type+'/' + $rootScope.edit.model['_id'];
+      if(!regex) return;
+      $rootScope.edit.model.mail =  $scope.edit.mail;
+      $http.post(url, data).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
     }
+
   }]);

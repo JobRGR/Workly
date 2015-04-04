@@ -132,6 +132,19 @@ schema.statics.password = function(req, callback) {
     });
 };
 
+schema.statics.changePassword = function(id, password, callback) {
+    var Company = this;
+
+    Company.findById(id, function(err, company){
+        if(err) return callback(err);
+        company.hashedPassword = company.encryptPassword(password);
+        company.save(function(err) {
+            if (err) return callback(err);
+            callback(null, company);
+        });
+    });
+};
+
 schema.statics.edit =  function(req, callback) {
     if(!req.company) return callback(new AuthError("Company is not Authorized"));
     var editCompany = req.body;

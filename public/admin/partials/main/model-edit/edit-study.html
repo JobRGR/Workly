@@ -1,0 +1,69 @@
+<div>
+    <a class="pull-right cursor" ng-click="addStudy()">Add Place</a>
+    <h4>Study</h4>
+</div>
+
+<div class="form-group page-header" ng-repeat="item in edit.study track by $index">
+    <span class="glyphicon glyphicon-remove edit-close-small pull-right" ng-click="delStudy($index)"></span>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            University</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.university}}'
+                   type="text"
+                   ng-model='item.university'
+                   class="{{item.university}} form-control"
+                   placeholder="Add university">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Direction</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.direction}}'
+                   type="text"
+                   ng-model='item.direction'
+                   class="{{item.direction}} form-control"
+                   placeholder="Add direction">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Start</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.start}}'
+                   type="text"
+                   ng-model='item.start'
+                   class="{{item.start}} form-control"
+                   placeholder="Add start">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            End</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.end}}'
+                   type="text"
+                   ng-model='item.end'
+                   class="{{item.end}} form-control"
+                   placeholder="Add end">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Degree</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.degree}}'
+                   type="text"
+                   ng-model='item.degree'
+                   class="{{item.degree}} form-control"
+                   placeholder="Add degree">
+        </div>
+    </div>
+</div>

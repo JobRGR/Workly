@@ -16,6 +16,13 @@
                             <!--ng-click="logout()"></span>-->
                 <!--</p>-->
             <!--</div>-->
+            <div ng-if="admin">
+                <p class="navbar-text navbar-right">
+                    Signed in as {{admin.login}}
+                    <span class="glyphicon glyphicon-log-out logout"
+                          ng-click="logout()"></span>
+                </p>
+            </div>
         </div>
     </div>
 </nav>
