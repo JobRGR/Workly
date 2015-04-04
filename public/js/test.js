@@ -234,11 +234,11 @@ var ClientApi = function(){
                 responders: [null]
             };
 
-            var url = "/api/edit-post/54c2c5af7173980117dbf4ce";
+            var url = "/api/edit-post/552032b76b6a0a7086ae9f4f";
             post(data, url, callback);
         },
         removePost: function(){
-            var url = "/api/remove-post/54bbee94fbbfcdb97a90482a"
+            var url = "/api/remove-post/54bbee94fbbfcdb97a90482a";
             get(url, callback);
         },
         dropPost: function(){

@@ -48,7 +48,21 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
     function editPostData(){
       var type = ['job', 'about', 'city', 'offer', 'requirements', 'tags'];
       $rootScope.edit.editModel = getData(type);
+      $rootScope.edit.open = $rootScope.edit.model['openQuestion'];
+      $rootScope.edit.test = $rootScope.edit.model['testQuestion'].map(function(item){
+        item.check = item.answers.map(function(ans, index){
+          return index == parseInt(item.correct)
+        });
+        return item
+      });
     }
+
+    $scope.changeCheck = function(item, $index){
+      item.correct = $index;
+      item.check = item.check.map(function(val, index){
+        return index == $index
+      })
+    };
 
     function editAdminData(){
       var type = ['login','password'];
@@ -146,6 +160,18 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
           return item.job.length || item.company.length ||
             item.start.length || item.end.length || item.description.length
         });
+      }
+
+      if($scope.editPostTime()){
+        data.openQuestion = $rootScope.edit.open.filter(function(item){
+          return item.question.length || (item.correct.length && !item.isChecked)
+        })
+      }
+
+      if($scope.editPostTime()){
+        data.testQuestion = $rootScope.edit.test.filter(function(item){
+          return item.question.length || (item.correct.length && !item.isChecked)
+        })
       }
 
       for(var key in data)

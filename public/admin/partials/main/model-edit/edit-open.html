@@ -1,0 +1,42 @@
+<div>
+    <!--<a class="pull-right cursor" ng-click="">Add Place</a>-->
+    <h4>Open Question</h4>
+</div>
+
+<div class="form-group page-header" ng-repeat="item in edit.open track by $index">
+    <!--<span class="glyphicon glyphicon-remove edit-close-small pull-right" ng-click=""></span>-->
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Question</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.question}}'
+                   type="text"
+                   ng-model='item.question'
+                   class="{{item.question}} form-control"
+                   placeholder="Add question">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" ng-model="item.isChecked"> Open answer
+        </label>
+    </div>
+
+
+    <div class="form-group" ng-if="!item.isChecked">
+        <label class="col-lg-2 control-label sign-label">
+            Answer</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.correct}}'
+                   type="text"
+                   ng-model='item.correct'
+                   class="{{item.correct}} form-control"
+                   placeholder="Add answer">
+        </div>
+    </div>
+
+</div>

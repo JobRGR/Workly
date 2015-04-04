@@ -26,6 +26,14 @@ exports.get = function(req, res, next) {
         delete post._doc.responders;
         delete post._doc.users;
 
+        post.openQuestion.forEach(function(q){
+           delete q.correct;
+        });
+
+        post.testQuestion.forEach(function(q){
+            delete q.correct;
+        });
+
         return res.send({
             post: post,
             user: isUser,

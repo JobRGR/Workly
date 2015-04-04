@@ -171,3 +171,19 @@ adminDirectives.directive("editMail", function () {
     };
 });
 
+adminDirectives.directive("editOpen", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-open.html",
+        controller: 'editCtrl'
+    };
+});
+
+adminDirectives.directive("editTest", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-edit/edit-test.html",
+        controller: 'editCtrl'
+    };
+});
+

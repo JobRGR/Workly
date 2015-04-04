@@ -16,6 +16,16 @@ exports.get = function(req, res, next) {
             return res.send(message);
         };
 
+        posts.forEach(function(post){
+            post.openQuestion.forEach(function(q){
+                delete q.correct;
+            });
+
+            post.testQuestion.forEach(function(q){
+                delete q.correct;
+            });
+        });
+
         message.message = "ok";
         message.posts = posts.map(function(post){
             delete post._doc.responders;
