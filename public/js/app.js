@@ -85,3 +85,7 @@ var createPostApp = angular.module('createPostApp', [
                 console.log(err);
             });
     }]);
+
+var feed = angular.module('feed', [
+	'headerControllers'
+]);

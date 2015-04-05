@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html ng-app="feed">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Feed</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
+
+    <script src="/vendor/bower_components/angular/angular.js"></script>
+    <script src="/vendor/bower_components/angular-route/angular-route.js"></script>
+    <script src="/vendor/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/directives.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/feed.css">
+    <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
+</head>
+<body ng-controller="headerCtrl">
+
+    <div class="feedPage">
+
+        <div class="feedPage_headerHidden">
+            <a href="/" class="feedPage_headerHidden_logo">
+                <span>W</span>
+                <span>orkly</span>
+            </a>
+
+
+            <div class="feedPage_headerHidden_nav">
+                <a href="#">
+                    <img src="/images/feed/user.png">
+                    Brad Pit
+                </a>
+                <a href="#">
+                    <img src="/images/feed/vacancyHidden.png">
+                    Вакансії
+                </a>
+            </div>
+
+        </div>
+
+        <div class="feedPage_header">
+            <div class="feedPage_header_banner">
+                    <div class="feedPage_header_banner_wrapper">
+                        <img id="banner1" src="/images/feed/feedBanner1.png" style="left: 0;">
+                        <img id="banner2" src="/images/feed/feedBanner2.png" style="left: 100%;">
+                    </div>
+
+                <div class="feedPage_header_banner_logo">
+                    <a href="/">
+                        <img src="/images/logo.png">
+                    </a>
+                </div>
+
+                <div class="feedPage_header_banner_nav" ng-controller="navTipsCtrl">
+                    <a href="#" id="abcd">
+                        <img src="/images/sign-in.png">
+                        Brad Pit
+                    </a>
+                    <a href="#">
+                        <img src="/images/feed/vacancy.png">
+                        Вакансії
+                    </a>
+                </div>
+            </div>
+
+            <div class="feedPage_searchBlock"  ng-controller="sliderCtrl">
+                <div class="feedPage_searchBlock_slogan" ng-bind-html="text">
+                </div>
+
+                <div class="feedPage_searchBlock_arrow">
+                    <img id="left" src="/images/feed/arrow.png">
+                    <img id="right" src="/images/feed/arrow.png">
+                </div>
+
+                <form name="search" method="post" class="feedPage_searchBlock_search">
+                      <input type="text" size="40"  placeholder="Уведіть ключове слово - місто, посаду">
+                    <div class="feedPage_searchBlock_search_triangle"></div>
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="feedPage_feed">
+
+            <div class="feedPage_feed_feedBlock" id="feedPage_feed_feedBlock_first">
+                <div class="feedPage_feed_feedBlock_info">
+                    <div class="feedPage_feed_feedBlock_info_title">
+                        JavaScript Developer (junior/trainee)
+                    </div>
+                    <div class="feedPage_feed_feedBlock_info_details">
+                        Microsoft  |  Київ  |  Сьогодні
+                    </div>
+                    <div class="feedPage_feed_feedBlock_info_about">
+                        Володіння HTML і CSS; знання JavaScript, JSON, AJAX; впевнені знання крос-браузерного ікрос-платформного  веб-програмування; знання фреймворку JQuery; бажання навчитися розробляти складні клієнтські програми; любов до верстки.
+                    </div>
+                </div>
+                <div class="feedPage_feed_feedBlock_logo">
+                    <img src="/images/feed/feedLogos/1.png">
+                </div>
+            </div>
+
+            <div class="feedPage_feed_feedBlock">
+                <div class="feedPage_feed_feedBlock_info">
+                    <div class="feedPage_feed_feedBlock_info_title">
+                        JavaScript/HTML5 Developer Intern
+                    </div>
+                    <div class="feedPage_feed_feedBlock_info_details">
+                        Google  |  Київ  |  Вчора
+                    </div>
+                    <div class="feedPage_feed_feedBlock_info_about">
+                        Рекрутингова компанія Google| Google EXperts спеціалізується на пошуку й оцінці фахівців за напрямками «Інформаційні технології» та «Телекомунікації». Для нашого партнера - розробника сет-топ боксів та рішень для Smart TV - ми шукаємо JavaScript...
+                    </div>
+                </div>
+                <div class="feedPage_feed_feedBlock_logo">
+                    <img src="/images/feed/feedLogos/2.png">
+                </div>
+            </div>
+
+            <div class="feedPage_feed_feedBlock">
+                <div class="feedPage_feed_feedBlock_info">
+                    <div class="feedPage_feed_feedBlock_info_title">
+                        Web Developer (Angular, Node.js)
+                    </div>
+                    <div class="feedPage_feed_feedBlock_info_details">
+                        Wargaming  |  Київ  |  Сьогодні
+                    </div>
+                    <div class="feedPage_feed_feedBlock_info_about">
+                        Торгова компанія Wargaming є однією з найбільших українських дистрибуторських компаній. Останні декілька років Wargaming входить в ТОП-10 рейтингу «200 найбільших компаній України» за версією журналу Forbes діяльності є дистрибуція тютюнових виробів та супутніх товарів... Протягом багатьох років компанія успішно співпрацює із провідними виробниками тютюнової продукції: Philip Morris International, Japan Tobacco International, Imperial Tobacco Group, British American Tobacco.
+                    </div>
+                </div>
+                <div class="feedPage_feed_feedBlock_logo">
+                    <img src="/images/feed/feedLogos/3.png">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
