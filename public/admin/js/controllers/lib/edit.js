@@ -165,13 +165,11 @@ adminControllers.controller('editCtrl', ['$scope', '$http', '$rootScope',
       if($scope.editPostTime()){
         data.openQuestion = $rootScope.edit.open.filter(function(item){
           return item.question.length || (item.correct.length && !item.isChecked)
-        })
-      }
+        });
 
-      if($scope.editPostTime()){
         data.testQuestion = $rootScope.edit.test.filter(function(item){
           return item.question.length || (item.correct.length && !item.isChecked)
-        })
+        });
       }
 
       for(var key in data)

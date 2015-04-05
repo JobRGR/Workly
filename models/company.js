@@ -120,6 +120,32 @@ schema.statics.registration = function(req, callback) {
     });
 };
 
+
+schema.statics.create = function(req, callback) {
+    var necessary = req.body.necessary;
+    var other = req.body.other;
+
+    var Company = this;
+
+    Company.findOne({'companyName': necessary.companyName},function(err, isFind){
+        if(isFind) return callback(new AuthError("Company with such name is Sign-Up"));
+
+        var company = new Company({
+            companyName: necessary.companyName,
+            password: necessary.password,
+            mail: necessary.mail
+        });
+
+        for(var k in other)
+            company[k] = other[k];
+
+        company.save(function(err) {
+            if (err) return callback(err);
+            callback(null, company);
+        });
+    });
+};
+
 schema.statics.password = function(req, callback) {
     var company = req.company;
     var password = req.body.password;

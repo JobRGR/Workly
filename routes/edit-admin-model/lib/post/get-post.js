@@ -1,4 +1,4 @@
-var Post = require('../../../models/post').Post;
+var Post = require('../../../../models/post').Post;
 
 exports.post = function(req, res) {
     var id = req.params.id;

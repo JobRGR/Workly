@@ -180,6 +180,28 @@ schema.statics.registration = function(req, callback) {
     });
 };
 
+schema.statics.create = function(req, callback) {
+    var necessary = req.body.necessary;
+    var other = req.body.other;
+    var User = this;
+
+    var user = new User({
+        password: necessary.password,
+        firstname: necessary.firstname,
+        secondname: necessary.secondname,
+        mail: necessary.mail,
+        subscribe: [null]
+    });
+
+    for(var k in other)
+        user[k] = other[k];
+
+    user.save(function(err) {
+        if (err) return callback(err);
+        callback(null, user);
+    });
+};
+
 exports.User = mongoose.model('User', schema);
 
 function AuthError(message) {

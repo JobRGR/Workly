@@ -10,8 +10,8 @@
             {{item.name}}</label>
         <div class="col-lg-8">
             <input name='{{item.name}}'
-                   type="text"
-                   ng-model='edit.editModel[$index].value'
+                   type="{{item.type}}"
+                   ng-model='item.value'
                    class="{{item.name}} form-control"
                    id="input-{{item.name}}"
                    placeholder="Add {{item.name}}">

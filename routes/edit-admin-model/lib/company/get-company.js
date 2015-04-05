@@ -1,4 +1,4 @@
-var Company = require('../../../models/company').Company;
+var Company = require('../../../../models/company').Company;
 
 exports.post = function(req, res) {
     var id = req.params.id;

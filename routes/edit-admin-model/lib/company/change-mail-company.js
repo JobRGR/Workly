@@ -1,6 +1,6 @@
 var async = require('async');
-var getModel = require('../../authentication/lib/middleware/getModel').getModel;
-var User = require('../../../models/user').User;
+var getModel = require('../../../authentication/lib/middleware/getModel').getModel;
+var Company = require('../../../../models/company').Company;
 
 exports.post = function(req, res, next) {
     var mail = req.body.mail;
@@ -12,7 +12,7 @@ exports.post = function(req, res, next) {
         }
     ], function (err, result) {
         var message = {
-            action: "change mail user"
+            action: "change mail company"
         };
 
         if(!err){
@@ -20,22 +20,22 @@ exports.post = function(req, res, next) {
             return res.send(message);
         }
 
-        User.findById(id, function (err, user) {
+        Company.findById(id, function (err, company) {
             if(err){
                 message.message = err.message ? err.message : err;
                 return res.send(message);
             }
 
-            user['mail'] = mail;
-            user.save(function(err) {
+            company['mail'] = mail;
+            company.save(function(err) {
                 if (err) {
                     message.message = err.message ? err.message : err;
                     return res.send(message);
                 }
                 message.message = "ok";
-                delete user.hashedPassword;
-                delete user.salt;
-                message.user = user;
+                delete company.hashedPassword;
+                delete company.salt;
+                message.company = company;
                 return res.send(message);
             });
         });

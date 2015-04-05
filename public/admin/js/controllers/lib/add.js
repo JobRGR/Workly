@@ -165,9 +165,95 @@ adminControllers.controller('addCtrl', ['$scope', '$http', '$rootScope', '$timeo
         return {
           name: name,
           val: name == "dob" ? new Date() : "",
-          type: name == "dob" ? "date" : "text"
+          type: name == "dob" ? "date" : name == "password" ? "password" : "text"
         }
       })
+    }
+
+    function getSendData(){
+      if(!$scope.getAddStatus()) return {};
+      if($scope.isUserAdd()) return getUserData();
+      if($scope.isCompanyAdd()) return getCompanyData();
+      if($scope.isPostAdd()) return getPostData();
+      if($scope.isAdminAdd()) return getAdminData();
+    }
+
+    function getUserData(){
+      var data  = {
+        necessary: getNecessaryData(),
+        other: getOtherData()
+      };
+
+      data.other.study = $scope.addModel.study.filter(function (item) {
+        return item.university.length || item.direction.length ||
+          item.start.length || item.end.length || item.degree.length
+      });
+
+      data.other.work = $scope.addModel.work.filter(function (item) {
+        return item.job.length || item.company.length ||
+          item.start.length || item.end.length || item.description.length
+      });
+
+      return data;
+    }
+
+    function getCompanyData(){
+      return {
+        necessary: getNecessaryData(),
+        other: getOtherData()
+      };
+    }
+
+    function getAdminData(){
+      return getNecessaryData()
+    }
+
+    function getPostData(){
+      var data = getNecessaryData();
+      data.openQuestion = $scope.addModel.open.filter(function(item){
+        return item.question.length || (item.correct.length && !item.isChecked)
+      });
+
+      data.testQuestion = $scope.addModel.test.filter(function(item){
+        return item.question.length || (item.correct.length && !item.isChecked)
+      });
+    }
+
+    function getNecessaryData(){
+      return $scope.addModel.necessary.reduce(function (res, cur) {
+        res[cur.name] = cur.value;
+        return res
+      },{});
+    }
+
+    function getOtherData(){
+      return $scope.addModel.other.reduce(function (res, cur) {
+        res[cur.name] = cur.value;
+        return res
+      },{});
+    }
+
+    $scope.sendAddData = function(){
+      var data = getSendData()
+        , url = '/api/admin/add-'+$rootScope.add.type+'/';
+
+      $http.post(url, data).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+          $scope.addNotification = {
+            status: true,
+            text: data.message == "ok" ? 'Success save' : data.message,
+            type: data.message == "ok" ? 'success' : 'info'
+          };
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+          $scope.addNotification = {
+            status: true,
+            text: data.message == "ok" ? 'Success save' : data.message,
+            type: data.message == "ok" ? 'success' : 'danger'
+          };
+        });
     }
 
   }]);
