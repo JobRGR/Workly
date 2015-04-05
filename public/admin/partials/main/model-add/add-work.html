@@ -1,0 +1,69 @@
+<div>
+    <a class="pull-right cursor" ng-click="addWorkItem()">Add Place</a>
+    <h4>Work</h4>
+</div>
+
+<div class="form-group page-header" ng-repeat="item in addModel.work track by $index">
+    <span class="glyphicon glyphicon-remove edit-close-small pull-right" ng-click="delWorkItem($index)"></span>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Company</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.company}}'
+                   type="text"
+                   ng-model='item.company'
+                   class="{{item.company}} form-control"
+                   placeholder="Add company">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Job</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.job}}'
+                   type="text"
+                   ng-model='item.job'
+                   class="{{item.job}} form-control"
+                   placeholder="Add job">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Start</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.start}}'
+                   type="date"
+                   ng-model='item.start'
+                   class="{{item.start}} form-control"
+                   placeholder="Add start">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            End</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.end}}'
+                   type="date"
+                   ng-model='item.end'
+                   class="{{item.end}} form-control"
+                   placeholder="Add end">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label sign-label">
+            Description</label>
+
+        <div class="col-lg-8">
+            <input name='{{item.description}}'
+                   type="text"
+                   ng-model='item.description'
+                   class="{{item.description}} form-control"
+                   placeholder="Add description">
+        </div>
+    </div>
+</div>

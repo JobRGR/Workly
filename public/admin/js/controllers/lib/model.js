@@ -60,6 +60,13 @@ adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
       };
     };
 
+    $scope.addModel = function(){
+      $rootScope.add = {
+        status: true,
+        type: $scope.type
+      }
+    };
+
     $scope.dropModel = function(){
       var url = url = $scope.isAdmin() ? '/api/admin/drop-admin' : '/api/drop-' + $scope.type;
       $scope.dataObj.data = [];

@@ -187,3 +187,60 @@ adminDirectives.directive("editTest", function () {
     };
 });
 
+/*Add Components*/
+
+adminDirectives.directive("add", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add.html",
+        controller: 'addCtrl'
+    };
+});
+
+adminDirectives.directive("addNecessary", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add-necessary.html",
+        controller: 'addCtrl'
+    };
+});
+
+adminDirectives.directive("addOther", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add-other.html",
+        controller: 'addCtrl'
+    };
+});
+
+adminDirectives.directive("addWork", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add-work.html",
+        controller: 'addCtrl'
+    };
+});
+
+adminDirectives.directive("addStudy", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add-study.html",
+        controller: 'addCtrl'
+    };
+});
+
+adminDirectives.directive("addOpen", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add-open.html",
+        controller: 'addCtrl'
+    };
+});
+
+adminDirectives.directive("addTest", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/main/model-add/add-test.html",
+        controller: 'addCtrl'
+    };
+});
