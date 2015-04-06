@@ -240,6 +240,7 @@ adminControllers.controller('addCtrl', ['$scope', '$http', '$rootScope', '$timeo
       $http.post(url, data).
         success(function(data, status, headers, config) {
           console.log(arguments);
+          $rootScope.dataObj.push(data.user);
           $scope.addNotification = {
             status: true,
             text: data.message == "ok" ? 'Success save' : data.message,

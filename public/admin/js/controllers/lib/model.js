@@ -16,7 +16,7 @@ adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
 
     $http.get(url+add).
       success(function(data, status, headers, config) {
-        $scope.dataObj.data = data[add] ? data[add] : [];
+        $scope.dataObj.data = $rootScope.dataObj = data[add] ? data[add] : [];
         $scope.dataObj.message = $scope.dataObj.data.length ? "ok" : "No Data";
       }).
       error(function(data, status, headers, config) {

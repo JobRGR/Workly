@@ -120,8 +120,6 @@ schema.statics.create = function(req, callback) {
             });
         }
     ],callback);
-
-
 };
 
 schema.statics.edit =  function(req, callback) {

@@ -13,4 +13,4 @@ module.exports = function(app) {
 
     app.get('/api/admin/remove-admin/:id', checkAuth.checkAdmin,require('./lib/remove').get);
     app.get('/api/admin/drop-admin', checkAuth.checkAdmin,require('./lib/drop').get);
-}
+};
