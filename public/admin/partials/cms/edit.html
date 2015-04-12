@@ -1,12 +1,12 @@
-<script type="text/ng-template"  id="tree_item_renderer.html" ng-controller="cmsCtrl">
+<script type="text/ng-template"  id="tree_item_renderer.html">
 
     <div class="form-group" ng-if="!checkArray(val) && !checkObject(val)">
         <label class="col-lg-2 control-label sign-label">
             {{key}} <span ng-if="false">{{val}}</span></label>
-        <div class="col-lg-8">
+        <div class="col-lg-8" ng-init="value = val">
             <input name='{{key}}'
                    type="text"
-                   ng-model='val'
+                   ng-model='value'
                    class="{{key}} form-control"
                    id="input-{{key}}"
                    placeholder="Add {{key}}">
@@ -22,7 +22,7 @@
 
     <div ng-if="checkArray(val) && checkObject(val)">
         <h4 style="text-align: center">{{printTitle(key)}}</h4>
-        <div ng-repeat="val in val track by $index"
+        <div ng-repeat="val in val"
             ng-include="'tree_item_renderer.html'">
         </div>
     </div>

@@ -41,6 +41,7 @@ adminControllers.controller('cmsCtrl', ['$scope', '$http', '$rootScope',
       });
 
       $scope.cms.name = $scope.cms.nav[$index].title;
+      $scope.cms.filename = $scope.cms.nav[$index].filename;
 
       $http.post('/api/admin/cms/get-file', data).
         success(function(data, status, headers, config) {
@@ -66,9 +67,21 @@ adminControllers.controller('cmsCtrl', ['$scope', '$http', '$rootScope',
 
     $scope.printTitle = function(val){
       return val.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, " ")
-    }
+    };
 
     $scope.sendData = function(){
-      console.log($scope.cms.edit)
-    }
+      var data = {
+        data: $scope.cms.edit,
+        filename: $scope.cms.filename
+      };
+
+      $http.post('/api/admin/cms/set-file', data).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
+    };
+
   }]);
