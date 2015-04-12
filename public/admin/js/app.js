@@ -14,6 +14,10 @@ adminApp.
                 templateUrl: "partials/main/main.html",
                 controller: 'mainCtrl'
             }).
+            when('/cms', {
+              templateUrl: "partials/cms/cms.html",
+              controller: 'cmsCtrl'
+            }).
             when('/sign-in', {
               templateUrl: "partials/sign/sign.html",
               controller: 'mainCtrl'
@@ -46,7 +50,7 @@ adminApp.
 
         $rootScope.$watch(function(){
           if(!$rootScope.loggedAdmin){
-              var urlList = ['/']
+              var urlList = ['/', 'cms']
                 , curUrl = $location.path()
                 , isList = urlList.indexOf(curUrl) > -1;
 

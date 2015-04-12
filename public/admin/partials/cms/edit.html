@@ -1,0 +1,64 @@
+<script type="text/ng-template"  id="tree_item_renderer.html" ng-controller="cmsCtrl">
+
+    <div class="form-group" ng-if="!checkArray(val) && !checkObject(val)">
+        <label class="col-lg-2 control-label sign-label">
+            {{key}} <span ng-if="false">{{val}}</span></label>
+        <div class="col-lg-8">
+            <input name='{{key}}'
+                   type="text"
+                   ng-model='val'
+                   class="{{key}} form-control"
+                   id="input-{{key}}"
+                   placeholder="Add {{key}}">
+        </div>
+    </div>
+
+    <div ng-if="!checkArray(val) && checkObject(val)">
+        <h5 style="text-align: center">{{printTitle(key)}}</h5>
+        <div ng-repeat="(key, val) in val"
+            ng-include="'tree_item_renderer.html'">
+        </div>
+    </div>
+
+    <div ng-if="checkArray(val) && checkObject(val)">
+        <h4 style="text-align: center">{{printTitle(key)}}</h4>
+        <div ng-repeat="val in val track by $index"
+            ng-include="'tree_item_renderer.html'">
+        </div>
+    </div>
+
+</script>
+
+<div class="model-list">
+    <div class="container">
+        <div class="page-header">
+            <h2>Edit {{cms.name}}</h2>
+        </div>
+    </div>
+
+    <form class="form-horizontal login-form" name="login-form">
+        <div ng-repeat="(key, val) in cms.edit"
+            ng-include="'tree_item_renderer.html'">
+        </div>
+    </form>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit"
+                    class="btn btn-success"
+                    data-loading-text="Sending..."
+                    ng-click="sendData()">Save Data</button>
+        </div>
+    </div>
+
+    <div ng-if="cms.notification.status"
+         class="alert alert-{{addNotification.type}}"
+         role="alert">
+
+        <strong ng-if="addNotification.type == 'danger'">Error! </strong>
+        <strong ng-if="addNotification.type == 'info'">{{addNotification.text}}</strong>
+        <strong ng-if="addNotification.type == 'success'">Well done! </strong>
+    </div>
+
+
+</div>

@@ -244,3 +244,21 @@ adminDirectives.directive("addTest", function () {
         controller: 'addCtrl'
     };
 });
+
+/*CMS*/
+
+adminDirectives.directive("cmsNav", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/cms/nav.html",
+        controller: 'cmsCtrl'
+    };
+});
+
+adminDirectives.directive("cmsEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/cms/edit.html",
+        controller: 'cmsCtrl'
+    };
+});

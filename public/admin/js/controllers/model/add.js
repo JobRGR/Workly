@@ -1,6 +1,6 @@
 'use strict';
 
-/*Edit Controllers*/
+/*Add Controllers*/
 
 adminControllers.controller('addCtrl', ['$scope', '$http', '$rootScope', '$timeout',
   function ($scope, $http, $rootScope, $timeout) {
