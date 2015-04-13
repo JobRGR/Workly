@@ -78,9 +78,19 @@ adminControllers.controller('cmsCtrl', ['$scope', '$http', '$rootScope',
       $http.post('/api/admin/cms/set-file', data).
         success(function(data, status, headers, config) {
           console.log(arguments);
+          $scope.cms.notification = {
+            status: true,
+            text: data.message == "ok" ? 'Success save' : data.message,
+            type: data.message == "ok" ? 'success' : 'info'
+          };
         }).
         error(function(data, status, headers, config) {
           console.log(arguments);
+          $scope.addNotification = {
+            status: true,
+            text: data.message == "ok" ? 'Success save' : data.message,
+            type: data.message == "ok" ? 'success' : 'danger'
+          };
         });
     };
 
