@@ -5,6 +5,7 @@
 var worklyControllers = angular.module('worklyControllers', []);
 var companyPageControllers = angular.module('companyPageControllers', []);
 var headerControllers = angular.module('headerControllers', []);
+var feedControllers = angular.module('feedControllers', []);
 
 worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
     function($scope, $http) {
@@ -19,22 +20,22 @@ worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
 
 companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$routeParams',
     function($scope, $http, $routeParams) {
-        var id = $routeParams.companyId;
-        $http.get("/api/company/"+id)
-            .success(function (resp, status) {
-                $scope.vacancies = resp.company.vacancies;
-				$scope.img = resp.company.img;
-                $scope.companyName = resp.company.companyName;
-                $scope.contacts = resp.company.contacts;
-                $scope.mail = resp.company.mail;
-                $scope.tel = resp.company.tel;
-                $scope.website = resp.company.website;
-                $scope.about = resp.company.about;
-				if (!$scope.img) $scope.img = "standartImg.png";
-            })
-            .error(function (err) {
-                console.log(err);
-            });
+        //var id = $routeParams.companyId;
+        //$http.get("/api/company/"+id)
+        //    .success(function (resp, status) {
+        //        $scope.vacancies = resp.company.vacancies;
+			//	$scope.img = resp.company.img;
+        //        $scope.companyName = resp.company.companyName;
+        //        $scope.contacts = resp.company.contacts;
+        //        $scope.mail = resp.company.mail;
+        //        $scope.tel = resp.company.tel;
+        //        $scope.website = resp.company.website;
+        //        $scope.about = resp.company.about;
+			//	if (!$scope.img) $scope.img = "standartImg.png";
+        //    })
+        //    .error(function (err) {
+        //        console.log(err);
+        //    });
     }]);
 
 companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http', '$routeParams',
@@ -58,8 +59,8 @@ companyPageControllers.controller('companyPageFollowCtrl', ['$scope', '$http',
 		console.log(3);
 	}]);
 
-headerControllers.controller('headerCtrl',[
-	function(){
+headerControllers.controller('headerCtrl',['$scope',
+	function($scope){
 		var hidden = true;
 		window.addEventListener("scroll",function() {
 			if(window.scrollY > 351 && hidden) {
@@ -71,18 +72,15 @@ headerControllers.controller('headerCtrl',[
 			else
 			if(window.scrollY <=351 && !hidden) {
 				hidden = true;
+				$('.feedPage_header_banner_nav_tip')[0].style.display = 'none';
+				$('.feedPage_header_banner_nav_tip')[1].style.display = 'none';
+				$scope.class = "feedPage_header_banner_nav_item";
 				$('.feedPage_headerHidden').animate({
 					marginTop: "-=35px"
 				},300);
+
 			}
 		},false);
-	}]);
-
-headerControllers.controller('navTipsCtrl',[
-	function(){
-		$(".feedPage_header_banner_nav a").mouseenter(function(){
-
-		});
 	}]);
 
 headerControllers.controller('sliderCtrl',['$scope',"$sce",
@@ -125,3 +123,29 @@ headerControllers.controller('sliderCtrl',['$scope',"$sce",
 		});
 	}]);
 
+headerControllers.controller('tipsCtrl',['$scope',
+	function($scope){
+		$scope.showTip = function(a){
+			($('.feedPage_header_banner_nav_tip')[a]).style.display = 'block';
+			($('.feedPage_header_banner_nav_tip')[a]).focus();
+			$scope.class = "NONfeedPage_header_banner_nav_item";
+		};
+		$scope.onBlur = function(a){
+			$('.feedPage_header_banner_nav_tip')[a].style.display = 'none';
+			$scope.class = "feedPage_header_banner_nav_item";
+		}
+	}]);
+
+feedControllers.controller('linkCtrl',['$scope',
+	function($scope){
+		var feed = $('.feedPage_feed_feedBlock');
+		feed.each(function(index){
+			feed[index].onclick  = function(e){
+				if( e.target.localName == "a" )
+					return;
+				var id = this.attributes[1].nodeValue;
+				window.location.replace("/post");
+			};
+		});
+		console.log(feed);
+	}]);
