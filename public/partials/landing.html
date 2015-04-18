@@ -1,4 +1,4 @@
-<div class="landing_banner" ng-controller="isUserLoggedIn">
+<div class="landing_banner">
 	<div class="landing_img-wraper">
 		<img src="/images/landing.png" class="landing_image">
 		<div class="landing_banner_screen">
@@ -12,24 +12,16 @@
 		<img src="/images/logo.png">
 	</div>
 
-	<div class="landing_banner_nav" ng-if="!isLoggedIn">
-		<a href="/signup">
+	<div class="landing_banner_nav">
+		<a href="#">
 			<img src="/images/sign-up.png">
 			Зареєструватись
 		</a>
-		<a href="/signin">
+		<a href="#">
 			<img src="/images/sign-in.png">
 			Увійти
 		</a>
 	</div>
-
-    <div class="landing_banner_nav" ng-if="isLoggedIn">
-        <a href="/signin">
-            <img src="/images/sign-in.png">
-            {{user}}
-        </a>
-    </div>
-
 
 	<div class="landing_banner_text">
 		<div class="landing_banner_text-wrapper">

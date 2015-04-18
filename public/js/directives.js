@@ -16,7 +16,7 @@ formFilling.directive("ngFileread", [function () {
                     scope.$apply(function () {
                         scope.ngFileread = loadEvent.target.result;
                     });
-                };
+                }
                 reader.readAsDataURL(changeEvent.target.files[0]);
             });
         }

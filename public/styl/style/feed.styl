@@ -26,62 +26,15 @@
 	float right
 	line-height 35px
 	margin-right 10%
-	span
+	a
 		font-family PTSans
 		font-size 16px
 		text-decoration none
 		color #565656
-		cursor pointer
 		height 35px
 		vertical-align middle
 	>:last-child
 		margin-left 20px
-.item3:before
-		content "Новини вакансій"
-		line-height 1
-		padding 6px 11px
-		border-radius 4px
-		background-color #292f33
-		position absolute
-		top 45px
-		font-family PTSans
-		font-size 12px
-		color #fff
-		text-align center
-		margin-left -15px
-		display none
-.item3:after
-		content ""
-		display none
-		top 40px
-		margin-left 33px
-		border-left 5px solid transparent
-		border-right 5px solid transparent
-		border-bottom 5px solid #292f33
-		position absolute
-.item4:before
-		content "Налаштування профілю"
-		line-height 1
-		display none
-		padding 6px 11px
-		border-radius 4px
-		background-color #292f33
-		position absolute
-		top 45px
-		font-family PTSans
-		font-size 12px
-		color #fff
-		text-align center
-		margin-left 70px
-.item4:after
-		content ""
-		display none
-		top 40px
-		margin-left 135px
-		border-left 5px solid transparent
-		border-right 5px solid transparent
-		border-bottom 5px solid #292f33
-		position absolute
 .feedPage_headerHidden_logo
 	left 10%
 	position absolute
@@ -115,10 +68,11 @@
 	100%
 		opacity: 1
 
-.feedPage_header_banner_nav_item:hover
+.feedPage_header_banner_nav &:first-child:hover
+.feedPage_header_banner_nav &:last-child:hover
 	&:before
 	&:after
-		animation fadeIn 0.4s
+		animation fadeIn 0.6s
 		display block
 
 .feedPage_header_banner_nav
@@ -126,17 +80,15 @@
 	height 50px
 	top 0
 	right 10%
-	span
+	a
 		font-family PTsans
 		font-size 16px
 		color #fff
 		text-decoration none
 		line-height 50px
-		cursor pointer
 	>:last-child
 		margin-left 20px
-
-.item1:before
+	>:first-child:before
 		content "Новини вакансій"
 		line-height 1
 		padding 6px 11px
@@ -150,7 +102,7 @@
 		text-align center
 		left -15px
 		display none
-.item1:after
+	>:first-child:after
 		content ""
 		display none
 		top 40px
@@ -160,7 +112,7 @@
 		border-right 5px solid transparent
 		border-bottom 5px solid #ffffff
 		position absolute
-.item2:before
+	>:last-child:before
 		content "Налаштування профілю"
 		line-height 1
 		display none
@@ -174,7 +126,7 @@
 		color #565656
 		text-align center
 		left 90px
-.item2:after
+	>:last-child:after
 		content ""
 		display none
 		top 40px
@@ -185,40 +137,6 @@
 		border-bottom 5px solid #ffffff
 		position absolute
 
-
-.feedPage_header_banner_nav>:nth-child(3)
-.feedPage_headerHidden_nav>:nth-child(3)
-		margin-left 90px
-.feedPage_header_banner_nav_tip
-	margin-top 3px
-	display none
-	position absolute
-	background-color #fff
-	border-radius 4px
-	box-shadow 0 1px 4px rgba(0,0,0,0.25)
-	border 0 solid rgba(0,0,0,0.25)
-	padding 10px 0
-	z-index 100
-	outline none
-	a
-		display block
-		padding 5px 20px
-		line-height 18px
-		font-size 12px
-		color #66757f
-		text-decoration none
-		font-family PTsans
-		&:hover
-			background-color rgba(220,249,218,.6)
-.feedPage_header_banner_nav_tip::before
-	content ""
-	top -5px
-	left 15px
-	margin-left -5px
-	border-left 5px solid transparent
-	border-right 5px solid transparent
-	border-bottom 5px solid #ffffff
-	position absolute
 
 .feedPage_searchBlock
 	width 100%
@@ -295,10 +213,7 @@
 		border-right 1px solid #74ae80
 		padding 25px 14px
 		background-color rgba(220,249,218,0.2)
-	img
-		max-width 220px
-		max-height 220px
-.feedPage_feed_feedBlock:first-of-type:hover
+#feedPage_feed_feedBlock_first:hover
 	border-top 1px solid #74ae80
 	padding-top 24px
 	background-color rgba(220,249,218,0.2)
@@ -312,18 +227,12 @@
 	color #74ae80
 	padding-bottom 10px
 	margin-right 10px
-
 .feedPage_feed_feedBlock_info_details
+	font-family PTSans
+	font-size 16px
+	color #565656
 	padding-bottom 20px
 	margin-right 10px
-	a
-		text-decoration none
-		font-size 16px
-		color #565656
-		font-family PTSans
-	a:hover
-		text-decoration underline
-
 .feedPage_feed_feedBlock_info_about
 	font-family: "Open Sans"
 	font-size 14px
