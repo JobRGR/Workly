@@ -166,9 +166,9 @@ var ClientApi = function(){
             data.contacts = "Cupertion";
             data.about = "The Best";
             data.kiev = "Kiev";
-			data.img = "standartImg.png";
-			data.tel = "+380983217057";
-			data.website = "www.website.com";
+            data.img = "standartImg.png";
+            data.tel = "+380983217057";
+            data.website = "www.website.com";
             var url = "/api/edit-company";
 
             post(data, url, callback);

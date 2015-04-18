@@ -60,6 +60,19 @@ adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
       };
     };
 
+    $scope.authItem = function($event, $index){
+      var id = $scope.dataObj.data[$index]._id
+        , url =  '/api/admin/auth-' + $scope.type + '/' + id;
+
+      $http.get(url).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
+    };
+
     $scope.addModel = function(){
       $rootScope.add = {
         status: true,

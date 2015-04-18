@@ -10,6 +10,12 @@ adminControllers.controller('addCtrl', ['$scope', '$http', '$rootScope', '$timeo
       type: 'success'
     };
 
+    $scope.addNotificationComapny = {
+      status: false,
+      text: "Permission denied. Don't authorized by company.",
+      type: 'danger'
+    };
+
     $scope.getAddStatus = function(){
       return $rootScope.add ? $rootScope.add.status : false
     };
@@ -39,6 +45,19 @@ adminControllers.controller('addCtrl', ['$scope', '$http', '$rootScope', '$timeo
       return $rootScope.add.type == "admin"
     };
 
+    $scope.getCompanyStatus = function(){
+      if(!$scope.getAddStatus()) return;
+      if(!$scope.isPostAdd()) return;
+      $http.get('/api/get-status').
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+          if(!data.company) $scope.addNotificationComapny.status = true
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
+    };
+
     $scope.addModel = getModel();
 
     function getModel(){
@@ -54,6 +73,7 @@ adminControllers.controller('addCtrl', ['$scope', '$http', '$rootScope', '$timeo
       res.showOther = res.other ? (res.other.length ? true : false) : false;
       return res
     }
+    $scope.getCompanyStatus();
 
     $scope.addWorkItem = function(){
       $scope.addModel.work.push({

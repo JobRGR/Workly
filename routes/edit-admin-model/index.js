@@ -13,4 +13,7 @@ module.exports = function(app) {
     app.post('/api/admin/add-company', checkAuth.checkAdmin,require('./lib/company/add-company').post);
     app.post('/api/admin/add-user', checkAuth.checkAdmin,require('./lib/user/add-user').post);
     app.post('/api/admin/add-post', checkAuth.checkAdmin,require('./lib/post/add-post').post);
+
+    app.get('/api/admin/auth-company/:id', checkAuth.checkAdmin,require('./lib/company/auth-company').get);
+    app.get('/api/admin/auth-user/:id', checkAuth.checkAdmin,require('./lib/user/auth-user').get);
 };

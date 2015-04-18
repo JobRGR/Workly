@@ -1,7 +1,15 @@
 <div class="edit" ng-if="getAddStatus()">
     <div class="edit-bg" ng-click="closeAdd()"></div>
+
     <div class="edit-div">
         <span class="glyphicon glyphicon-remove edit-close" ng-click="closeAdd()"></span>
+
+        <div ng-if="addNotificationComapny.status"
+             class="alert alert-{{addNotificationComapny.type}}"
+             role="alert">
+            <strong>Error!</strong> <span>{{addNotificationComapny.text}}</span>
+        </div>
+
         <div class="container">
             <div class="page-header">
                 <h2>Add {{addName(add.type)}}</h2>
