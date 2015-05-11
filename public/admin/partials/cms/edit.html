@@ -6,10 +6,11 @@
         <div class="col-lg-8" ng-init="value = val">
             <input name='{{key}}'
                    type="text"
-                   ng-model='value'
-                   class="{{key}} form-control"
+                   value='{{value}}'
+                   class="{{key}} form-control cms-input"
                    id="input-{{key}}"
-                   placeholder="Add {{key}}">
+                   placeholder="Add {{key}}"
+                   data-input={{value}}>
         </div>
     </div>
 
@@ -21,7 +22,7 @@
     </div>
 
     <div ng-if="checkArray(val) && checkObject(val)">
-        <h4 style="text-align: center">{{printTitle(key)}}</h4>
+        <!--<h4 style="text-align: center">{{printTitle(key)}}</h4>-->
         <div ng-repeat="val in val"
             ng-include="'tree_item_renderer.html'">
         </div>

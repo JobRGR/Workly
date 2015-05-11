@@ -70,6 +70,8 @@ adminControllers.controller('cmsCtrl', ['$scope', '$http', '$rootScope',
     };
 
     $scope.sendData = function(){
+      getCMSData($scope.cms.edit);
+
       var data = {
         data: $scope.cms.edit,
         filename: $scope.cms.filename
@@ -93,5 +95,31 @@ adminControllers.controller('cmsCtrl', ['$scope', '$http', '$rootScope',
           };
         });
     };
+
+    function getCMSData(obj) {
+      for (var property in obj) {
+        if (!obj.hasOwnProperty(property)) continue
+        if (typeof obj[property] == "object") {
+          getCMSData(obj[property])
+        } else {
+          var val = getCurData(obj[property]);
+          obj[property] = val.length ? val : obj[property];
+        }
+      }
+    }
+
+    function getCurData(val) {
+      var $input = $('.cms-input')
+        , cur , isCur;
+
+      for (var i = 0; i < $input.length; i++) {
+        cur = $input.eq(i).attr('data-input');
+        isCur = cur == val;
+        if (isCur) {
+          return $input.eq(i).val()
+        }
+      }
+      return ""
+    }
 
   }]);
