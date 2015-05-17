@@ -5,7 +5,13 @@ var worklyApp = angular.module('worklyApp', [
     'ngRoute',
     'worklyControllers',
     'companyPageControllers',
-	'checkAuthControllers'
+	'AuthenticationService',
+	'authControllers'
+]);
+var feed = angular.module('feed', [
+	'headerControllers',
+	'feedControllers',
+	'AuthenticationService'
 ]);
 
 worklyApp.config(['$routeProvider',
@@ -23,9 +29,10 @@ var signupApp = angular.module('signupApp', [
     'worklyControllers',
 	'ngCookies',
     'signupControllers',
-    'formFilling'
-]).run(['$cookieStore', '$location', '$http', '$window',
-    function($cookieStore, $location, $http, $window) {
+    'formFilling',
+	'AuthenticationService'
+]).run(['$cookieStore', '$location', '$http', '$window', 'AutService',
+    function($cookieStore, $location, $http, $window, AutService) {
 		$cookieStore.redirectOut = function(){
             var redirectUrl = 'http://' + $window.location.host;
             $window.location.href = redirectUrl;
@@ -33,15 +40,8 @@ var signupApp = angular.module('signupApp', [
 
         $http.get('/api/get-status')
             .success(function(resp) {
-                if (resp.message != 'No Authorized Account')
-				{
-					if (resp.user != undefined)
-						$cookieStore.put("user",resp.user);
-					if (resp.company != undefined)
-						$cookieStore.put("company",resp.company);
-					$cookieStore.redirectOut();
-				}
-
+				var client = resp.user!=undefined ? resp.user : resp.company;
+				AutService.SetCredentials(client);
             })
             .error(function(err){
                 console.log(err);
@@ -51,22 +51,19 @@ var signupApp = angular.module('signupApp', [
 var editApp = angular.module('editApp', [
     'worklyControllers',
     'editControllers',
-    'formFilling'
-]).run(['$cookieStore', '$location', '$http', '$window',
-    function($cookieStore, $location, $http, $window) {
+    'formFilling',
+	'AuthenticationService'
+]).run(['$cookieStore', '$location', '$http', '$window', 'AutService',
+    function($cookieStore, $location, $http, $window, AutService) {
 		$cookieStore.redirectOut = function(){
             var redirectUrl = 'http://' + $window.location.host;
             $window.location.href = redirectUrl;
-        }
+        };
 
         $http.get('/api/get-status')
             .success(function(resp) {
-                if (resp.user != undefined)
-					$cookieStore.put("user",resp.user);
-                if (resp.company != undefined)
-					$cookieStore.put("company",resp.company);
-                if (resp.message != 'ok')
-					$cookieStore.redirectOut();
+				var client = resp.user!=undefined ? resp.user : resp.company;
+				AutService.SetCredentials(client);
             })
             .error(function(err){
                 console.log(err);
@@ -86,17 +83,8 @@ var createPostApp = angular.module('createPostApp', [
 
         $http.get('/api/get-status')
             .success(function(resp) {
-                if (resp.company != undefined)
-					$cookieStore.put("company",resp.company);
-                else
-					$cookieStore.redirectOut();
             })
             .error(function(err){
                 console.log(err);
             });
     }]);
-
-var feed = angular.module('feed', [
-	'headerControllers',
-	'feedControllers'
-]);

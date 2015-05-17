@@ -3,6 +3,51 @@
 /* Directives*/
 
 var formFilling = angular.module('formFilling',[]);
+var checkAuthDirectives = angular.module('checkAuthDirectives',['ngCookies']);
+
+checkAuthDirectives.directive("ngIs", ['$cookieStore','$animate'
+	//function ($cookieStore,$animate) {
+	//	return {
+	//		multiElement: true,
+	//		restrict: 'E',
+	//		scope
+	//		link: function($scope, $element, $attr, ctrl, $transclude) {
+	//			var block, childScope, previousElements;
+	//			$scope.$watch($attr.ngIs, function ngIsWatchAction() {
+	//
+	//				if ($cookieStore.get("user") != undefined || $cookieStore.get("company") != undefined) {
+	//					$scope.userName = $cookieStore.get("user") !== undefined ? $cookieStore.get("user").userName : $cookieStore.get("company").companyName
+	//					if (!childScope) {
+	//						$transclude(function (clone, newScope) {
+	//							childScope = newScope;
+	//							clone[clone.length++] = document.createComment(' end ngIf: ' + $attr.ngIs + ' ');
+	//							block = {
+	//								clone: clone
+	//							};
+	//							$animate.enter(clone, $element.parent(), $element);
+	//						});
+	//					}
+	//				} else {
+	//					if (previousElements) {
+	//						previousElements.remove();
+	//						previousElements = null;
+	//					}
+	//					if (childScope) {
+	//						childScope.$destroy();
+	//						childScope = null;
+	//					}
+	//					if (block) {
+	//						previousElements = getBlockNodes(block.clone);
+	//						$animate.leave(previousElements).then(function () {
+	//							previousElements = null;
+	//						});
+	//						block = null;
+	//					}
+	//				}
+	//			});
+	//		}
+	//	}
+]);
 
 formFilling.directive("ngFileread", [function () {
     return {

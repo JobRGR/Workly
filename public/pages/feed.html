@@ -12,6 +12,7 @@
     <script src="/vendor/bower_components/angular/angular.js"></script>
     <script src="/vendor/bower_components/angular-route/angular-route.js"></script>
     <script src="/vendor/bower_components/angular-resource/angular-resource.js"></script>
+    <script src='/vendor/bower_components/angular-cookies/angular-cookies.js'></script>
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
     <script src="/js/directives.js"></script>
@@ -20,36 +21,39 @@
     <link rel="stylesheet" type="text/css" href="/css/style/feed.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 </head>
-<body ng-controller="headerCtrl">
+<body ng-controller="headerCtrl" >
 
-    <div class="feedPage"  ng-controller="tipsCtrl" ng-init = "class='feedPage_header_banner_nav_item'">
+    <div class="feedPage" ng-controller="tipsCtrl" ng-init="class='feedPage_header_banner_nav_item'" >
 
-        <div class="feedPage_headerHidden">
+        <div class="feedPage_headerHidden" >
             <a href="/" class="feedPage_headerHidden_logo">
                 <span>W</span>
                 <span>orkly</span>
             </a>
 
 
-            <div class="feedPage_headerHidden_nav">
+            <div class="feedPage_headerHidden_nav" >
                 <span class="item3" ng-class="class"  ng-click='showTip(0)'>
                     <img src="/images/feed/user.png">
-                    Brad Pit
+                    <ng-is="true">{{userName}}</ng-is>
+                    <ng-is="false">Реєстрація</ng-is>
+
                 </span>
-                <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(0)'>
+                <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(0)' ng-if="isLoggedIn">
                     <a href="#">Налаштування</a>
                     <a href="#">Аналітика</a>
                     <a href="#">Сповіщення</a>
                     <a href="#">Вийти</a>
                 </div>
-                <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(1)'>
+                <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(1)' ng-if="isLoggedIn">
                     <a href="#">Переглянути</a>
                     <a href="#">Аналітика</a>
                     <a href="#">Списки</a>
                 </div>
                 <span class="item4" ng-class="class" ng-click='showTip(1)'>
                     <img src="/images/feed/vacancyHidden.png">
-                    Вакансії
+                    <ng-is="false">Зайти</ng-is>
+                    <ng-is="true">Вакансії</ng-is>
                 </span>
 
             </div>
@@ -72,22 +76,24 @@
                 <div class="feedPage_header_banner_nav" >
                     <span class="item1" ng-class="class" ng-click='showTip(2)'>
                         <img src="/images/sign-in.png">
-                        Brad Pit
+                        <ng-is="false">Реєстрація</ng-is>
+                        <ng-is="true">{{userName}}</ng-is>
                     </span>
-                    <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(2)'>
+                    <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(2)' ng-if="isLoggedIn">
                         <a href="#">Налаштування</a>
                         <a href="#">Аналітика</a>
                         <a href="#">Сповіщення</a>
                         <a href="#">Вийти</a>
                     </div>
-                    <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(3)'>
+                    <div class = "feedPage_header_banner_nav_tip" tabindex="1" ng-blur='onBlur(3)' ng-if="isLoggedIn">
                         <a href="#">Переглянути</a>
                         <a href="#">Аналітика</a>
                         <a href="#">Списки</a>
                     </div>
                     <span class="item2" ng-class="class" ng-click='showTip(3)'>
                         <img src="/images/feed/vacancy.png">
-                        Вакансії
+                        <ng-is="false">Зайти</ng-is>
+                        <ng-is="true">Вакансії</ng-is>
                     </span>
                 </div>
             </div>

@@ -6,6 +6,14 @@ var worklyControllers = angular.module('worklyControllers', []);
 var companyPageControllers = angular.module('companyPageControllers', []);
 var headerControllers = angular.module('headerControllers', []);
 var feedControllers = angular.module('feedControllers', []);
+var authControllers = angular.module('authControllers', ['AuthenticationService']);
+
+
+
+authControllers.controller('isUserLoggedIn', ['$scope', 'AutService',
+	function($scope, AutService) {
+		$scope.logged = AutService.isLogged;
+	}]);
 
 worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
     function($scope, $http) {
@@ -147,5 +155,4 @@ feedControllers.controller('linkCtrl',['$scope',
 				window.location.replace("/post");
 			};
 		});
-		console.log(feed);
 	}]);
