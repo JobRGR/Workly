@@ -2,8 +2,8 @@
 
 var signupControllers = angular.module('signupControllers', ['ngAnimate']);
 
-signupControllers.controller('SignupCtrl', ['$scope', '$http',
-    function($scope, $http){
+signupControllers.controller('SignupCtrl', ['$scope', '$http', '$cookieStore', 'AuthService',
+    function($scope, $http, $cookieStore, AuthService){
         var signup = this;
 
         this.isUser = true;
@@ -32,7 +32,10 @@ signupControllers.controller('SignupCtrl', ['$scope', '$http',
             $http.post("/api/sign-up-company", this.company)
                 .success(function (resp) {
                     console.log(resp);
-                    if (resp.message == 'ok') signup.isAdditional = true;
+                    if (resp.message == 'ok') {
+                        signup.isAdditional = true;
+                        AuthService.setCredentials(resp);
+                    }
                     else signup.formBadMsg = 'Така пошта вже зареєстрована!';
                 })
                 .error(function (err) {
@@ -49,7 +52,10 @@ signupControllers.controller('SignupCtrl', ['$scope', '$http',
             $http.post("/api/sign-up-user", this.user)
                 .success(function (resp) {
                     console.log(resp);
-                    if (resp.message == 'ok') signup.isAdditional = true;
+                    if (resp.message == 'ok'){
+                        signup.isAdditional = true;
+                        AuthService.setCredentials(resp);
+                    }
                     else signup.formBadMsg = 'Така пошта вже зареєстрована!';
                 })
                 .error(function (err) {

@@ -10,9 +10,9 @@ var authControllers = angular.module('authControllers', ['AuthenticationService'
 
 
 
-authControllers.controller('isUserLoggedIn', ['$scope', 'AutService',
-	function($scope, AutService) {
-		$scope.logged = AutService.isLogged;
+authControllers.controller('isUserLoggedIn', ['$scope', 'AuthService',
+	function($scope, AuthService) {
+		$scope.logged = AuthService.isLogged;
 	}]);
 
 worklyControllers.controller('TemplateCtrl', ['$scope', '$http',

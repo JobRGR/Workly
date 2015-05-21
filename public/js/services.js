@@ -2,26 +2,40 @@
 
 var AuthenticationService = angular.module('AuthenticationService', []);
 
-AuthenticationService.factory('AutService',
-	['$cookieStore', '$rootScope',
-		function ($cookieStore, $rootScope) {
+AuthenticationService.factory('AuthService',
+	['$cookieStore', '$rootScope', '$location', '$window',
+		function ($cookieStore, $rootScope, $location, $window) {
 			var service = {};
 
-			service.SetCredentials = function (client) {
+			service.setCredentials = function (data) {
+				var client = {};
 
-				$rootScope.globals = {
-					currentUser: client
-				};
+				if (data.user != undefined) {
+					client.role = "user";
+					client.name = data.user.firstname + " " + data.user.secondname;
+				} else{
+					client.role = "company";
+					client.name = data.company.companyName;
+				}
 
-				$cookieStore.put('client', $rootScope.globals);
+				$cookieStore.put('client', client);
 			};
 
-			service.isLogged = !($cookieStore.get('client') == undefined);
+			service.getCredentials = function() {
+				return $cookieStore.get('client');
+			};
 
-			service.ClearCredentials = function () {
-				$rootScope.globals = {};
-				$cookieStore.remove('globals');
-				//$http.defaults.headers.common.Authorization = 'Basic ';
+			service.clearCredentials = function () {
+				$cookieStore.remove('client');
+			};
+
+			service.isLogged = function(){
+				return !($cookieStore.get('client') == undefined);
+			};
+
+			service.redirectOut = function(){
+				var redirectUrl = 'http://' + $window.location.host;
+				$window.location.href = redirectUrl;
 			};
 
 			return service;

@@ -31,39 +31,37 @@ var signupApp = angular.module('signupApp', [
     'signupControllers',
     'formFilling',
 	'AuthenticationService'
-]).run(['$cookieStore', '$location', '$http', '$window', 'AutService',
-    function($cookieStore, $location, $http, $window, AutService) {
-		$cookieStore.redirectOut = function(){
-            var redirectUrl = 'http://' + $window.location.host;
-            $window.location.href = redirectUrl;
-        };
-
-        $http.get('/api/get-status')
-            .success(function(resp) {
-				var client = resp.user!=undefined ? resp.user : resp.company;
-				AutService.SetCredentials(client);
-            })
-            .error(function(err){
-                console.log(err);
-            });
+]);
+signupApp.run(['$cookieStore', '$location', '$http', '$window', 'AuthService',
+    function($cookieStore, $location, $http, $window, AuthService) {
+        var isLogged = AuthService.isLogged();
+        if (isLogged){
+            AuthService.redirectOut();
+            return;
+        }
     }]);
 
 var editApp = angular.module('editApp', [
     'worklyControllers',
     'editControllers',
     'formFilling',
+    'ngCookies',
 	'AuthenticationService'
-]).run(['$cookieStore', '$location', '$http', '$window', 'AutService',
-    function($cookieStore, $location, $http, $window, AutService) {
-		$cookieStore.redirectOut = function(){
-            var redirectUrl = 'http://' + $window.location.host;
-            $window.location.href = redirectUrl;
-        };
+]);
+editApp.run(['$rootScope', '$cookieStore', '$location', '$http', '$window', 'AuthService',
+    function($rootScope, $cookieStore, $location, $http, $window, AuthService) {
+        var isLogged = AuthService.isLogged();
+        if (!isLogged){
+            AuthService.redirectOut();
+            return;
+        }
 
         $http.get('/api/get-status')
             .success(function(resp) {
-				var client = resp.user!=undefined ? resp.user : resp.company;
-				AutService.SetCredentials(client);
+                if (resp.user != undefined)
+                    $rootScope.user = resp.user;
+                else
+                    $rootScope.company = resp.company;
             })
             .error(function(err){
                 console.log(err);
@@ -73,18 +71,21 @@ var editApp = angular.module('editApp', [
 var createPostApp = angular.module('createPostApp', [
     'worklyControllers',
     'createPostControllers',
-    'formFilling'
-]).run(['$cookieStore', '$location', '$http', '$window',
-    function($cookieStore, $location, $http, $window) {
-		$cookieStore.redirectOut = function(){
-            var redirectUrl = 'http://' + $window.location.host;
-            $window.location.href = redirectUrl;
-        };
+    'formFilling',
+    'AuthenticationService',
+    'ngCookies'
+]);
+createPostApp.run(['$cookieStore', '$location', '$http', '$window', 'AuthService',
+    function($cookieStore, $location, $http, $window, AuthService) {
+        var isLogged = AuthService.isLogged();
+        if (!isLogged){
+            AuthService.redirectOut();
+            return;
+        }
 
-        $http.get('/api/get-status')
-            .success(function(resp) {
-            })
-            .error(function(err){
-                console.log(err);
-            });
+        var client = AuthService.getCredentials();
+        if (client.role != 'company'){
+            AuthService.redirectOut();
+            return;
+        }
     }]);
