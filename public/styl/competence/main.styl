@@ -1,0 +1,65 @@
+body, html
+  width 100%
+
+.header
+  width 100%
+  height 50px
+  background-color: #fff
+  box-shadow 0 1px 3px rgba(0,0,0,.44), inset 0 2px 0 #fff
+  position fixed
+  .logo
+    line-height 50px
+    font-family 'Pacifico'
+    color #565656
+    font-size 20px
+    padding-left 10%
+  .logo-first-letter
+    color #74ae80
+
+.search-block
+  height 400px
+  width 100%
+  box-sizing border-box
+  background-image url('/images/books.jpg')
+  .content
+    padding-top 135px
+    box-sizing border-box
+    background-color rgba(0,0,0, 0.5)
+    height 100%
+  .title
+    color #fff
+    font-family "PT Sans Caption", sans-serif
+    font-size 48px
+    display block
+    text-align center
+    padding-bottom 30px
+  .input
+    position relative
+    width 500px
+    font-size 20px
+    line-height 40px
+    padding-left 10px
+    outline none
+    display table-cell
+    &-block
+      width 600px
+      margin 0 auto
+    &-row
+      width 100%
+      display table-row
+  &-bt
+    width 100px
+    display table-cell
+    height 40px
+    background-color #6dc780
+    cursor pointer
+    transition 0.1s
+    span
+      line-height 40px
+      font-size 20px
+      color #fff
+      display block
+      text-align center
+  &-bt:hover
+    background-color #48A65C
+    transition 0.1s

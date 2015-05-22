@@ -1,0 +1,14 @@
+<div class="panel panel-default competence-list" ng-if="isData()">
+    <ul class="list-group">
+        <li class="list-group-item"  ng-repeat="file in dataList">
+            <span>{{file.name}} - {{file.title}}</span>
+            <div class="pull-right">
+                    <span class = "glyphicon glyphicon-pencil"
+                          ng-click="editCompetence(file.name)"></span>
+                    <span class = "glyphicon glyphicon-remove"
+                          ng-click="removeCompetence($index)"></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<h3 ng-if="!isData()" class="competence-list">No Data</h3>

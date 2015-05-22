@@ -262,3 +262,48 @@ adminDirectives.directive("cmsEdit", function () {
         controller: 'cmsCtrl'
     };
 });
+
+/*Competence*/
+
+adminDirectives.directive("competenceList", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/competence/competence-list.html",
+        controller: 'competenceCtrl'
+    };
+});
+
+adminDirectives.directive("competenceAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/competence/competence-add.html",
+        controller: 'competenceCtrl'
+    };
+});
+
+adminDirectives.directive("competenceEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/competence/competence-edit.html",
+        controller: 'competenceCtrl'
+    };
+});
+
+adminDirectives.directive("ngFileread", [function () {
+    return {
+        scope: {
+            ngFileread: "="
+        },
+        link: function (scope, element, attributes) {
+            element.bind("change", function (changeEvent) {
+                var reader = new FileReader();
+                reader.onloadend = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.ngFileread = loadEvent.target.result;
+                    });
+                };
+                reader.readAsDataURL(changeEvent.target.files[0]);
+            });
+        }
+    }
+}]);

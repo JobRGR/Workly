@@ -26,6 +26,10 @@ adminApp.
               templateUrl: "partials/sign/sign.html",
               controller: 'mainCtrl'
             }).
+            when('/competence', {
+              templateUrl: "partials/competence/competence.html",
+              controller: 'competenceCtrl'
+            }).
             otherwise({
                 redirectTo: '/'
             });
@@ -63,7 +67,6 @@ adminApp.
             if(isList) $location.path('/');
           }
         })
-
     }]);
 
 
