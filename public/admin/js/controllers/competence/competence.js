@@ -20,7 +20,10 @@ adminControllers.controller('competenceCtrl', ['$scope', '$http', '$rootScope',
         name: '',
         text: '',
         tags: '',
-        img: ''
+        img: '',
+        junior: '',
+        medium: '',
+        senior: ''
       }
     }
 

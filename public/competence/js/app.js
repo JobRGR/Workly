@@ -14,13 +14,10 @@ competenceApp.
           templateUrl: "partials/main/index.html",
           controller: 'mainCtrl'
         }).
-        when('/item', {
+        when('/:item', {
           templateUrl: "partials/item/index.html",
           controller: 'itemCtrl'
-        }).
-        otherwise({
-          redirectTo: '/'
-        });
+        })
     }]).
   run([ '$rootScope', '$location', '$http',
     function ($rootScope, $location, $http) {}]);

@@ -1,2 +1,10 @@
 <header></header>
 <search></search>
+<div class="container">
+    <div class="competence-group" ng-repeat="(key, value) in dataObj">
+        <h3>{{key}}</h3>
+        <div ng-repeat="item in  value | filter:searchQuery" class="competence-item">
+            <a href="./#/{{getHref(item.name)}}">{{item.title}}</a>
+        </div>
+    </div>
+</div>
