@@ -53,7 +53,6 @@ adminApp.
         });
 
       $rootScope.$watch(function(){
-        setTimeout(function() {
           if (!$rootScope.loggedAdmin) {
             var urlList = ['/', '/cms', '/competence']
               , curUrl = $location.path()
@@ -67,7 +66,6 @@ adminApp.
 
             if (isList) $location.path('/');
           }
-        }.bind(this), 1000)
       })
     }]);
 

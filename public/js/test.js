@@ -258,7 +258,7 @@ var ClientApi = function(){
             get(url, callback);
         },
         subscribe: function(){
-            var url = "/api/subscribe/54c2c5927173980117dbf4cd";
+            var url = "/api/subscribe/5558f055fe0d89284ebe4e68";
             get(url, callback);
         },
         getSubscribeUsers: function(){
