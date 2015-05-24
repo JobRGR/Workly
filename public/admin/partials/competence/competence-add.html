@@ -25,12 +25,12 @@
                  ng-if="key != 'img'">
                 <label for='input-{{key}}' class="col-lg-2 control-label sign-label">{{key}}</label>
                 <div class="col-lg-8">
-                    <input name='{{key}}'
-                           type="{{key}}"
-                           ng-model='addCompetenceModel[key]'
-                           class="{{key}} form-control"
-                           id="input-{{key}}"
-                           placeholder="Add {{key}}">
+                    <textarea ng-if="key != 'img'" name='{{key}}'
+                              type="{{key}}"
+                              ng-model='addCompetenceModel[key]'
+                              class="{{key}} form-control"
+                              id="input-{{key}}"
+                              placeholder="Add {{key}}" rows="4"></textarea>
                 </div>
             </div>
         </form>

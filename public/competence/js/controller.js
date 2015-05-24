@@ -14,7 +14,7 @@ competenceControllers.controller('mainCtrl', ['$scope', '$http',
           var key = item.title.toUpperCase()[0];
           if (!dataObj[key]) dataObj[key] = [];
           dataObj[key].push(item);
-        })
+        });
         $scope.dataObj = dataObj;
       }).
       error(function (data) {
@@ -28,12 +28,35 @@ competenceControllers.controller('mainCtrl', ['$scope', '$http',
   }]);
 
 
-competenceControllers.controller('itemCtrl', ['$scope', '$http', '$location',
-  function ($scope, $http, $location) {
+competenceControllers.controller('itemCtrl', ['$scope', '$http', '$location', '$sce',
+  function ($scope, $http, $location, $sce) {
+    var url = '/api/competence/get-item';
+    var name = $location.$$path.substring(1, $location.$$path.length) + '.json';
+    $scope.dataObj = {};
+    $scope.styleBg = {'background-image': 'url("/images/books.jpg")'};
 
+    $http.post(url, {name: name}).
+      success(function (data, status, headers, config) {
+        $scope.dataObj = JSON.parse(data.json);
+        if ($scope.isData('img'))
+          $scope.styleBg['background-image'] = 'url('+$scope.dataObj.img+')'
+      }).
+      error(function (data) {
+        $location.path('/');
+      });
+
+    $scope.isData = function (key) {
+      return $scope.dataObj[key] && $scope.dataObj[key].length
+    }
+
+    $scope.deliberatelyTrustDangerousSnippet = function(key) {
+      return $sce.trustAsHtml($scope.dataObj[key]);
+    };
   }]);
 
-competenceControllers.controller('headerCtrl', ['$scope', '$http',
-  function ($scope, $http) {
-
+competenceControllers.controller('headerCtrl', ['$scope', '$http', '$location',
+  function ($scope, $http, $location) {
+    $scope.isBack = function () {
+      return $location.$$path != '/'
+    }
   }]);

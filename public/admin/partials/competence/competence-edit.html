@@ -23,14 +23,20 @@
             </div>
             <div class="form-group" ng-repeat="(key, value) in addCompetenceModel track by key"
                  ng-if="key != 'name'">
-                <label for='input-{{key}}' class="col-lg-2 control-label sign-label">{{key}}</label>
+                <label class="col-lg-2 control-label sign-label">{{key}}</label>
                 <div class="col-lg-8">
-                    <input name='{{key}}'
+                    <input name='{{key}}' ng-if="key == 'img'"
                            type="{{key}}"
                            ng-model='addCompetenceModel[key]'
                            class="{{key}} form-control"
-                           id="input-{{key}}"
                            placeholder="Add {{key}}">
+
+                     <textarea ng-if="key != 'img'" name='{{key}}'
+                               rows="4"
+                               type="{{key}}"
+                               ng-model='addCompetenceModel[key]'
+                               class="{{key}} form-control"
+                               placeholder="Add {{key}}"></textarea>
                 </div>
             </div>
         </form>

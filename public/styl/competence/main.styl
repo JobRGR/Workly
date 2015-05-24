@@ -13,8 +13,19 @@ body, html
     color #565656
     font-size 20px
     padding-left 10%
+    text-decoration none
   .logo-first-letter
     color #74ae80
+  .back
+    padding-right 10%
+    font-weight 100
+    color #000
+    line-height 50px
+    text-decoration none
+    display: block
+    float: right
+    cursor pointer
+    padding-bottom 1px
 
 .search-block
   height 400px
@@ -63,6 +74,38 @@ body, html
   &-bt:hover
     background-color #48A65C
     transition 0.1s
+
+.item
+  &-banner
+    height 400px
+    width 100%
+    box-sizing border-box
+    .content
+      box-sizing border-box
+      background-color rgba(0,0,0, 0.65)
+      height 100%
+    .title
+      color #fff
+      font-family "PT Sans Caption", sans-serif
+      font-size 48px
+      display block
+      text-align center
+      line-height 400px
+
+  &-container
+    width: 60%
+    margin: 60px auto 0
+    .text
+      padding-bottom: 15px
+      font-size: 18px
+      line-height: 30px
+      font-weight: 100
+      .title
+        font-family "PT Sans Caption", sans-serif
+        display: block
+        font-size 24px
+        font-weight 300
+        line-height 40px
 
 .container
   width 80%

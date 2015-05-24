@@ -54,7 +54,7 @@ adminApp.
 
         $rootScope.$watch(function(){
           if(!$rootScope.loggedAdmin){
-              var urlList = ['/', 'cms']
+              var urlList = ['/', '/cms', '/competence']
                 , curUrl = $location.path()
                 , isList = urlList.indexOf(curUrl) > -1;
 
