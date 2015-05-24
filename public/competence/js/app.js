@@ -3,12 +3,13 @@
 var competenceApp = angular.module('competenceApp', [
   'ngRoute',
   'competenceControllers',
-  'competenceDirectives'
+  'competenceDirectives',
+  'hc.marked'
 ]);
 
 competenceApp.
-  config(['$routeProvider',
-    function($routeProvider) {
+  config(['$routeProvider','markedProvider',
+    function($routeProvider, markedProvider) {
       $routeProvider.
         when('/', {
           templateUrl: "partials/main/index.html",

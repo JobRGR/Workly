@@ -27,6 +27,34 @@
 		{
 			"title": "Ruby",
 			"name": "ruby.json"
+		},
+		{
+			"title": "C#",
+			"name": "csharp.json"
+		},
+		{
+			"title": ".Net",
+			"name": "net.json"
+		},
+		{
+			"title": "PHP",
+			"name": "php.json"
+		},
+		{
+			"title": "MySql",
+			"name": "sql.json"
+		},
+		{
+			"title": "C++",
+			"name": "c++.json"
+		},
+		{
+			"title": "Objective C",
+			"name": "objective-c.json"
+		},
+		{
+			"title": "Android",
+			"name": "andriod.json"
 		}
 	]
 }

@@ -36,37 +36,39 @@ adminApp.
     }]).
   run([ '$rootScope', '$location', '$http',
     function($rootScope, $location, $http) {
-          $rootScope.edit = {
-            status: false,
-            model: {},
-            type: "",
-            editModel: []
-          };
+      $rootScope.edit = {
+        status: false,
+        model: {},
+        type: "",
+        editModel: []
+      };
 
-        $http.get('/api/admin/get-status').
-            success(function(data, status, headers, config) {
-              console.log(arguments);
-              if(data.admin) $rootScope.loggedAdmin = data.admin;
-            }).
-            error(function(data, status, headers, config) {
-              console.log(arguments);
-            });
+      $http.get('/api/admin/get-status').
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+          if(data.admin) $rootScope.loggedAdmin = data.admin;
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
 
-        $rootScope.$watch(function(){
-          if(!$rootScope.loggedAdmin){
-              var urlList = ['/', '/cms', '/competence']
-                , curUrl = $location.path()
-                , isList = urlList.indexOf(curUrl) > -1;
-
-              if(isList) $location.path('/sign-in');
-          } else {
-            var urlList = ['/sign-in','/sign-up']
+      $rootScope.$watch(function(){
+        setTimeout(function() {
+          if (!$rootScope.loggedAdmin) {
+            var urlList = ['/', '/cms', '/competence']
               , curUrl = $location.path()
               , isList = urlList.indexOf(curUrl) > -1;
 
-            if(isList) $location.path('/');
+            if (isList) $location.path('/sign-in');
+          } else {
+            var urlList = ['/sign-in', '/sign-up']
+              , curUrl = $location.path()
+              , isList = urlList.indexOf(curUrl) > -1;
+
+            if (isList) $location.path('/');
           }
-        })
+        }.bind(this), 1000)
+      })
     }]);
 
 

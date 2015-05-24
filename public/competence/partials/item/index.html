@@ -6,19 +6,26 @@
 </div>
 <div class="item-container">
     <div class="text" ng-if="isData('text')">
-        {{dataObj.text}}
+        <!--{{dataObj.text}}-->
+        <div marked="dataObj.text"></div>
     </div>
     <div class="text" ng-if="isData('junior')">
         <span class="title">Junior</span>
-        <span ng-bind-html="deliberatelyTrustDangerousSnippet('junior')"></span>
+        <!--<span ng-bind-html="deliberatelyTrustDangerousSnippet('junior')"></span>-->
+        <div marked="dataObj.junior">
+        </div>
     </div>
     <div class="text" ng-if="isData('medium')">
         <span class="title">Medium</span>
-        <span ng-bind-html="deliberatelyTrustDangerousSnippet('medium')"></span>
+        <!--<span ng-bind-html="deliberatelyTrustDangerousSnippet('medium')"></span>-->
+        <div marked="dataObj.medium">
+        </div>
     </div>
     <div class="text" ng-if="isData('senior')">
         <span class="title">Senior</span>
-        <span ng-bind-html="deliberatelyTrustDangerousSnippet('senior')"></span>
+        <!--<span ng-bind-html="deliberatelyTrustDangerousSnippet('senior')"></span>-->
+        <div marked="dataObj.senior">
+        </div>
     </div>
 </div>
 <footer></footer>

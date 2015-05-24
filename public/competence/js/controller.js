@@ -25,6 +25,10 @@ competenceControllers.controller('mainCtrl', ['$scope', '$http',
       var index = name.lastIndexOf('.');
       return name.substring(0, index)
     }
+
+    $scope.isFilter = function(key) {
+      return $scope.searchQuery.length ? key.toLowerCase() == $scope.searchQuery[0].toLowerCase() : true
+    }
   }]);
 
 
@@ -47,7 +51,7 @@ competenceControllers.controller('itemCtrl', ['$scope', '$http', '$location', '$
 
     $scope.isData = function (key) {
       return $scope.dataObj[key] && $scope.dataObj[key].length
-    }
+    };
 
     $scope.deliberatelyTrustDangerousSnippet = function(key) {
       return $sce.trustAsHtml($scope.dataObj[key]);
