@@ -13,6 +13,7 @@ adminControllers.controller('competenceCtrl', ['$scope', '$http', '$rootScope',
       type: 'success'
     };
     $scope.addCompetenceModel = emptyCompetenceModel();
+    $scope.queryCompetence = '';
 
     function emptyCompetenceModel() {
       return {
@@ -22,7 +23,7 @@ adminControllers.controller('competenceCtrl', ['$scope', '$http', '$rootScope',
         tags: '',
         img: '',
         junior: '',
-        medium: '',
+        middle: '',
         senior: ''
       }
     }
@@ -113,7 +114,7 @@ adminControllers.controller('competenceCtrl', ['$scope', '$http', '$rootScope',
         error(function (data, status, headers, config) {
           console.log(data);
         });
-    }
+    };
 
     function saveList() {
       setData({
