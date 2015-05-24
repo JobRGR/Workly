@@ -17,3 +17,10 @@ competenceDirectives.directive("search", function () {
         controller: 'mainCtrl'
     };
 });
+
+competenceDirectives.directive("footer", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "../partials/footer.html"
+    };
+});
