@@ -9,6 +9,8 @@ headerControllers.controller('HeaderCtrl',['$scope', '$http', 'AuthService',
         if (credentials != undefined)
             $scope.client = credentials;
 
+        AuthService.isContentPage() ? onScrollEvent(): filledHeader();
+
         $scope.showLoginForm = function(){
             $login = $('.login-back');
             $login.css({'opacity': 0, 'display':'block'});
@@ -68,7 +70,7 @@ headerControllers.controller('loginCtrl',['$scope', '$http', 'AuthService',
                         return;
                     }
                     AuthService.setCredentials(data);
-                    AuthService.refresh();
+                    AuthService.redirectToFeed();
                 })
                 .error(function(err){
                     console.log(err);
@@ -77,41 +79,49 @@ headerControllers.controller('loginCtrl',['$scope', '$http', 'AuthService',
 
     }]);
 
-$(document).on('ready',function(){
-    $(window).scroll(function(){
-        var $header = $('.header');
-        var imgs = $('.menu').find('img');
-        var top = $(window).scrollTop();
-        var hColor = $header.css('background-color');
-        var nColor = 'rgb(255, 255, 255)';
-        if (top == 0){
-            $header.css({
-                'background-color': 'transparent',
-                'color': 'rgb(255, 255, 255',
-                'box-shadow': 'none'
-            });
-            $('.header__logo').css('opacity', 0);
-            if ($(imgs[0]).attr('src').indexOf('-black') > -1) {
-                var img0 = $(imgs[0]).attr('src').split('-black');
-                $(imgs[0]).attr('src', img0[0] + img0[1]);
-                var img1 = $(imgs[1]).attr('src').split('-black');
-                $(imgs[1]).attr('src', img1[0] + img1[1]);
-            }
-            return;
-        }
-        if (hColor != nColor){
-            $header.css({
-                'background-color': nColor,
-                'color': 'rgb( 86, 86, 86)',
-                'box-shadow': '0.5px 0.866px 3px 0px rgb( 0, 0, 0 )'
-            });
-            $('.header__logo').css('opacity', 1);
-            if ($(imgs[0]).attr('src').indexOf('-black') == -1) {
-                var img0 = $(imgs[0]).attr('src').split('.png');
-                $(imgs[0]).attr('src', img0[0] + '-black.png');
-                var img1 = $(imgs[1]).attr('src').split('.png');
-                $(imgs[1]).attr('src', img1[0] + '-black.png');
-            }
-        }
+
+function transparentHeader(){
+    var $header = $('.header');
+    var imgs = $($header.find('.menu')).find('img');
+    $header.css({
+        'background-color': 'transparent',
+        'color': 'rgb(255, 255, 255)',
+        'box-shadow': 'none'
     });
-});
+    $('.header__logo').css('opacity', 0);
+    if ($(imgs[0]).attr('src').indexOf('-black') > -1) {
+        for(var i = 0; i < imgs.length; ++i) {
+            var img = $(imgs[i]).attr('src').split('-black');
+            $(imgs[i]).attr('src', img[0] + img[1]);
+        }
+    }
+}
+
+function filledHeader(){
+    var $header = $('.header');
+    var imgs = $($header.find('.menu')).find('img');
+    $header.css({
+        'background-color': 'rgb(255, 255, 255)',
+        'color': 'rgb(86, 86, 86)',
+        'box-shadow': '0.5px 0.866px 3px 0px rgb( 0, 0, 0 )'
+    });
+    $('.header__logo').css('opacity', 1);
+    if ($(imgs[0]).attr('src').indexOf('-black') == -1) {
+        for(var i = 0; i < imgs.length; ++i) {
+            var img = $(imgs[i]).attr('src').split('.png');
+            $(imgs[i]).attr('src', img[0] + '-black.png');
+        }
+    }
+}
+
+function onScrollEvent() {
+    $(window).scroll(function () {
+        var top = $(window).scrollTop();
+        var hColor = $('.header').css('background-color');
+        var nColor = 'rgb(255, 255, 255)';
+        if (top == 0)
+            transparentHeader();
+        else if (hColor != nColor)
+            filledHeader();
+    });
+}

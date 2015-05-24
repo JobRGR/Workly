@@ -7,7 +7,7 @@
             </div>
             <form name="formLogin" ng-submit="logIn()">
                 <input type="email" placeholder="Пошта" ng-model="passport.mail" required>
-                <input placeholder="Пароль" ng-model="passport.password" required>
+                <input type="password" placeholder="Пароль" ng-model="passport.password" required>
                 <button type="submit">Війти</button>
             </form>
         </div>
@@ -18,7 +18,7 @@
 <div class="header" ng-controller="HeaderCtrl">
     <div class="header-box">
         <div class="header__logo"><span>W</span>orkly</div>
-        <div class="menu" ng-if="client">
+        <div class="menu" ng-show="client">
             <div class="menu-nav">
                 <img src="/images/sign-in.png"> {{client.name}}
                 <div class="menu-list">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="menu" ng-if="!client">
+        <div class="menu" ng-show="!client">
             <a class="menu-nav" href="/signup">
                 <img src="/images/sign-up.png"> Зареєструватись
             </a>

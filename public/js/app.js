@@ -47,6 +47,7 @@ var editApp = angular.module('editApp', [
     'editControllers',
     'formFilling',
     'ngCookies',
+    'headerControllers',
 	'AuthenticationService'
 ]);
 editApp.run(['$rootScope', '$cookieStore', '$location', '$http', '$window', 'AuthService',
@@ -72,6 +73,7 @@ editApp.run(['$rootScope', '$cookieStore', '$location', '$http', '$window', 'Aut
 var createPostApp = angular.module('createPostApp', [
     'worklyControllers',
     'createPostControllers',
+    'headerControllers',
     'formFilling',
     'AuthenticationService',
     'ngCookies'

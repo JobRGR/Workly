@@ -17,15 +17,18 @@
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
     <script src="/js/createPostControllers.js"></script>
+    <script src="/js/headerControllers.js"></script>
     <script src="/js/directives.js"></script>
     <script src="/js/services.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/header.css">
     <link rel="stylesheet" type="text/css" href="/css/style/create-post.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 <body ng-controller="TemplateCtrl" >
     <div class="container" ng-cloak>
+        <ng-include src="templatesUrl.header"></ng-include>
         <div ng-controller="createPostCtrl as post" ng-click="post.resetBadMsg()" class="view-container post-container">
             <ng-include src="templatesUrl.createPost"></ng-include>
         </div>

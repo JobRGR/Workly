@@ -38,8 +38,21 @@ AuthenticationService.factory('AuthService',
 				$window.location.href = redirectUrl;
 			};
 
+			service.redirectToFeed = function(){
+				var redirectUrl = 'http://' + $window.location.host + '/feed';
+				$window.location.href = redirectUrl;
+			};
+
 			service.refresh = function(){
 				$window.location.reload();
+			};
+
+			service.isContentPage = function(){
+				var host = 'http://' + $window.location.host;
+				var href = $window.location.href;
+				if (href == host + '/' || href == host + '/feed/')
+					return true;
+				return false;
 			};
 
 			return service;
