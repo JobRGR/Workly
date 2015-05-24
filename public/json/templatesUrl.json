@@ -1,6 +1,7 @@
 {
   "landing":"/partials/landing.html",
   "footer":"/partials/footer.html",
+  "header":"/partials/header.html",
   "signup":{
     "user1":"/partials/signup/user.html",
     "user2":"/partials/signup/user-details.html",

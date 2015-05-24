@@ -1,0 +1,49 @@
+<div class="login-back" ng-controller="loginCtrl" ng-click="hideLoginForm()">
+    <div class="login-box" ng-click="$event.stopPropagation()">
+        <div class="login-form">
+            <div class="login-form__text">
+                <div class="entrance">Вхід</div>
+                <a href="/signup" class="registration">Реєстрація→</a>
+            </div>
+            <form name="formLogin" ng-submit="logIn()">
+                <input type="email" placeholder="Пошта" ng-model="passport.mail" required>
+                <input placeholder="Пароль" ng-model="passport.password" required>
+                <button type="submit">Війти</button>
+            </form>
+        </div>
+        <span class="form-error"><span></span>{{formBadMsg}}</span>
+    </div>
+</div>
+
+<div class="header" ng-controller="HeaderCtrl">
+    <div class="header-box">
+        <div class="header__logo"><span>W</span>orkly</div>
+        <div class="menu" ng-if="client">
+            <div class="menu-nav">
+                <img src="/images/sign-in.png"> {{client.name}}
+                <div class="menu-list">
+                    <div class="menu-list-box">
+                        <a href="{{item.url}}" class="menu-item" ng-repeat="item in clientList">{{item.text}}</a>
+                        <div class="menu-item" ng-click="logOut()">Вийти</div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-nav mar-left">
+                <img src="/images/vacancy.png"> Вакансії
+                <div class="menu-list">
+                    <div class="menu-list-box">
+                    <a href="{{item.url}}" class="menu-item" ng-repeat="item in vacancyList">{{item.text}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu" ng-if="!client">
+            <a class="menu-nav" href="/signup">
+                <img src="/images/sign-up.png"> Зареєструватись
+            </a>
+            <div class="menu-nav mar-left" ng-click="showLoginForm()">
+                <img src="/images/sign-in.png"> Увійти
+            </div>
+        </div>
+    </div>
+</div>

@@ -38,5 +38,9 @@ AuthenticationService.factory('AuthService',
 				$window.location.href = redirectUrl;
 			};
 
+			service.refresh = function(){
+				$window.location.reload();
+			};
+
 			return service;
 		}]);

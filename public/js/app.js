@@ -3,6 +3,7 @@
 var worklyApp = angular.module('worklyApp', [
 	'ngCookies',
     'ngRoute',
+    'headerControllers',
     'worklyControllers',
     'companyPageControllers',
 	'AuthenticationService',

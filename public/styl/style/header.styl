@@ -1,0 +1,183 @@
+.header-box
+  height 40px
+  width 100%
+  max-width 1100px
+  margin auto
+  background-color transparent
+
+.header
+  display block
+  position fixed
+  user-select none
+  width 100%
+  background-color transparent
+  color rgb( 255, 255, 255 )
+  transition background-color 1s ease
+  z-index 999
+  & .header__logo
+    display inline-block
+    height 35px
+    font normal 20px "Pacifico"
+    line-height 35px
+    color rgb( 86, 86, 86)
+    opacity 0
+    & span
+      color rgb( 116, 174, 128 )
+  & .menu
+    display inline-block
+    position relative
+    font normal 16px "OpenSans"
+    float right
+    line-height 40px
+    & .menu-nav
+      display inline-block
+      cursor pointer
+      text-decoration none
+      color inherit
+      &:hover
+        display inline-block
+        & .menu-list
+          display block
+          position absolute
+          background-color transparent
+          margin-left 5px
+          & .menu-list-box
+            display block
+            background-color rgb(255, 255, 255)
+            border-radius 3px
+            margin-top 20px
+            padding 5px 15px
+            box-shadow 0.5px 0.866px 3px 0px rgb( 0, 0, 0 )
+          & .menu-item
+            display block
+            white-space nowrap
+            line-height 30px
+            font-size 14px
+            text-decoration underline
+            color rgb(86, 86, 86)
+    & .mar-left
+      margin-left 20px
+    & .menu-list
+      display none
+    & .menu-list-box
+      display none
+      &::before
+        display block
+        position absolute
+        content ' '
+        background-color rgb(255, 255, 255)
+        border 1px solid rgb(255, 255, 255)
+        height 20px
+        width 20px
+        top 10px
+        left 20px
+        transform rotate(45deg)
+        box-shadow -1px -1px 1px -0.5px rgb( 0, 0, 0 )
+
+.login-back
+  position fixed
+  display none
+  opacity 0
+  z-index 1000
+  width 100%
+  height 100%
+  background-color rgba(0, 0, 0, 0.5)
+
+.login-box
+  display block
+  position relative
+  width 507px
+  height 322px
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+  background-color rgb( 255, 255, 255 )
+  border 2px solid rgb(255, 255, 255)
+  border-radius 5px
+  & .login-form
+    display block
+    width 432px
+    margin auto
+    & .login-form__text
+      display block
+      width 100%
+      margin 30px 0px
+      & .entrance
+        display inline-block
+        font normal 30px "OpenSans"
+        color rgb( 116, 174, 128 )
+      & .registration
+        display inline-block
+        float right
+        font normal 20px "OpenSans"
+        text-decoration underline
+        color rgb( 86, 86, 86 )
+    & input
+      display block
+      box-sizing border-box
+      width 100%
+      height 43px
+      border none
+      outline none
+      border-radius 5px
+      padding 15px
+      margin-bottom 15px
+      background-color rgb(245, 245, 245)
+      font normal 24px "OpenSans"
+      color rgb( 86, 86, 86 )
+    & button
+      display block
+      cursor pointer
+      font normal 24px "Open Sans"
+      width 100%
+      height 44px
+      line-height 44px
+      margin 30px 0px
+      text-align center
+      border none
+      outline none
+      border-radius 5px
+      background-color rgb( 109, 199, 128 )
+      box-shadow 0px 4px 1px 0px rgb( 51, 176, 97 )
+      color rgb( 255, 255, 255 )
+      &:hover
+        background-color rgb( 51, 176, 97 )
+      &:active
+        margin 25px 0px 15px 0px
+        box-shadow 0px 4px 1px 0px rgb( 109, 199, 128 )
+  & .form-error
+    position absolute
+    top 104%
+    display none
+    text-align center
+    width 100%
+    height 40px
+    font normal 16px "OpenSans"
+    color rgb( 255, 255, 255 )
+    line-height 40px
+    border-radius 5px
+    background-color rgb( 218, 109, 109 )
+    & span
+      position absolute
+      display block
+      left 11%
+      top -11px
+      width 28px
+      height 28px
+      background-color inherit
+      border-radius 4px
+      transform rotate(45deg)
+      &::before
+        content '!'
+        display block
+        width 23px
+        height 23px
+        margin-left 14px
+        margin-top 14px
+        font normal 17px "OpenSans"
+        color rgb( 218, 109, 109 )
+        border-radius 50%
+        background-color rgb( 255, 255, 255 )
+        transform rotate(-45deg)
+
+
