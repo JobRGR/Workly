@@ -6,7 +6,7 @@ var Post = require('../../../models/post').Post;
 exports.get = function(req, res, next) {
     async.waterfall([
         function(callback){
-            Post.find({postAuthorId: req.params.id}, callback)
+            Post.find({authorId: req.params.id}, callback)
         }
     ], function(err, post){
         Company.findById(req.params.id, function (err, company) {
@@ -16,7 +16,7 @@ exports.get = function(req, res, next) {
 
             if(err){
                 message.message = err.message ? err.message : err;
-                return res.send(obj);
+                return res.send(message);
             }
 
             if(!company){
