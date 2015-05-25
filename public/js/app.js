@@ -12,7 +12,8 @@ var worklyApp = angular.module('worklyApp', [
 var feed = angular.module('feed', [
 	'headerControllers',
 	'feedControllers',
-	'AuthenticationService'
+	'AuthenticationService',
+	'ngCookies'
 ]);
 
 worklyApp.config(['$routeProvider',

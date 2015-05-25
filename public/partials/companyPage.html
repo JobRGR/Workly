@@ -8,7 +8,7 @@
 		<div class="compamyPage_info-card">
 			<div class="compamyPage_info-card_profile">
 				<div class="compamyPage_info-card_profile-image">
-					<img src="/images/companies/{{img}}">
+					<img src="{{img}}">
 				</div>
 	
 				<div class="compamyPage_info-card_profile-title">{{companyName}}</div>
@@ -20,8 +20,8 @@
 					<div class="compamyPage_info-card_profile-contacts_website"><a href="{{website}}">{{website}}</a></div>
 				</div>
 	
-				<div class="compamyPage_info-card_profile-button" ng-contoller="companyPageFollowCtrl">
-					{{text}}
+				<div class="compamyPage_info-card_profile-button">
+					{{followText}}
 				</div>
 			</div>
 			<div class="compamyPage_circles"></div>
@@ -32,7 +32,9 @@
 			<div class="compamyPage_vacancy-card_list"  ng-repeat="id in vacancies">
 
 				<div class="compamyPage_vacancy-card_list_item" ng-controller="companyPageVacLoadingCtrl">
-					<a href="#/company/{{companyId}}">{{authorName}}</a>
+					<div>
+                        <a href="#/company/{{companyId}}">{{authorName}}</a>
+                    </div>
 					<span>{{city}}</span> | <span>{{date}}</span>
 				</div>
 

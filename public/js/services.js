@@ -13,9 +13,11 @@ AuthenticationService.factory('AuthService',
 				if (data.user != undefined) {
 					client.role = "user";
 					client.name = data.user.firstname + " " + data.user.secondname;
+					client.id = data.user._id;
 				} else{
 					client.role = "company";
 					client.name = data.company.companyName;
+					client.id = data.company._id;
 				}
 
 				$cookieStore.put('client', client);
