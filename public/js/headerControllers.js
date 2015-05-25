@@ -1,4 +1,4 @@
-var headerControllers = angular.module('headerControllers', []);
+var headerControllers = angular.module('headerControllers', ['AuthenticationService']);
 
 headerControllers.controller('HeaderCtrl',['$scope', '$http', 'AuthService',
     function($scope, $http, AuthService){

@@ -9,12 +9,44 @@ var worklyApp = angular.module('worklyApp', [
 	'AuthenticationService',
 	'authControllers'
 ]);
+
 var feed = angular.module('feed', [
 	'headerControllers',
 	'feedControllers',
 	'AuthenticationService',
 	'ngCookies'
 ]);
+
+var userApp = angular.module('userApp',[
+    'AuthenticationService',
+    'ngCookies',
+    'userControllers',
+    'worklyControllers',
+    'headerControllers'
+]);
+userApp.run(['$cookieStore', '$rootScope', '$location', '$http', '$window', 'AuthService',
+    function($cookieStore, $rootScope, $location, $http, $window, AuthService) {
+        var isLogged = AuthService.isLogged();
+        if (!isLogged){
+            AuthService.redirectOut();
+            return;
+        }
+
+        var href = $window.location.href.split('/');
+        var id = href[href.length - 1];
+        $http.get('/api/user/' + id)
+            .success(function(resp){
+                if(resp.message != 'ok'){
+                    AuthService.redirectOut();
+                    return;
+                }
+               $rootScope.user = resp.user;
+            })
+            .error(function(err){
+                //AuthService.redirectOut();
+                console.log(err);
+            });
+    }]);
 
 worklyApp.config(['$routeProvider',
     function($routeProvider) {
