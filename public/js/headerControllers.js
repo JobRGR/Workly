@@ -1,7 +1,7 @@
-var headerControllers = angular.module('headerControllers', ['AuthenticationService']);
+var headerControllers = angular.module('headerControllers', ['AuthenticationService', 'ngCookies']);
 
-headerControllers.controller('HeaderCtrl',['$scope', '$http', 'AuthService',
-    function($scope, $http, AuthService){
+headerControllers.controller('HeaderCtrl',['$scope', '$cookies', '$http', 'AuthService',
+    function($scope, $cookies, $http, AuthService){
         var credentials = AuthService.getCredentials();
         $scope.clientList = [];
         $scope.vacancyList = [];

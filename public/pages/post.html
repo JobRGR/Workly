@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Feed</title>
+    <title>Vacancy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <base href="/">
 
     <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
 
@@ -18,20 +19,19 @@
     <script src="/js/controllers.js"></script>
     <script src="/js/directives.js"></script>
     <script src="/js/services.js"></script>
-    <script src="/js/userControllers.js"></script>
     <script src="/js/headerControllers.js"></script>
     <script src="/js/postCtrl.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/style/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/header.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 </head>
 <body ng-controller="TemplateCtrl" ng-cloak>
+    <ng-include src="templatesUrl.header"></ng-include>
     <div class="postPage" ng-controller="postCtrl">
-        <div class="postPage_logo">
-            <a href="/"><img src="/images/mid_logo.png"></a>
-        </div>
+      <img class="postPage_logo" src="/images/mid_logo.png">
         <div class="postPage_cards-wrapper" ng-controller="companyPageProfileCtrl">
             <div class="postPage_tiangle"></div>
 
@@ -39,7 +39,7 @@
                 <div class="postPage_info_companyInfo">
 
                     <div class="postPage_info_companyInfo-image">
-                        <img ng-src="{{getSrcCompany()}}">
+                        <img class="cip-img" ng-src="{{getSrcCompany()}}">
                     </div>
 
                     <a href="./company/{{postObj.authorId}}" class="postPage_info_companyInfo-title" ng-if="isPostData('authorName')">
@@ -58,7 +58,7 @@
                     <div ng-if="isPostData('requirements')">
                         <br>
                         <h1>Необхідні навички</h1>
-                        <p>{{postObj.requirements}}}</p>
+                        <p>{{postObj.requirements}}</p>
                         <!--<p>володіння HTML і CSS;<br>-->
                         <!--знання JavaScript, JSON, AJAX;<br>-->
                         <!--впевнені знання крос-браузерного і крос-платформного-->
@@ -70,13 +70,13 @@
                     <div ng-if="isPostData('responsibilities')">
                         <br>
                         <h1>Обов'язки</h1>
-                        <p>{{postObj.responsibilities}}}</p>
+                        <p>{{postObj.responsibilities}}</p>
                         <!--<p>Працювати потрібно буде з ReactJS, Webpack, менше (повний стек тут stackshare.io/...bylab/webbylab, використовуємо ES6 і CommonJS.</p>-->
                     </div>
                     <div  ng-if="isPostData('offer')">
                         <br>
                         <h1>Пропонуємо</h1>
-                        <p>{{postObj.offer}}}</p>
+                        <p>{{postObj.offer}}</p>
                         <br>
                         <!--<p>-->
                             <!--місце роботи в самому центрі Києва (3 хв ходьби від ст.м. Театральна.);<br>-->

@@ -1,6 +1,6 @@
 "use strict";
 
-var AuthenticationService = angular.module('AuthenticationService', []);
+var AuthenticationService = angular.module('AuthenticationService', ['ngCookies']);
 
 AuthenticationService.factory('AuthService',
 	['$cookieStore', '$rootScope', '$location', '$window',
