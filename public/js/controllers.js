@@ -26,9 +26,9 @@ worklyControllers.controller('TemplateCtrl', ['$scope', '$http',
             });
     }]);
 
-companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$routeParams','AuthService',
-    function($scope, $http, $routeParams, AuthService) {
-        var id = $routeParams.companyId;
+companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$location','AuthService',
+    function($scope, $http, $location, AuthService) {
+        var id = $location.$$absUrl.split('company/')[1];
 		$('.compamyPage_info-card_profile-button').click(function() {
 			$http.get("/api/subscribe/"+id)
 				.success(function(){
@@ -79,14 +79,14 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
             });
     }]);
 
-companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http', '$routeParams',
-    function($scope, $http, $routeParams){
+companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http', '$location',
+    function($scope, $http, $location){
         $http.get("/api/post/"+$scope.id)
             .success(function (resp) {
                 $scope.authorName = resp.post.authorName;
                 $scope.city = resp.post.city;
                 $scope.date = resp.post.date;
-                $scope.companyId = $routeParams.companyId;
+                $scope.companyId =  $location.$$absUrl.split('company/')[1];;
             })
             .error(function (err) {
                 console.log(err);

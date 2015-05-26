@@ -51,9 +51,6 @@ userApp.run(['$cookieStore', '$rootScope', '$location', '$http', '$window', 'Aut
 worklyApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/company/:companyId', {
-                templateUrl: 'partials/companyPage.html'
-            }).
             otherwise({
                 templateUrl: 'partials/landing.html' //edit render
             });
