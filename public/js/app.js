@@ -5,13 +5,13 @@ var worklyApp = angular.module('worklyApp', [
     'ngRoute',
     'headerControllers',
     'worklyControllers',
-    'companyPageControllers',
 	'AuthenticationService',
 	'authControllers'
 ]);
 
-var feed = angular.module('feed', [
-	'headerControllers',
+var feedApp = angular.module('feedApp', [
+    'worklyControllers',
+    'renameControllers',
 	'feedControllers',
 	'AuthenticationService',
 	'ngCookies'
@@ -41,6 +41,37 @@ userApp.run(['$cookieStore', '$rootScope', '$location', '$http', '$window', 'Aut
                     return;
                 }
                $rootScope.user = resp.user;
+            })
+            .error(function(err){
+                //AuthService.redirectOut();
+                console.log(err);
+            });
+    }]);
+
+var companyApp = angular.module('companyApp',[
+    'AuthenticationService',
+    'ngCookies',
+    'companyPageControllers',
+    'worklyControllers',
+    'headerControllers'
+]);
+companyApp.run(['$cookieStore', '$rootScope', '$location', '$http', '$window', 'AuthService',
+    function($cookieStore, $rootScope, $location, $http, $window, AuthService) {
+        var isLogged = AuthService.isLogged();
+        if (!isLogged){
+            AuthService.redirectOut();
+            return;
+        }
+
+        var href = $window.location.href.split('/');
+        var id = href[href.length - 1];
+        $http.get('/api/company/' + id)
+            .success(function(resp){
+                if(resp.message != 'ok'){
+                    AuthService.redirectOut();
+                    return;
+                }
+                $rootScope.company = resp.company;
             })
             .error(function(err){
                 //AuthService.redirectOut();

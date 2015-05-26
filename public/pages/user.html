@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Feed</title>
+    <title>Specialist</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-
+    <base href="/">
     <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
 
     <script src="/vendor/bower_components/angular/angular.js"></script>
@@ -28,7 +28,7 @@
 </head>
 <body ng-controller="TemplateCtrl">
 <ng-include src="templatesUrl.header"></ng-include>
-<div class="userPage">
+<div class="userPage" ng-cloak>
     <div class="userPage_logo">
         <a href="/"><img src="/images/mid_logo.png"></a>
     </div>
@@ -38,8 +38,8 @@
         <div class="userPage_info">
             <div class="userPage_info_userInfo">
 
-                <div class="userPage_info_userInfo-image">
-                    <img src="/images/users/1.png">
+                <div class="userPage_info_userInfo-image" ng-if="user.img">
+                    <img ng-src="{{user.img}}">
                 </div>
 
                 <div class="userPage_info_userInfo_about">
@@ -48,32 +48,32 @@
                             Шукає роботу
                         </div>
                         <div class="userPage_info_userInfo_about_name">
-                            Бред Піт
+                            {{user.firstname + ' ' + user.secondname}}
                         </div>
                         <div class="userPage_info_userInfo_about_job">
-                            JuniorFront-End Developrt
+                            {{user.position}}
                         </div>
                     </div>
                     <div class="userPage_info_userInfo_details">
-                        <div class="userPage_info_userInfo_details_place">{{user.city}}</div>
-                        <div class="userPage_info_userInfo_details_age">{{Date.now}}</div>
-                        <div class="userPage_info_userInfo_details_num">0939673073</div>
-                        <div class="userPage_info_userInfo_details_mail">a.gambit.gregory@gmail.com</div>
+                        <div class="userPage_info_userInfo_details_place" ng-if="user.city">{{user.city}}</div>
+                        <div class="userPage_info_userInfo_details_age" ng-if="user.dob">{{user.dob}}</div>
+                        <div class="userPage_info_userInfo_details_num" ng-if="user.tel">{{user.tel}}</div>
+                        <div class="userPage_info_userInfo_details_mail" ng-if="user.mail">{{user.mail}}</div>
                     </div>
                 </div>
 
                 <div class="userPage_circles"></div>
 
                 <div class="userPage_info_userInfo_bio">
-                    <div class="userPage_info_userInfo_bio_block">
+                    <div class="userPage_info_userInfo_bio_block" ng-show="user.about">
                         <h1>Про себе</h1>
                         <span>{{user.about}}</span>
                     </div>
-                    <div class="userPage_info_userInfo_bio_block">
+                    <div class="userPage_info_userInfo_bio_block" ng-show="user.skills">
                         <h1>Навички</h1>
                         <span>{{user.skills}}</span>
                     </div>
-                    <div class="userPage_info_userInfo_bio_block">
+                    <div class="userPage_info_userInfo_bio_block" ng-show="user.work.length">
                         <h1>Досвід роботи</h1>
                         <span ng-repeat="work in user.work">
                             <h2>{{work.job}}</h2>
@@ -82,7 +82,7 @@
                             {{work.description}}
                         </span>
                     </div>
-                    <div class="userPage_info_userInfo_bio_block">
+                    <div class="userPage_info_userInfo_bio_block" ng-show="user.study.length">
                         <h1>Освіта</h1>
                         <span ng-repeat="study in user.study">
                             <h2>{{study.university}}</h2>
