@@ -20,7 +20,9 @@
         <div class="header__logo"><span>W</span>orkly</div>
         <div class="menu" ng-show="client">
             <div class="menu-nav">
-                <img src="/images/sign-in.png"> {{client.name}}
+                <a href="{{'/'+client.role+'/'+client.id}}">
+                    <img src="/images/sign-in.png"> {{client.name}}
+                </a>
                 <div class="menu-list">
                     <div class="menu-list-box">
                         <a href="{{item.url}}" class="menu-item" ng-repeat="item in clientList">{{item.text}}</a>
@@ -29,7 +31,9 @@
                 </div>
             </div>
             <div class="menu-nav mar-left">
-                <img src="/images/vacancy.png"> Вакансії
+                <a href="/feed">
+                    <img src="/images/vacancy.png"> Вакансії
+                </a>
                 <div class="menu-list">
                     <div class="menu-list-box">
                     <a href="{{item.url}}" class="menu-item" ng-repeat="item in vacancyList">{{item.text}}</a>

@@ -28,7 +28,7 @@
 </head>
 <body ng-controller="TemplateCtrl">
 <ng-include src="templatesUrl.header"></ng-include>
-<div class="userPage" ng-cloak>
+<div class="userPage" ng-controller="UserCtrl" ng-cloak>
     <div class="userPage_logo">
         <a href="/"><img src="/images/mid_logo.png"></a>
     </div>
@@ -77,8 +77,9 @@
                         <h1>Досвід роботи</h1>
                         <span ng-repeat="work in user.work">
                             <h2>{{work.job}}</h2>
-                            {{work.company}}<br>
-                            {{work.start}} - {{work.end}}<br>
+                            <h1>{{work.company}}</h1>
+                            <h1 class="userPage_info_date">{{getDateFormat(work.start)}} - {{getDateFormat(work.end)}}</h1>
+                            <br>
                             {{work.description}}
                         </span>
                     </div>
@@ -86,8 +87,9 @@
                         <h1>Освіта</h1>
                         <span ng-repeat="study in user.study">
                             <h2>{{study.university}}</h2>
-                            {{study.degree}}<br>
-                            {{study.start}} - {{study.end}}<br>
+                            <h1>{{study.degree}}</h1>
+                            <h1 class="userPage_info_date">{{getDateFormat(study.start)}} - {{getDateFormat(study.end)}}</h1>
+                            <br>
                             {{study.direction}}
                         </span>
                     </div>
