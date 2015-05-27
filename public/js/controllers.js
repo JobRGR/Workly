@@ -104,9 +104,9 @@ renameControllers.controller('tipsCtrl',['$scope',
 feedControllers.controller('feedGeneration',['$scope', '$http',
 	function($scope, $http){
 
-		$http.get('/api/get-subscribe-posts')
+		$http.get('/api/get-posts')
 			.success(function(res){
-				$scope.posts = res.posts;
+				$scope.posts = res.posts || [];
 				$scope.posts.forEach(function(el){
 					$http.get("/api/company/"+el.authorId)
 						.success(function(resp){
@@ -122,6 +122,24 @@ feedControllers.controller('feedGeneration',['$scope', '$http',
 			var id = this.post._id;
 			window.location.replace("/post/"+id);
 		};
+
+		$scope.normalData = function (date) {
+			var newDate = new Date(date);
+			return strDate(newDate);
+
+			function strDate(date){
+				var isCurMonth = date.getUTCFullYear() == (new Date()).getUTCFullYear()
+						&& date.getUTCMonth() == (new Date()).getUTCMonth()
+					, isCurDay = date.getDate() == (new Date).getDate()
+					, isYesterday = date.getDate() == (new Date).getDate() - 1;
+
+				if (!isCurMonth) return date.toLocaleDateString();
+				if (isCurDay) return 'Cьогодні '+ date.toLocaleTimeString();
+				if (isYesterday) return 'Вчора '+date.toLocaleTimeString();
+				return date.toLocaleDateString();
+			}
+		};
+
 
 		$('input').keypress(function (e) {
 			if (e.which == 13) {

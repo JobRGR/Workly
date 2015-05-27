@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style/header.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 </head>
-<body ng-controller="TemplateCtrl">
+<body ng-controller="TemplateCtrl" ng-cloak>
 <ng-include src="templatesUrl.header"></ng-include>
 <div class="companyPage">
     <div class="companyPage_logo">
@@ -46,14 +46,14 @@
                 <div class="compamyPage_info-card_profile-title">{{companyName}}</div>
 
                 <div class="compamyPage_info-card_profile-contacts">
-                    <div class="compamyPage_info-card_profile-contacts_adress">{{contacts}}</div>
-                    <div class="compamyPage_info-card_profile-contacts_email">{{mail}}</div>
-                    <div class="compamyPage_info-card_profile-contacts_tel">{{tel}}</div>
-                    <div class="compamyPage_info-card_profile-contacts_website"><a href="{{website}}">{{website}}</a></div>
+                    <div class="compamyPage_info-card_profile-contacts_adress" ng-if="contacts">{{contacts}}</div>
+                    <div class="compamyPage_info-card_profile-contacts_email" ng-if="mail">{{mail}}</div>
+                    <div class="compamyPage_info-card_profile-contacts_tel" ng-if="tel">{{tel}}</div>
+                    <div class="compamyPage_info-card_profile-contacts_website" ng-if="website"><a href="{{website}}">{{website}}</a></div>
                 </div>
 
                 <div class="compamyPage_info-card_profile-button">
-                    {{followText}}
+                    <span class="subscribe-block"><span>{{followText}}</span></span>
                 </div>
             </div>
             <div class="compamyPage_circles"></div>

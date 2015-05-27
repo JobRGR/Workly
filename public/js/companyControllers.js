@@ -21,7 +21,7 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
         $http.get("/api/company/"+id)
             .success(function (resp, status) {
                 $scope.vacancies = resp.company.vacancies;
-                $scope.img = resp.company.img;
+                $scope.img = resp.company.img || '/images/logo-company.png';
                 $scope.companyName = resp.company.companyName;
                 $scope.contacts = resp.company.contacts;
                 $scope.mail = resp.company.mail;

@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style/feed.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 </head>
-<body ng-controller="renameCtrl" >
+<body ng-controller="renameCtrl" ng-cloak>
 
     <div class="feedPage" ng-controller="tipsCtrl" ng-init="class='feedPage_header_banner_nav_item'" >
 
@@ -126,7 +126,7 @@
                             {{post.job}}
                         </div>
                         <div class="feedPage_feed_feedBlock_info_details">
-                            <a href="">{{post.authorName}}</a>  |  <a href="">{{post.city}}</a>  |  <a href="">{{post.date}}</a>
+                            <a href="/company/{{post.authorId}}">{{post.authorName}}</a>  |  <a>{{post.city}}</a>  | <a>{{normalData(post.date)}}</a>
                         </div>
                         <div class="feedPage_feed_feedBlock_info_about">
                             {{post.about}}
