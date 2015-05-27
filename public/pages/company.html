@@ -52,22 +52,24 @@
                     <div class="compamyPage_info-card_profile-contacts_website" ng-if="website"><a href="{{website}}">{{website}}</a></div>
                 </div>
 
-                <div class="compamyPage_info-card_profile-button">
+                <div class="compamyPage_info-card_profile-button" ng-if="!subscribe">
                     <span class="subscribe-block"><span>{{followText}}</span></span>
                 </div>
             </div>
             <div class="compamyPage_circles"></div>
             <div class="compamyPage_info-card_info"><h1>Про компанію</h1>{{about}}</div>
         </div>
-        <div class="compamyPage_vacancy-card" ng-if="vacancies.length!=0">
+        <div class="compamyPage_vacancy-card" ng-if="posts.length!=0">
             <div class="compamyPage_vacancy-card_title">Вакансії у {{companyName}}</div>
-            <div class="compamyPage_vacancy-card_list"  ng-repeat="id in vacancies">
+            <div class="compamyPage_vacancy-card_list"  ng-repeat="post in posts">
 
                 <div class="compamyPage_vacancy-card_list_item" ng-controller="companyPageVacLoadingCtrl">
                     <div>
-                        <a href="/post/{{companyId}}">{{authorName}}</a>
+                        <a href="/post/{{post._id}}">
+                            {{post.job}}
+                        </a>
                     </div>
-                    <span>{{city}}</span> | <span>{{date}}</span>
+                    <span>{{post.city}}</span> <span ng-if="post.city && post.date">|</span> <span>{{normalData(post.date)}}</span>
                 </div>
 
             </div>

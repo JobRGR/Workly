@@ -20,7 +20,7 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
 
         $http.get("/api/company/"+id)
             .success(function (resp, status) {
-                $scope.vacancies = resp.company.vacancies;
+                $scope.posts = resp.post;
                 $scope.img = resp.company.img || '/images/logo-company.png';
                 $scope.companyName = resp.company.companyName;
                 $scope.contacts = resp.company.contacts;
@@ -55,6 +55,23 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
             .error(function (err) {
                 console.log(err);
             });
+
+        $scope.normalData = function (date) {
+            var newDate = new Date(date);
+            return strDate(newDate);
+
+            function strDate(date){
+                var isCurMonth = date.getUTCFullYear() == (new Date()).getUTCFullYear()
+                    && date.getUTCMonth() == (new Date()).getUTCMonth()
+                  , isCurDay = date.getDate() == (new Date).getDate()
+                  , isYesterday = date.getDate() == (new Date).getDate() - 1;
+
+                if (!isCurMonth) return date.toLocaleDateString();
+                if (isCurDay) return 'Cьогодні '+ date.toLocaleTimeString();
+                if (isYesterday) return 'Вчора '+date.toLocaleTimeString();
+                return date.toLocaleDateString();
+            }
+        };
     }]);
 
 companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http', '$location',
