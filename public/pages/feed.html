@@ -120,7 +120,7 @@
 
         <div ng-controller="feedGeneration">
             <div class="feedPage_feed"  ng-repeat="post in posts">
-                <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick(e)">
+                <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick($event)">
                     <div class="feedPage_feed_feedBlock_info">
                         <div class="feedPage_feed_feedBlock_info_title">
                             {{post.job}}

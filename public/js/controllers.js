@@ -119,7 +119,27 @@ feedControllers.controller('feedGeneration',['$scope', '$http',
 		$scope.postClick = function(e) {
 			if (e.target.localName == "a")
 				return;
-			var id = this.attributes[1].nodeValue;
-			window.location.replace("/post");
+			var id = this.post._id;
+			window.location.replace("/post/"+id);
 		};
+
+		$('input').keypress(function (e) {
+			if (e.which == 13) {
+				//alert($('input')[0].value);
+				if ($($('#banner1')[0]).css('left') == "0px") {
+					$http.post('/api/search-post', {query:$('input')[0].value}).
+						success(function(data) {
+							$scope.posts = data.posts;
+						});
+				}
+				else  {
+					$http.post('/api/search-user', {query:$('input')[0].value}).
+						success(function(data) {
+							$scope.posts = data.users;
+						});
+				}
+
+				return false;    //<---- Add this line
+			}
+		});
 	}]);
