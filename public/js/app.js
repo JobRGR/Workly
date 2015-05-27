@@ -14,7 +14,8 @@ var feedApp = angular.module('feedApp', [
     'renameControllers',
 	'feedControllers',
 	'AuthenticationService',
-	'ngCookies'
+	'ngCookies',
+	'headerControllers'
 ]);
 
 var userApp = angular.module('userApp',[
