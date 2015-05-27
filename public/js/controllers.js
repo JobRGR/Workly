@@ -120,7 +120,11 @@ feedControllers.controller('feedGeneration',['$scope', '$http',
 			if (e.target.localName == "a")
 				return;
 			var id = this.post._id;
-			window.location.replace("/post/"+id);
+
+			if (this.post.firstname == undefined)
+				window.location.replace("/post/"+id);
+			else
+				window.location.replace("/user/"+id);
 		};
 
 		$scope.normalData = function (date) {
