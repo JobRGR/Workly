@@ -1,6 +1,6 @@
 'use strict';
 
-var adminControllers = angular.module('adminControllers', []);
+var adminControllers = angular.module('adminControllers', ['ngCookies']);
   //.service('editStatus', function(){
   //  var _isEdit = false
   //    , _editModel = {}

@@ -2,8 +2,8 @@
 
 /*Model Controllers*/
 
-adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
-  function ($scope, $http, $rootScope) {
+adminControllers.controller('modelCtrl', ['$cookieStore','$scope', '$http', '$rootScope',
+  function ($cookieStore, $scope, $http, $rootScope) {
     var url = '/api/get-'
       , add = $scope.type == "user" ? 'users' : $scope.type == "company" ? 'companies' : $scope.type == 'post' ? 'posts' : 'admins';
 
@@ -66,6 +66,16 @@ adminControllers.controller('modelCtrl', ['$scope', '$http', '$rootScope',
 
       $http.get(url).
         success(function(data, status, headers, config) {
+          var client = {
+            name: (
+              $scope.type == 'user' ?
+              data.user.firstname + ' ' + data.user.secondname :
+              data.company.companyName
+            ),
+            id: data.user._id,
+            role: $scope.type
+          };
+          $cookieStore.put('client', client);
           console.log(arguments);
         }).
         error(function(data, status, headers, config) {

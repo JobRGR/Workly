@@ -11,23 +11,23 @@ adminApp.
     function($routeProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: "partials/main/main.html",
+                templateUrl: "./admin/partials/main/main.html",
                 controller: 'mainCtrl'
             }).
             when('/cms', {
-              templateUrl: "partials/cms/cms.html",
+              templateUrl: "./admin/partials/cms/cms.html",
               controller: 'cmsCtrl'
             }).
             when('/sign-in', {
-              templateUrl: "partials/sign/sign.html",
+              templateUrl: "./admin/partials/sign/sign.html",
               controller: 'mainCtrl'
             }).
             when('/sign-up', {
-              templateUrl: "partials/sign/sign.html",
+              templateUrl: "./admin/partials/sign/sign.html",
               controller: 'mainCtrl'
             }).
             when('/competence', {
-              templateUrl: "partials/competence/competence.html",
+              templateUrl: "./admin/partials/competence/competence.html",
               controller: 'competenceCtrl'
             }).
             otherwise({
