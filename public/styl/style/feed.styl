@@ -97,7 +97,6 @@
 			display inline-block;
 			position absolute
 			float left
-			width 100%
 			padding-left 0
 	.feedPage_header_feedBanner
 		width 100%
@@ -261,7 +260,8 @@
 		border none
 		font-family PTSans
 		font-size 18px
-		color #b8b8b8
+		outline none
+		color: #000
 		padding-left 10px
 .feedPage_searchBlock_search_triangle
 	width 0
@@ -326,6 +326,13 @@
 		font-family PTSans
 	a:hover
 		text-decoration underline
+
+@media (min-width: 1200px)
+	#banner1,
+	#banner2
+		width 100%
+	.feed-block
+		margin-top 85px
 
 .feedPage_feed_feedBlock_info_about
 	font-family: "Open Sans"

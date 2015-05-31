@@ -36,11 +36,11 @@
                         <img id="banner2" src="/images/feed/feedBanner2.png" style="left: 100%;">
                     </div>
 
-                <div class="feedPage_header_banner_logo">
-                    <a href="/">
-                        <img src="/images/logo.png">
-                    </a>
-                </div>
+                <!--<div class="feedPage_header_banner_logo">-->
+                    <!--<a href="/">-->
+                        <!--<img src="/images/logo.png">-->
+                    <!--</a>-->
+                <!--</div>-->
             </div>
 
             <div class="feedPage_searchBlock"  ng-controller="sliderCtrl">
@@ -53,7 +53,7 @@
                 </div>
 
                 <form name="search" method="post" class="feedPage_searchBlock_search">
-                      <input type="text" size="40"  placeholder="Уведіть ключове слово - місто, посаду">
+                      <input type="text" size="40"  placeholder="Уведіть ключове слово - місто, посаду" class="search-model">
                     <div class="feedPage_searchBlock_search_triangle"></div>
                 </form>
 
@@ -61,7 +61,7 @@
 
         </div>
 
-        <div ng-controller="feedGeneration">
+        <div ng-controller="feedGeneration" class="feed-block">
             <div class="feedPage_feed"  ng-repeat="post in posts">
                 <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick($event)" ng-if="post.firstname==undefined">
                     <div class="feedPage_feed_feedBlock_info">
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <div class="feedPage_feed_feedBlock_logo">
-                        <a href=""><img src="{{img}}"></a>
+                        <a href="/company/{{post.authorId}}"><img ng-src="{{img}}"></a>
                     </div>
                 </div>
 

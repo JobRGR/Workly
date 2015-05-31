@@ -147,21 +147,24 @@ feedControllers.controller('feedGeneration',['$scope', '$http',
 
 		$('input').keypress(function (e) {
 			if (e.which == 13) {
-				//alert($('input')[0].value);
-				if ($($('#banner1')[0]).css('left') == "0px") {
-					$http.post('/api/search-post', {query:$('input')[0].value}).
-						success(function(data) {
-							$scope.posts = data.posts;
-						});
-				}
-				else  {
-					$http.post('/api/search-user', {query:$('input')[0].value}).
-						success(function(data) {
-							$scope.posts = data.users;
-						});
-				}
-
+				search();
 				return false;    //<---- Add this line
 			}
 		});
+
+		function search() {
+			//alert($('input')[0].value);
+			if ($($('#banner1')[0]).css('left') == "0px") {
+				$http.post('/api/search-post', {query:$('.search-model').val()}).
+					success(function(data) {
+						$scope.posts = data.posts;
+					});
+			}
+			else  {
+				$http.post('/api/search-user', {query:$('.search-model').val()}).
+					success(function(data) {
+						$scope.posts = data.users;
+					});
+			}
+		}
 	}]);

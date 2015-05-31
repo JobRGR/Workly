@@ -3,8 +3,8 @@
 var AuthenticationService = angular.module('AuthenticationService', ['ngCookies']);
 
 AuthenticationService.factory('AuthService',
-	['$cookieStore', '$rootScope', '$location', '$window',
-		function ($cookieStore, $rootScope, $location, $window) {
+	['$cookieStore', '$rootScope', '$location', '$window', '$http',
+		function ($cookieStore, $rootScope, $location, $window, $http) {
 			var service = {};
 
 			service.setCredentials = function (data) {
@@ -24,7 +24,7 @@ AuthenticationService.factory('AuthService',
 			};
 
 			service.getCredentials = function() {
-				return $cookieStore.get('client');
+				return $cookieStore.get('client')
 			};
 
 			service.clearCredentials = function () {

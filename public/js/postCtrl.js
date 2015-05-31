@@ -42,7 +42,7 @@ worklyControllers.controller('postCtrl', ['$scope', '$http', '$location',
     };
 
     $scope.getSrcCompany = function() {
-      var patern = '/images/companies/1.png';
+      var patern = '/images/logo-company.png';
       return $scope.companyObj.img || patern
     };
 

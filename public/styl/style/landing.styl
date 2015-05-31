@@ -29,12 +29,12 @@ na8 = 12.5%
 .landing_banner_text-wrapper
 	text-align center
 	position absolute
-	top 70px
+	top 130px
 	width 100%
 	>span
 		font-family OpenSans
 		font-weight bold
-		font-size 56px
+		font-size 60px
 		color #74ae80
 		display block
 		>h2
@@ -42,8 +42,9 @@ na8 = 12.5%
 			font-size 24px
 			color #fff
 			width 50%
+			line-height: 33px
 			font-weight normal
-			margin 25px 25%
+			margin 35px 25%
 .landing_banner_nav
 	top 18px
 	text-align right
@@ -75,7 +76,11 @@ na8 = 12.5%
 		display block
 		img
 			margin 55px 0
-
+.landing_banner_screen_img
+	position: absolute
+	transform: translate(-50%, -100%)
+	left: 50%
+	margin-top: 16px
 .landing_info
 	display block
 	position relative
@@ -142,6 +147,9 @@ na8 = 12.5%
 .landing_info_help_partner-list_img-wrapper-big
 	display block
 	height 100px
+@media (max-width: 1200px)
+	.landing_banner_screen_img
+		display none
 .landing_info_help_partner-list_img-wrapper-big:before
 	content ' '
 	display inline-block

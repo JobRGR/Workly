@@ -17,7 +17,7 @@
 
 <div class="header" ng-controller="HeaderCtrl">
     <div class="header-box">
-        <div class="header__logo"><span>W</span>orkly</div>
+        <a href="/"><div class="header__logo"><span>W</span>orkly</div></a>
         <div class="menu" ng-show="client">
             <div class="menu-nav">
                 <a href="{{'/'+client.role+'/'+client.id}}">
@@ -25,7 +25,10 @@
                 </a>
                 <div class="menu-list">
                     <div class="menu-list-box">
-                        <a href="{{item.url}}" class="menu-item" ng-repeat="item in clientList">{{item.text}}</a>
+                        <div ng-repeat="item in clientList">
+                            <a ng-if="$index != 0" href="{{item.url}}" class="menu-item">{{item.text}}</a>
+                            <a ng-if="$index == 0" href="{{item.url + client.id}}" class="menu-item">{{item.text}}</a>
+                        </div>
                         <div class="menu-item" ng-click="logOut()">Вийти</div>
                     </div>
                 </div>
