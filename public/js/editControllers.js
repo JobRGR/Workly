@@ -18,6 +18,14 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
             this.nameBadMsg = '';
         }
 
+        $scope.isImg = function (path){
+           return (
+             path && path.length ?
+             "{background: ''}" :
+             "{background: 'url(/images/edit/company_logo.png) center no-repeat;'}"
+           )
+        }
+
         this.eraseImg = function(){
             if (this.user) this.user.img = '';
             if (this.company) this.company.img = '';
@@ -40,15 +48,17 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
         };
 
         this.companyEdit = function(isValid){
+            var company = this.company;
             if (!isValid){
                 this.formBadMsg = 'Невірно заповнена форма даних!';
                 return false;
             }
 
-            $http.post("/api/edit-company", this.company)
+            $http.post("/api/edit-company", company)
                 .success(function (resp) {
                     console.log(resp);
                     if (resp.message != 'ok') edit.formBadMsg = 'Щось пішло не так...';
+                    else document.location.pathname = '/company/' + company._id;
                 })
                 .error(function (err) {
                     edit.formBadMsg = 'Щось пішло не так...';
@@ -57,15 +67,16 @@ editControllers.controller('EditCtrl', ['$scope', '$http', '$rootScope',
         };
 
         this.userEdit = function(isValid){
+            var user = this.user;
             if (!isValid) {
                 this.formBadMsg = 'Невірно заповнена форма даних!';
                 return false;
             }
-
-            $http.post("/api/edit-user", this.user)
+            $http.post("/api/edit-user", user)
                 .success(function (resp) {
                     console.log(resp);
                     if (resp.message != 'ok') edit.formBadMsg = 'Щось пішло не так...';
+                    else document.location.pathname = '/user/' + user._id;
                 })
                 .error(function (err) {
                     edit.formBadMsg = 'Щось пішло не так...';

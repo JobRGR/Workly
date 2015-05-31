@@ -6,7 +6,7 @@
         <div class="edit_form-input">
             <div class="edit_form-text">Персональні дані</div>
             <form name="editForm" ng-submit="edit.companyEdit(editForm.$valid)" novalidate>
-                <div class="logo-box">
+                <div class="logo-box" ng-style="isImg(edit.company.img)">
                     <div ng-show="edit.company.img" class="logo-del" ng-click="edit.eraseImg()">×</div>
                     <img ng-show="edit.company.img" src="{{edit.company.img}}"/>
                 </div>

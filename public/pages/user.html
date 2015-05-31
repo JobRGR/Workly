@@ -22,9 +22,13 @@
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/style/userPage.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/contact.css">
     <link rel="stylesheet" type="text/css" href="/css/style/header.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
+
+    <script src="/vendor/bower_components/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/vendor/bower_components/pdfmake/build/vfs_fonts.js"></script>
 </head>
 <body ng-controller="TemplateCtrl">
 <ng-include src="templatesUrl.header"></ng-include>
@@ -56,7 +60,7 @@
                     </div>
                     <div class="userPage_info_userInfo_details">
                         <div class="userPage_info_userInfo_details_place" ng-if="user.city">{{user.city}}</div>
-                        <div class="userPage_info_userInfo_details_age" ng-if="user.dob">{{user.dob}}</div>
+                        <div class="userPage_info_userInfo_details_age" ng-if="user.dob">{{getDate(user.dob)}}</div>
                         <div class="userPage_info_userInfo_details_num" ng-if="user.tel">{{user.tel}}</div>
                         <div class="userPage_info_userInfo_details_mail" ng-if="user.mail">{{user.mail}}</div>
                     </div>
@@ -75,28 +79,39 @@
                     </div>
                     <div class="userPage_info_userInfo_bio_block" ng-show="user.work.length">
                         <h1>Досвід роботи</h1>
-                        <span ng-repeat="work in user.work">
-                            <h2>{{work.job}}</h2>
-                            <span>{{work.company}}</span>
-                            <h1 class="userPage_info_date">{{getDateFormat(work.start)}} - {{getDateFormat(work.end)}}</h1>
-                            <br>
-                            {{work.description}}
+                        <span>
+                            <div ng-repeat="work in user.work">
+                                <h2>{{work.job}}</h2>
+                                <span>{{work.company}}</span>
+                                <h1 class="userPage_info_date">{{getDateFormat(work.start)}} - {{getDateFormat(work.end)}}</h1>
+                                <br>
+                                {{work.description}}
+                            </div>
                         </span>
                     </div>
                     <div class="userPage_info_userInfo_bio_block" ng-show="user.study.length">
                         <h1>Освіта</h1>
-                        <span ng-repeat="study in user.study">
-                            <h2>{{study.university}}</h2>
-                            <span>{{study.degree}}</span>
-                            <h1 class="userPage_info_date">{{getDateFormat(study.start)}} - {{getDateFormat(study.end)}}</h1>
-                            <br>
-                            {{study.direction}}
+                        <span>
+                            <div ng-repeat="study in user.study">
+                                <h2>{{study.university}}</h2>
+                                <span>{{study.degree}}</span>
+                                <h1 class="userPage_info_date">{{getDateFormat(study.start)}} - {{getDateFormat(study.end)}}</h1>
+                                <br>
+                                {{study.direction}}
+                            </div>
                         </span>
                     </div>
                 </div>
 
             </div>
 
+        </div>
+        <div class="contact">
+            <h1>Зворотний зв'язок</h1>
+            <div class="link"></div>
+            <a class="download" ng-click="getResume(user)">Завантажити резюме</a>
+            <a ng-if="user.tel" href='tel:{{user.tel}}' class="tel">Подзвонити {{user.firstname}}</a>
+            <a ng-if="user.mail" href='mailto::{{user.mail}}' class="post">Написати {{user.firstname}}</a>
         </div>
 
     </div>

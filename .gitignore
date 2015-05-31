@@ -7,5 +7,4 @@ npm-debug.log
 .DS_Store
 .cache
 build
-public/css/admin/main.css
-public/css/prod/bundle.min.css
+

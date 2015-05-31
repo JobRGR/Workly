@@ -72,7 +72,7 @@ adminControllers.controller('modelCtrl', ['$cookieStore','$scope', '$http', '$ro
               data.user.firstname + ' ' + data.user.secondname :
               data.company.companyName
             ),
-            id: data.user._id,
+            id: data[$scope.type]._id,
             role: $scope.type
           };
           $cookieStore.put('client', client);
