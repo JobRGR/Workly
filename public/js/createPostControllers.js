@@ -44,6 +44,7 @@ createPostControllers.controller('createPostCtrl', ['$scope', '$http', '$rootSco
                 .success(function (resp) {
                     console.log(resp);
                     if (resp.message != 'ok') post.formBadMsg = 'Щось пішло не так...';
+                    else document.location.pathname = '/feed'
                 })
                 .error(function (err) {
                     post.formBadMsg = 'Щось пішло не так...';

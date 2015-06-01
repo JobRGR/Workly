@@ -53,8 +53,11 @@
                     <div class="compamyPage_info-card_profile-contacts_website" ng-if="website"><a href="{{website}}">{{website}}</a></div>
                 </div>
 
-                <div class="compamyPage_info-card_profile-button" ng-if="!subscribe">
+                <div class="compamyPage_info-card_profile-button" ng-if="!subscribe" ng-click="subscribeCompany()">
                     <span class="subscribe-block"><span>{{followText}}</span></span>
+                </div>
+                <div class="compamyPage_info-card_profile-none" ng-if="subscribe">
+                    <span>{{followText}}</span>
                 </div>
             </div>
             <div class="compamyPage_circles"></div>

@@ -7,16 +7,18 @@ var companyPageControllers = angular.module('companyPageControllers', ['Authenti
 companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$location','AuthService',
     function($scope, $http, $location, AuthService) {
         var id = $location.$$absUrl.split('company/')[1];
-        $('.compamyPage_info-card_profile-button').click(function() {
+        $scope.subscribe = false;
+        $scope.subscribeCompany = function(){
             $http.get("/api/subscribe/"+id)
                 .success(function(){
                     $scope.followText = "Ви вже підписані";
+                    $scope.subscribe = true;
                 })
                 .error(function(err){
                     console.log(err);
                     $scope.followText = "Сталась помилка";
                 });
-        });
+        };
 
         $http.get("/api/company/"+id)
             .success(function (resp, status) {
@@ -28,7 +30,8 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
                 $scope.tel = resp.company.tel;
                 $scope.website = resp.company.website;
                 $scope.about = resp.company.about;
-                if (!$scope.img) $scope.img = "standartImg.png";
+                $scope.subscribe = resp.subscribe;
+              if (!$scope.img) $scope.img = "standartImg.png";
 
                 var client = AuthService.getCredentials();
                 var data = {
@@ -78,6 +81,7 @@ companyPageControllers.controller('companyPageVacLoadingCtrl', ['$scope', '$http
     function($scope, $http, $location){
         $http.get("/api/post/"+$scope.id)
             .success(function (resp) {
+                if (resp.message != "ok") return
                 $scope.authorName = resp.post.authorName;
                 $scope.city = resp.post.city;
                 $scope.date = resp.post.date;

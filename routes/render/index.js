@@ -9,4 +9,5 @@ module.exports = function(app) {
     app.get('/edit', require('./lib/edit').get);
     app.get('/competence', require('./lib/competence').get);
     app.get('/create-post', require('./lib/create-post').get);
+    app.get('/subscription', require('./lib/subscription').get);
 }

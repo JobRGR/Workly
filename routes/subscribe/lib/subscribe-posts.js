@@ -17,7 +17,7 @@ exports.get = function(req, res, next) {
         return res.send({
             action: "get subscribe posts",
             message: "ok",
-            posts: posts
+            posts: posts.reverse()
         });
     });
 };

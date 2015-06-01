@@ -15,5 +15,9 @@
     "company":"/partials/edit/company.html"
   },
   "createPost":"/partials/create-post.html",
-  "companyPage":"/partials/companyPage.html"
+  "companyPage":"/partials/companyPage.html",
+  "subscription": {
+    "banner": "/partials/subscription/banner.html",
+    "list": "/partials/subscription/list.html"
+  }
 }

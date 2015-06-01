@@ -16,6 +16,8 @@ exports.get = function(req, res, next) {
             return res.send(message);
         };
 
+        posts = posts.reverse()
+
         posts.forEach(function(post){
             post.openQuestion.forEach(function(q){
                 delete q.correct;

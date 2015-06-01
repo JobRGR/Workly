@@ -74,6 +74,10 @@ var schema = new Schema({
         required: true,
         default: [null]
     },
+    img: {
+        type: String,
+        required: false
+    },
     users: [{
        id: {type: String, default: ' '},
         openQuestion: openQuestion,
@@ -103,6 +107,7 @@ schema.statics.create = function(req, callback) {
 
     post.authorId = company.id;
     post.authorName = company.companyName;
+    post.img = company.img;
 
     company.vacancies.push(post.id);
 

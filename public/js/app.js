@@ -33,8 +33,22 @@ userApp.run(['$cookieStore', '$rootScope', '$location', '$http', '$window', 'Aut
             return;
         }
 
+        //$http.get('/api/get-status')
+        //  .success(function(resp){
+        //      if(resp.message != 'ok'){
+        //          AuthService.redirectOut();
+        //          return;
+        //      }
+        //      $rootScope.user = resp.user || resp.company;
+        //  })
+        //  .error(function(err){
+        //        //AuthService.redirectOut();
+        //        console.log(err);
+        //    });
+
         var href = $window.location.href.split('/');
         var id = href[href.length - 1];
+
         $http.get('/api/user/' + id)
             .success(function(resp){
                 if(resp.message != 'ok'){
