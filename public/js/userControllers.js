@@ -17,17 +17,40 @@ userControllers.controller('UserCtrl',['$scope', '$http', 'AuthService',
                         image: user.img,
                         width: 150,
                         height: 150
-                    },
-                    {text: '\n\nДата Народження: ' + $scope.getDate(user.dob)+'\n', fontSize: 10},
-                    {text: 'Місто: ' + user.city+'\n', fontSize: 10},
-                    {text: 'Телефон: ' + user.tel+'\n', fontSize: 10},
-                    {text: 'Email: ' + user.mail+'\n\n', fontSize: 10},
-                    {text: '\nПро cебе\n\n', fontSize: 16},
-                    {text: user.about, fontSize: 12},
-                    {text: '\nНавички\n', fontSize: 16},
-                    {text: user.skills, fontSize: 12}
+                    }
                 ]
             };
+
+            if (user.dob) {
+                docDefinition.content.push({text: '\n\nДата Народження: ' + $scope.getDate(user.dob)+'\n', fontSize: 10})
+            }
+
+            if (user.tel) {
+                docDefinition.content.push({text: 'Місто: ' + user.city+'\n', fontSize: 10})
+            }
+
+            if (user.tel) {
+                docDefinition.content.push( {text: 'Телефон: ' + user.tel+'\n', fontSize: 10})
+            }
+
+
+            if (user.mail) {
+                docDefinition.content.push({text: 'Email: ' + user.mail+'\n\n', fontSize: 10})
+            }
+
+            if (user.about) {
+                docDefinition.content.push(
+                  {text: '\nПро cебе\n\n', fontSize: 16},
+                  {text: user.about, fontSize: 12}
+                )
+            }
+
+            if (user.skills) {
+                docDefinition.content.push(
+                  {text: '\nНавички\n\n', fontSize: 16},
+                  {text: user.skills, fontSize: 12}
+                )
+            }
 
             if (user.work.length) {
                 docDefinition.content.push({text: '\nДосвід роботи\n\n', fontSize: 16});
