@@ -1,6 +1,9 @@
 
 worklyControllers.controller('myVacancyCtrl',['$scope', '$http', 'AuthService',
   function($scope, $http, AuthService){
+    var client =  AuthService.getCredentials()
+      , isCompany = client.role == 'company';
+    if (!isCompany) document.location.pathname = '/';
     $scope.postList = [];
 
     $http.get('/api/get-my-posts').
@@ -17,7 +20,7 @@ worklyControllers.controller('myVacancyCtrl',['$scope', '$http', 'AuthService',
     $scope.getLog = function (src) {
       if (!src || !src.length) return '/images/logo-company.png'
       return src
-    }
+    };
 
     $scope.getDateFormat = function (date) {
       var newDate = new Date(date);
@@ -35,4 +38,18 @@ worklyControllers.controller('myVacancyCtrl',['$scope', '$http', 'AuthService',
       if (isYesterday) return 'Вчора '+date.toLocaleTimeString();
       return date.toLocaleDateString();
     }
+
+    $scope.deleteItem = function($index){
+      var id = $scope.postList[$index]._id
+        , url =  '/api/remove-post/'+id;
+
+      $scope.postList.splice($index,1);
+      $http.get(url).
+        success(function(data, status, headers, config) {
+          console.log(arguments);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments);
+        });
+    };
   }]);

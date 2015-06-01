@@ -1,6 +1,9 @@
 
 worklyControllers.controller('subscriptionCtrl',['$scope', '$http', 'AuthService',
   function($scope, $http, AuthService){
+    var client =  AuthService.getCredentials()
+      , isUser = client.role == 'user';
+    if (!isUser) document.location.pathname = '/';
     $scope.postList = [];
 
     $http.get('/api/get-subscribe-posts').

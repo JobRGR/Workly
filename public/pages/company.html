@@ -48,9 +48,15 @@
 
                 <div class="compamyPage_info-card_profile-contacts">
                     <div class="compamyPage_info-card_profile-contacts_adress" ng-if="contacts">{{contacts}}</div>
-                    <div class="compamyPage_info-card_profile-contacts_email" ng-if="mail">{{mail}}</div>
-                    <div class="compamyPage_info-card_profile-contacts_tel" ng-if="tel">{{tel}}</div>
-                    <div class="compamyPage_info-card_profile-contacts_website" ng-if="website"><a href="{{website}}">{{website}}</a></div>
+                    <div class="compamyPage_info-card_profile-contacts_email" ng-if="mail">
+                        <a href="malito:{{mail}}">{{mail}}</a>
+                    </div>
+                    <div class="compamyPage_info-card_profile-contacts_tel" ng-if="tel">
+                        <a href="tel:{{tel}}">{{tel}}</a>
+                    </div>
+                    <div class="compamyPage_info-card_profile-contacts_website" ng-if="website">
+                        <a href="{{website}}">{{website}}</a>
+                    </div>
                 </div>
 
                 <div class="compamyPage_info-card_profile-button" ng-if="!subscribe" ng-click="subscribeCompany()">
