@@ -19,5 +19,9 @@
   "subscription": {
     "banner": "/partials/subscription/banner.html",
     "list": "/partials/subscription/list.html"
+  },
+  "myVacancy": {
+    "banner": "/partials/my-vacancy/banner.html",
+    "list": "/partials/my-vacancy/list.html"
   }
 }

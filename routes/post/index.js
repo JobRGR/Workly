@@ -6,7 +6,11 @@ module.exports = function(app) {
     app.post('/api/edit-post/:id', checkAuth.checkCompany,require('./lib/edit').post);
     app.get('/api/remove-post/:id', checkAuth.checkCompany,require('./lib/remove').get);
 
+
+    app.get('/api/get-companies-posts/:id',require('./lib/get-companies-posts').get);
+    app.get('/api/get-my-posts', checkAuth.checkCompany,require('./lib/get-my-posts').get);
+
     //in future only admin permission
-    app.get('/api/drop-post', require('./lib/drop').get);
+    app.get('/api/drop-post', checkAuth.checkAdmin, require('./lib/drop').get);
 
 };

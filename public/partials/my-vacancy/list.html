@@ -1,0 +1,21 @@
+<div class="my-vacancy-list" ng-if="postList.length">
+    <div ng-repeat="post in postList" class="my-vacancy-item" ng-click="toPostPage(post._id)">
+        <div class="my-vacancy-list-logo">
+            <a href="/company/{{post.authorId}}"><img width="190px" ng-src="{{getLog(post.img)}}"></a>
+        </div>
+        <span class="my-vacancy-list-title">{{post.job}}</span>
+        <span class="my-vacancy-list-inf">
+            <a href="/company/{{post.authorId}}">{{post.authorName}}</a>  |
+            <span>{{post.city}}</span>  |
+            <span>{{getDateFormat(post.date)}}</span>
+        </span>
+        <div class="my-vacancy-list-about">
+            {{post.about}}
+        </div>
+    </div>
+</div>
+
+<div class="my-vacancy-list" ng-if="!postList.length">
+    <h1>Ви не маєте вакасій</h1>
+    <a class="feed-a" href="/create-post">Відкрити Вакансію →</a>
+</div>
