@@ -80,3 +80,16 @@
       background-color rgba(220,249,218,.2)
     &:first-child
       margin-top 5px
+  &-props
+    float right
+    a
+      display inline-block
+      margin-left 10px
+      width: 39px
+      height: 39px
+      border #74ad7f solid 1px
+    for image_name in 'edit' 'inf' 'trash'
+      .{image_name}
+        content ''
+        background url('/images/props/' + image_name + '.png') no-repeat
+        background-position 50% 50%
