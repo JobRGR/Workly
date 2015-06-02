@@ -103,7 +103,7 @@
             <div class="postPage_other" ng-if="!respond && user">
                 <div class="post-question">
                     <span class="post-question-title">Завдання</span>
-                    <div class="post-question-test">
+                    <div class="post-question-test" ng-if="testQuestion.length > 0">
                         <span class="post-question-test-title">Тестове завдання</span>
                         <div ng-repeat="test in testQuestion" class="post-question-item" ng-init="testIndex = $index">
                             <span class="post-question-text post-question-question">{{test.question}}</span>
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="post-question-open">
+                    <div class="post-question-open" ng-if="openQuestion.length > 0">
                         <span class="post-question-open-title">Відкрите запитаня</span>
                         <div ng-repeat="open in openQuestion" class="post-question-item">
                             <span class="post-question-text post-question-question">{{open.question}}</span>
