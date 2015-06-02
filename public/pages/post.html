@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" type="text/css" href="/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="/css/style/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/style/post-question.css">
     <link rel="stylesheet" type="text/css" href="/css/style/header.css">
     <link rel="stylesheet" type="text/css" href="/css/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
@@ -41,7 +42,6 @@
                     <div class="postPage_info_companyInfo-image">
                         <img style="height:100px" ng-src="{{getSrcCompany()}}">
                     </div>
-
                     <a href="./company/{{postObj.authorId}}" class="postPage_info_companyInfo-title" ng-if="isPostData('authorName')">
                         {{postObj.authorName}}
                     </a>
@@ -59,49 +59,27 @@
                         <br>
                         <h1>Необхідні навички</h1>
                         <p>{{postObj.requirements}}</p>
-                        <!--<p>володіння HTML і CSS;<br>-->
-                        <!--знання JavaScript, JSON, AJAX;<br>-->
-                        <!--впевнені знання крос-браузерного і крос-платформного-->
-                        <!--веб-програмування;<br>-->
-                        <!--знання фреймворку JQuery;<br>-->
-                        <!--бажання навчитися розробляти складні клієнтські програми;<br>-->
-                        <!--любов до верстки.<br></p>-->
                     </div>
                     <div ng-if="isPostData('responsibilities')">
                         <br>
                         <h1>Обов'язки</h1>
                         <p>{{postObj.responsibilities}}</p>
-                        <!--<p>Працювати потрібно буде з ReactJS, Webpack, менше (повний стек тут stackshare.io/...bylab/webbylab, використовуємо ES6 і CommonJS.</p>-->
                     </div>
                     <div  ng-if="isPostData('offer')">
                         <br>
                         <h1>Пропонуємо</h1>
                         <p>{{postObj.offer}}</p>
                         <br>
-                        <!--<p>-->
-                            <!--місце роботи в самому центрі Києва (3 хв ходьби від ст.м. Театральна.);<br>-->
-                            <!--вільний графік;<br>-->
-                            <!--привітний колектив;<br>-->
-                            <!--оплачувана відпустка 4 тижні<br></p>-->
                     </div>
                     <div ng-if="isPostData('about')">
                         <br>
                         <h1>Про проект</h1>
                         <p>{{postObj.about}}</p>
-                    <!--<p>Щоб Вас запросили на співбесіду, разом з резюме надішліть рішення тестового завдання на JavaScript:<br><br>-->
-                        <!--Написати клас Dog, який успадковується від клас тварин. Клас тварин має метод GetName (назву можна передати в конструктор). Клас собаки має метод гав (повертає рядок «Собака {dogname} є sayig гав».<br><br>-->
-                        <!--Приклад використання:<br><br>-->
-                        <!--вар Dog = нова собака («Aban ');<br><br>-->
-                        <!--dog.getName () === 'Гарфілд'; // Помилковим<br><br>-->
-                        <!--dog.gav () === 'Собака Aban говорить Гав'; // Вірно<br><br>-->
-                        <!--Без тестового завдання резюме не розглядаються.<br><br></p>-->
                     </div>
                 </div>
-
-
             </div>
-            <div class="postPage_other">
-                <div class="postPage_other_answerButton">
+            <div class="postPage_other" ng-if="respond || !user">
+                <div class="postPage_other_answerButton" ng-if="respond && user">
                     <img src="/images/ok.png">Ви вже успішно відгукнулисься на цю вакансію!
                 </div>
 
@@ -119,72 +97,37 @@
                                 {{post.city}} | {{getDatePost(post.date)}}
                             </div>
                         </div>
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--QA Automation Engineer (WoWP)-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Полтава | Вчора-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--Senior HTML5 Developer.-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Луганськ | 3 дні назад-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--Senior Java Developer-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Донецьк | Сьогодні-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--IT Outsourcing Vendor manager-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Запоріжжя | Сьогодні-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--Middle/Senior QA Manual Engineer (World of Warplanes)-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Кривий Ріг | 2 дні назад-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--Business analyst (WOT Generals)-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Харків | Сьогодні-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="postPage_other_vacansions_block">-->
-                            <!--<a href="" class="postPage_other_vacansions_block_name">-->
-                                <!--Senior 2D/3D Artist (World of Warplanes)-->
-                            <!--</a>-->
-                            <!--<div class="postPage_other_vacansions_block_details">-->
-                                <!--Одеса | Вчора-->
-                            <!--</div>-->
-                        <!--</div>-->
-
                     </div>
-
+                </div>
+            </div>
+            <div class="postPage_other" ng-if="!respond && user">
+                <div class="post-question">
+                    <span class="post-question-title">Завдання</span>
+                    <div class="post-question-test">
+                        <span class="post-question-test-title">Тестове завдання</span>
+                        <div ng-repeat="test in testQuestion" class="post-question-item" ng-init="testIndex = $index">
+                            <span class="post-question-text post-question-question">{{test.question}}</span>
+                            <div class="post-question-range" ng-repeat="ans in test.answers">
+                                <img src="/images/empty.png" ng-if="testQuestion[testIndex].ans != $index"
+                                     ng-click="checkAns(testIndex, $index)">
+                                <img src="/images/check.png" ng-if="testQuestion[testIndex].ans == $index"
+                                     ng-click="checkAns(testIndex, $index)">
+                                <span class="post-question-text post-question-range-item"
+                                        ng-click="checkAns(testIndex, $index)">{{ans}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-question-open">
+                        <span class="post-question-open-title">Відкрите запитаня</span>
+                        <div ng-repeat="open in openQuestion" class="post-question-item">
+                            <span class="post-question-text post-question-question">{{open.question}}</span>
+                            <textarea rows="5" placeholder="Відповідь" ng-model="openQuestion[$index].ans"></textarea>
+                        </div>
+                    </div>
+                    <div class="post-question-bt" ng-click="respondPost()">
+                        <span>Відгукнуться на вакансію</span>
+                    </div>
                 </div>
             </div>
         </div>

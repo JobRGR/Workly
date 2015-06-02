@@ -2,6 +2,9 @@ var userControllers = angular.module('userControllers', []);
 
 userControllers.controller('UserCtrl',['$scope', '$http', 'AuthService',
     function($scope, $http, AuthService){
+        var client =  AuthService.getCredentials()
+        if (!client) document.location.pathname = '/';
+        $scope.postList = [];
 
         $scope.getDate = function (date) {
             return (new Date(date)).toLocaleDateString()

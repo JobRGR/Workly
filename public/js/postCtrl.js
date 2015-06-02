@@ -2,11 +2,17 @@
 
 /* Controllers */
 
-worklyControllers.controller('postCtrl', ['$scope', '$http', '$location',
-  function($scope, $http, $location){
+worklyControllers.controller('postCtrl', ['$scope', '$http', '$location', 'AuthService',
+  function($scope, $http, $location, AuthService){
+    var client =  AuthService.getCredentials();
+    if (!client) document.location.pathname = '/';
     $scope.postObj = {};
+    $scope.testQuestion = [];
+    $scope.openQuestion = [];
     $scope.companyObj = {};
     $scope.companyPostsArr = [];
+    $scope.respond = false;
+    $scope.user = false;
     var postUrl = '/api/post/' + $location.$$absUrl.split('post/')[1];
     function getCompany() {
       if (!$scope.postObj.authorId) return;
@@ -29,6 +35,18 @@ worklyControllers.controller('postCtrl', ['$scope', '$http', '$location',
       .success(function(data) {
         if (data.post) {
           $scope.postObj = data.post;
+          $scope.respond = data.respond || false;
+          $scope.user = data.user || false;
+          $scope.testQuestion = data.post.testQuestion
+            .map(function(item){
+              item.ans = undefined;
+              return item;
+            }) || [];
+          $scope.openQuestion = data.post.openQuestion
+            .map(function(item){
+              item.ans = undefined;
+              return item;
+            }) || [];
           getCompany();
         }
 
@@ -62,4 +80,37 @@ worklyControllers.controller('postCtrl', ['$scope', '$http', '$location',
       if (isYesterday) return 'Вчора '+date.toLocaleTimeString();
       return date.toLocaleDateString();
     }
+
+    $scope.checkAns = function (textIndex, ansIndex){
+      //console.log(textIndex, ansIndex);
+      $scope.testQuestion[textIndex].ans = ansIndex;
+    };
+
+    $scope.respondPost = function () {
+      var url = url = "/api/respond-post/" + $scope.postObj._id,
+        data = {
+          testQuestion: $scope.testQuestion.map(function(item){
+            return {
+              id: item._id,
+              ans: item.ans || " "
+            }
+          }),
+          openQuestion: $scope.openQuestion.map(function(item){
+            return {
+              id: item._id,
+              ans: item.ans || " "
+            }
+          })
+        };
+      console.log(data);
+      $http.post(url, data).
+        success(function(data, status, headers, config) {
+          console.log(arguments)
+        }).
+        error(function(data, status, headers, config) {
+          console.log(arguments)
+        });
+      $scope.respond = true;
+      $scope.user = true;
+    };
   }]);
