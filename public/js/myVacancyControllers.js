@@ -1,6 +1,8 @@
 
 worklyControllers.controller('myVacancyCtrl',['$scope', '$http', 'AuthService',
   function($scope, $http, AuthService){
+    if (!AuthService.getCredentials())
+      return document.location.pathname = '/';
     var client =  AuthService.getCredentials()
       , isCompany = client.role == 'company';
     if (!isCompany) document.location.pathname = '/';

@@ -107,7 +107,7 @@
                         <span class="post-question-test-title">Тестове завдання</span>
                         <div ng-repeat="test in testQuestion" class="post-question-item" ng-init="testIndex = $index">
                             <span class="post-question-text post-question-question">{{test.question}}</span>
-                            <div class="post-question-range" ng-repeat="ans in test.answers">
+                            <div class="post-question-range" ng-repeat="ans in test.answers track by $index">
                                 <img src="/images/empty.png" ng-if="testQuestion[testIndex].ans != $index"
                                      ng-click="checkAns(testIndex, $index)">
                                 <img src="/images/check.png" ng-if="testQuestion[testIndex].ans == $index"

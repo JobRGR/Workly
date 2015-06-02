@@ -45,7 +45,7 @@ exports.get = function(req, res, next) {
 
             var list = post.users
                 .filter(function(respondUser){
-                    return isUser = respondUser ? true : false
+                    return respondUser ? true : false
                 })
                 .map(function(respondUser){
                     var id = respondUser.id;

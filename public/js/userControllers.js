@@ -14,15 +14,17 @@ userControllers.controller('UserCtrl',['$scope', '$http', 'AuthService',
             console.log(user);
             var docDefinition = {
                 content: [
-                    {text: user.firstname + ' ' + user.secondname, fontSize: 22},
-                    {text: user.position+'\n\n', fontSize: 18},
-                    {
-                        image: user.img,
-                        width: 150,
-                        height: 150
-                    }
+                    {text: user.firstname + ' ' + user.secondname, fontSize: 22}
                 ]
             };
+
+            if (user.position) {
+                docDefinition.content.push({text: user.position+'\n\n', fontSize: 18})
+            }
+
+            if (user.img) {
+                docDefinition.content.push({image: user.img, width: 150, height: 150})
+            }
 
             if (user.dob) {
                 docDefinition.content.push({text: '\n\nДата Народження: ' + $scope.getDate(user.dob)+'\n', fontSize: 10})
@@ -75,7 +77,7 @@ userControllers.controller('UserCtrl',['$scope', '$http', 'AuthService',
 
 
             pdfMake.createPdf(docDefinition).download('resume.pdf');
-        }
+        };
 
         $scope.getDateFormat = function (date) {
             var newDate = new Date(date);

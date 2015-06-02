@@ -92,7 +92,7 @@ worklyControllers.controller('postCtrl', ['$scope', '$http', '$location', 'AuthS
           testQuestion: $scope.testQuestion.map(function(item){
             return {
               id: item._id,
-              ans: item.ans || " "
+              ans: item.answers[item.ans] || " "
             }
           }),
           openQuestion: $scope.openQuestion.map(function(item){

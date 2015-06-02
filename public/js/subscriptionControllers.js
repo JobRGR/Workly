@@ -1,6 +1,8 @@
 
 worklyControllers.controller('subscriptionCtrl',['$scope', '$http', 'AuthService',
   function($scope, $http, AuthService){
+    if (!AuthService.getCredentials())
+      return document.location.pathname = '/';
     var client =  AuthService.getCredentials()
       , isUser = client.role == 'user';
     if (!isUser) document.location.pathname = '/';

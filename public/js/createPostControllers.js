@@ -43,6 +43,7 @@ createPostControllers.controller('createPostCtrl', ['$scope', '$http', '$rootSco
             $http.post("/api/create-post", this.newPost)
                 .success(function (resp) {
                     console.log(resp);
+                    debugger
                     if (resp.message != 'ok') post.formBadMsg = 'Щось пішло не так...';
                     else document.location.pathname = '/feed'
                 })
