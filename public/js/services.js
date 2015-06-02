@@ -52,7 +52,8 @@ AuthenticationService.factory('AuthService',
 			service.isContentPage = function(){
 				var host = 'http://' + $window.location.host;
 				var href = $window.location.href;
-				if (href == host + '/' || href == host + '/feed/')
+				if (href[href.length - 1] == '/') href = href.slice(0, -1)
+				if (href == host || href == host + '/feed')
 					return true;
 				return false;
 			};

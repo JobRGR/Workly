@@ -41,7 +41,8 @@
                     <div class="test_variant" ng-repeat="answer in q.answers track by $index">
                         <div class="table-cell_wrap">
                             <div class="test_variant_select">
-                                <input type="radio" name="radio{{post.newPost.testQuestion.indexOf(q)}}" required><span></span>
+                                <input type="radio" name="radio{{post.newPost.testQuestion.indexOf(q)}}" ng-model="q.correct" ng-value="q.answers[$index]" required>
+                                <span></span>
                             </div>
                         </div>
                         <input placeholder="Варіант {{$index + 1}}" ng-model="q.answers[$index]" required>
