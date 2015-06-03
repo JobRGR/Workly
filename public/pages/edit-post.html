@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>create vacancy</title>
+    <title>edit vacancy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <base href="/">
 
     <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
     <script src="/vendor/bower_components/angular/angular.js"></script>
@@ -27,14 +28,14 @@
     <link rel="stylesheet" type="text/css" href="/css/style/create-post.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 <body ng-controller="TemplateCtrl">
-    <div class="container" ng-cloak>
-        <ng-include src="templatesUrl.header"></ng-include>
-        <div ng-controller="createPostCtrl as post" ng-click="post.resetBadMsg()" class="view-container post-container">
-            <ng-include src="templatesUrl.createPost"></ng-include>
-        </div>
-        <div class="footer-container">
-            <ng-include src="templatesUrl.footer"></ng-include>
-        </div>
+<div class="container" ng-cloak>
+    <ng-include src="templatesUrl.header"></ng-include>
+    <div ng-controller="editPostCtrl" ng-click="resetBadMsg()" class="view-container post-container">
+        <ng-include src="templatesUrl.editPost"></ng-include>
     </div>
+    <div class="footer-container">
+        <ng-include src="templatesUrl.footer"></ng-include>
+    </div>
+</div>
 </body>
 </html>
