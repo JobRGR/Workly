@@ -20,7 +20,7 @@ server.listen(port, function(){
 });
 console.log('Express server listening on port ' + port);
 
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 if(app.get('env') == 'development'){
     app.use(logger('dev'));
