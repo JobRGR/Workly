@@ -12,8 +12,8 @@ var http = require('http');
 //var app = express();
 var app = module.exports.app = exports.app = express();
 //app.use(require('connect-livereload')());
-
-app.set('port',  process.env.PORT || config.get('port'));
+var port = process.env.PORT || config.get('port');
+app.set('port', port);
 
 var server = http.createServer(app);
 server.listen(config.get('port'), function(){
@@ -21,7 +21,7 @@ server.listen(config.get('port'), function(){
 });
 console.log('Express server listening on port ' + app.get('port'))
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));
 
 if(app.get('env') == 'development'){
     app.use(logger('dev'));
