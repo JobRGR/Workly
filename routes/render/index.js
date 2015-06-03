@@ -8,6 +8,7 @@ module.exports = function(app) {
     app.get('/company/:id', require('./lib/company').get);
     app.get('/post-info/:id', require('./lib/post-info').get);
     app.get('/edit', require('./lib/edit').get);
+    app.get('/edit-post/:id', require('./lib/edit-post').get);
     app.get('/competence', require('./lib/competence').get);
     app.get('/create-post', require('./lib/create-post').get);
     app.get('/subscription', require('./lib/subscription').get);

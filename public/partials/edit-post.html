@@ -1,0 +1,30 @@
+<div class="post-headtext">
+    Редагування вакансії
+</div>
+<div class="post">
+    <form name="postForm" ng-submit="editPost(postForm.$valid)">
+        <div class="post_form">
+            <div class="post_form-input">
+                <div class="post_form-text"> Загальна інформація</div>
+                <input type="text" placeholder="Посада" ng-model="post.job" required>
+                <input type="text" placeholder="Місто" ng-model="post.city" required>
+                <textarea placeholder="Вимоги" ng-model="post.requirements" required></textarea>
+                <textarea placeholder="Обов'язки" ng-model="post.responsibilities" required></textarea>
+                <textarea placeholder="Ми пропонуємо" ng-model="post.offer" required></textarea>
+                <textarea placeholder="Про проект" ng-model="post.about" required></textarea>
+                <input type="text" placeholder="Мітки \ Теги" ng-model="post.tags" required>
+                <button type="submit">Відредагувати вакансію</button>
+            </div>
+            <span ng-show="formBadMsg" class="form-error"><span></span>{{formBadMsg}}</span>
+        </div>
+        <div class="post_tests">
+            <div class="test-wrap">
+                <div class="test-text"> Тести</div>
+                <div class="test-add">
+                    Редагування тестів відключено, щоб мати можливість редагувати тести зверніться до адміністрації
+                    сайту: workly@gmail.com
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
