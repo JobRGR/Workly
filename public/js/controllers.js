@@ -148,6 +148,7 @@ feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
 
 		$scope.normalData = function (date) {
 			var newDate = new Date(date);
+			if (date == undefined) return date;
 			return strDate(newDate);
 
 			function strDate(date){
