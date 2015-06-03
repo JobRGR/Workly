@@ -126,7 +126,7 @@ feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
 					//$scope.posts.forEach(function(el){
 					//	$http.get("/api/user/"+el._id)
 					//		.success(function(resp){
-					//			$scope.img = resp.company.img;
+					//			$scope.img = resp.user.img;
 					//		});
 					//});
 				});

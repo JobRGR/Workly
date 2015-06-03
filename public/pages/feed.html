@@ -68,15 +68,15 @@
                             <div class="feedPage_feed_feedBlock_info_title">
                                 {{post.firstname}} {{post.secondname}}
                             </div>
-                            <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                                <!--<a href="/company/{{post.authorId}}">{{post.authorName}}</a>  |  <a>{{post.city}}</a>  | <a>{{normalData(post.date)}}</a>-->
-                            <!--</div>-->
-                            <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                                <!--{{post.about}}-->
-                            <!--</div>-->
+                            <div class="feedPage_feed_feedBlock_info_details">
+                                <a href="/user/{{post._id}}">{{post.position}}</a>  |  <a>{{post.city}}</a>  | <a>{{normalData(post.dob)}}</a>
+                            </div>
+                            <div class="feedPage_feed_feedBlock_info_about">
+                                {{post.about}}
+                            </div>
                         </div>
                         <!--<div class="feedPage_feed_feedBlock_logo">-->
-                            <!--<a href="/company/{{post.authorId}}"><img ng-src="{{img}}"></a>-->
+                            <!--<a href="/user/{{post._id}}"><img ng-src="{{img}}"></a>-->
                         <!--</div>-->
                     </div>
                 </div>
