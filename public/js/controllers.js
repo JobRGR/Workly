@@ -50,6 +50,7 @@ renameControllers.controller('renameCtrl',['$scope',
 renameControllers.controller('sliderCtrl',['$scope',"$sce","$rootScope",
 	function($scope, $sce, $rootScope){
 		var pos = 0;
+		$('#left').css('display','none');
 		$rootScope.companyFeed = false;
 		$scope.text = $sce.trustAsHtml("Знайди свою майбутню вакансію");
 
@@ -68,6 +69,8 @@ renameControllers.controller('sliderCtrl',['$scope',"$sce","$rootScope",
 					$('.feedPage_searchBlock_slogan').fadeTo(250,1);
 				});
 				$rootScope.companyFeed = true;
+				$('#right').css('display','none');
+				$('#left').css('display','block');
 			}
 		});
 
@@ -86,6 +89,8 @@ renameControllers.controller('sliderCtrl',['$scope',"$sce","$rootScope",
 					$('.feedPage_searchBlock_slogan').fadeTo(250,1);
 				});
 				$rootScope.companyFeed = false;
+				$('#right').css('display','block');
+				$('#left').css('display','none');
 			}
 		});
 	}]);
@@ -123,12 +128,6 @@ feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
 			$http.get('/api/get-users')
 				.success(function(res){
 					$scope.posts = res.users || [];
-					$scope.posts.forEach(function(el){
-						$http.get("/api/user/"+el._id)
-							.success(function(resp){
-								$scope.img = resp.user.img;
-							});
-					});
 				});
 		}
 
