@@ -15,10 +15,10 @@ var port = process.env.PORT || config.get('port');
 app.set('port', port);
 
 var server = http.createServer(app);
-server.listen(config.get('port'), function(){
-    log.info('Express server listening on port ' + config.get('port'));
+server.listen(port, function(){
+    log.info('Express server listening on port ' + port);
 });
-console.log('Express server listening on port ' + app.get('port'))
+console.log('Express server listening on port ' + port);
 
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
