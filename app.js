@@ -9,9 +9,8 @@ var config = require('./config');
 
 var http = require('http');
 
-//var app = express();
-var app = module.exports.app = exports.app = express();
-//app.use(require('connect-livereload')());
+var app = express();
+
 var port = process.env.PORT || config.get('port');
 app.set('port', port);
 
