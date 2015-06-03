@@ -13,7 +13,7 @@ var http = require('http');
 var app = module.exports.app = exports.app = express();
 //app.use(require('connect-livereload')());
 
-app.set('port', config.get('port'));
+app.set('port',  process.env.PORT || config.get('port'));
 
 var server = http.createServer(app);
 server.listen(config.get('port'), function(){
