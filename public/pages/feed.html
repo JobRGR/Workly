@@ -75,15 +75,15 @@
                                 {{post.about}}
                             </div>
                             <div class="feedPage_feed_feedBlock_info_about" ng-if="post.study.length!=0">
-                                Образование:
+                                Освіта:
                                 <div ng-repeat="studyPlace in post.study">
-                                    {{studyPlace.university}} c {{normalData(studyPlace.start)}} по {{normalData(studyPlace.end)}}
+                                    {{studyPlace.university}} з {{normalData(studyPlace.start)}} - {{normalData(studyPlace.end)}}
                                 </div>
                             </div>
                             <div class="feedPage_feed_feedBlock_info_about" ng-if="post.work.length">
-                                Опыт:
+                                Досвід:
                                 <div ng-repeat="workPlace in post.work">
-                                    {{workPlace.company}} c {{normalData(workPlace.start)}} по {{normalData(workPlace.end)}}
+                                    {{workPlace.company}} з {{normalData(workPlace.start)}} - {{normalData(workPlace.end)}}
                                 </div>
                             </div>
                         </div>
