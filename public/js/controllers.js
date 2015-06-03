@@ -123,12 +123,12 @@ feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
 			$http.get('/api/get-users')
 				.success(function(res){
 					$scope.posts = res.users || [];
-					//$scope.posts.forEach(function(el){
-					//	$http.get("/api/user/"+el._id)
-					//		.success(function(resp){
-					//			$scope.img = resp.user.img;
-					//		});
-					//});
+					$scope.posts.forEach(function(el){
+						$http.get("/api/user/"+el._id)
+							.success(function(resp){
+								$scope.img = resp.user.img;
+							});
+					});
 				});
 		}
 

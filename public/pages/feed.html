@@ -74,10 +74,24 @@
                             <div class="feedPage_feed_feedBlock_info_about">
                                 {{post.about}}
                             </div>
+                            <div class="feedPage_feed_feedBlock_info_about" ng-if="post.study.length!=0">
+                                Образование:
+                                <div ng-repeat="studyPlace in post.study">
+                                    {{studyPlace.university}} c {{normalData(studyPlace.start)}} по {{normalData(studyPlace.end)}}
+                                </div>
+                            </div>
+                            <div class="feedPage_feed_feedBlock_info_about" ng-if="post.work.length">
+                                Опыт:
+                                <div ng-repeat="workPlace in post.work">
+                                    {{workPlace.company}} c {{normalData(workPlace.start)}} по {{normalData(workPlace.end)}}
+                                </div>
+                            </div>
                         </div>
-                        <!--<div class="feedPage_feed_feedBlock_logo">-->
-                            <!--<a href="/user/{{post._id}}"><img ng-src="{{img}}"></a>-->
-                        <!--</div>-->
+
+                        <div class="feedPage_feed_feedBlock_logo">
+                            <a href="/user/{{post._id}}"><img ng-src="{{post.img}}"></a>
+                        </div>
+
                     </div>
                 </div>
             </div>
