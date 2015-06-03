@@ -47,9 +47,10 @@ renameControllers.controller('renameCtrl',['$scope',
 		},false);
 	}]);
 
-renameControllers.controller('sliderCtrl',['$scope',"$sce",
-	function($scope,$sce){
+renameControllers.controller('sliderCtrl',['$scope',"$sce","$rootScope",
+	function($scope, $sce, $rootScope){
 		var pos = 0;
+		$rootScope.companyFeed = false;
 		$scope.text = $sce.trustAsHtml("Знайди свою майбутню вакансію");
 
 		$('#right').click(function(){
@@ -66,6 +67,7 @@ renameControllers.controller('sliderCtrl',['$scope',"$sce",
 					$scope.$apply();
 					$('.feedPage_searchBlock_slogan').fadeTo(250,1);
 				});
+				$rootScope.companyFeed = true;
 			}
 		});
 
@@ -83,6 +85,7 @@ renameControllers.controller('sliderCtrl',['$scope',"$sce",
 					$scope.$apply();
 					$('.feedPage_searchBlock_slogan').fadeTo(250,1);
 				});
+				$rootScope.companyFeed = false;
 			}
 		});
 	}]);
@@ -101,19 +104,35 @@ renameControllers.controller('tipsCtrl',['$scope',
 	}]);
 
 
-feedControllers.controller('feedGeneration',['$scope', '$http',
-	function($scope, $http){
+feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
+	function($scope, $http, $attrs){
 
-		$http.get('/api/get-posts')
-			.success(function(res){
-				$scope.posts = res.posts || [];
-				$scope.posts.forEach(function(el){
-					$http.get("/api/company/"+el.authorId)
-						.success(function(resp){
-							$scope.img = resp.company.img;
-						});
+		if ($attrs.model == "company"){
+			$http.get('/api/get-posts')
+				.success(function(res){
+					$scope.posts = res.posts || [];
+					$scope.posts.forEach(function(el){
+						$http.get("/api/company/"+el.authorId)
+							.success(function(resp){
+								$scope.img = resp.company.img;
+							});
+					});
 				});
-			});
+		}
+		else{
+			$http.get('/api/get-users')
+				.success(function(res){
+					$scope.posts = res.users || [];
+					//$scope.posts.forEach(function(el){
+					//	$http.get("/api/user/"+el._id)
+					//		.success(function(resp){
+					//			$scope.img = resp.company.img;
+					//		});
+					//});
+				});
+		}
+
+
 
 
 		$scope.postClick = function(e) {

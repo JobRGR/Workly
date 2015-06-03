@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style/feed.css">
     <link rel="stylesheet" type="text/css" href="/css/css-reset.css">
 </head>
-<body ng-controller="renameCtrl" ng-cloak>
+<body ng-cloak>
 
     <div ng-controller="TemplateCtrl">
         <ng-include src="templatesUrl.header"></ng-include>
@@ -60,139 +60,59 @@
             </div>
 
         </div>
-
-        <div ng-controller="feedGeneration" class="feed-block">
-            <div class="feedPage_feed"  ng-repeat="post in posts">
-                <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick($event)" ng-if="post.firstname==undefined">
-                    <div class="feedPage_feed_feedBlock_info">
-                        <div class="feedPage_feed_feedBlock_info_title">
-                            {{post.job}}
+        <div ng-if="companyFeed">
+            <div ng-controller="feedGeneration" class="feed-block" model="user">
+                <div class="feedPage_feed"  ng-repeat="post in posts">
+                    <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick($event)">
+                        <div class="feedPage_feed_feedBlock_info">
+                            <div class="feedPage_feed_feedBlock_info_title">
+                                {{post.firstname}} {{post.secondname}}
+                            </div>
+                            <!--<div class="feedPage_feed_feedBlock_info_details">-->
+                                <!--<a href="/company/{{post.authorId}}">{{post.authorName}}</a>  |  <a>{{post.city}}</a>  | <a>{{normalData(post.date)}}</a>-->
+                            <!--</div>-->
+                            <!--<div class="feedPage_feed_feedBlock_info_about">-->
+                                <!--{{post.about}}-->
+                            <!--</div>-->
                         </div>
-                        <div class="feedPage_feed_feedBlock_info_details">
-                            <a href="/company/{{post.authorId}}">{{post.authorName}}</a>  |  <a>{{post.city}}</a>  | <a>{{normalData(post.date)}}</a>
-                        </div>
-                        <div class="feedPage_feed_feedBlock_info_about">
-                            {{post.about}}
-                        </div>
-                    </div>
-                    <div class="feedPage_feed_feedBlock_logo">
-                        <a href="/company/{{post.authorId}}"><img ng-src="{{img}}"></a>
+                        <!--<div class="feedPage_feed_feedBlock_logo">-->
+                            <!--<a href="/company/{{post.authorId}}"><img ng-src="{{img}}"></a>-->
+                        <!--</div>-->
                     </div>
                 </div>
+            </div>
 
-                <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick($event)" ng-if="post.firstname!=undefined">
-                    <div class="feedPage_feed_feedBlock_info">
-                        <div class="feedPage_feed_feedBlock_info_title">
-                            {{post.firstname}}
+        </div>
+        <div ng-if="!companyFeed">
+            <div ng-controller="feedGeneration" class="feed-block" model="company">
+                <div class="feedPage_feed"  ng-repeat="post in posts">
+                    <div class="feedPage_feed_feedBlock" userId="{{post._id}}" ng-click="postClick($event)">
+                        <div class="feedPage_feed_feedBlock_info">
+                            <div class="feedPage_feed_feedBlock_info_title">
+                                {{post.job}}
+                            </div>
+                            <div class="feedPage_feed_feedBlock_info_details">
+                                <a href="/company/{{post.authorId}}">{{post.authorName}}</a>  |  <a>{{post.city}}</a>  | <a>{{normalData(post.date)}}</a>
+                            </div>
+                            <div class="feedPage_feed_feedBlock_info_about">
+                                {{post.about}}
+                            </div>
                         </div>
+                        <div class="feedPage_feed_feedBlock_logo">
+                            <a href="/company/{{post.authorId}}"><img ng-src="{{img}}"></a>
+                        </div>
+                    </div>
+                    <div class="feedPage_feed_feedBlock" companyId="{{post._id}}" ng-click="postClick($event)" ng-if="post.firstname!=undefined">
+                        <div class="feedPage_feed_feedBlock_info">
+                            <div class="feedPage_feed_feedBlock_info_title">
+                                {{post.firstname}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-
-            <!--<div class="feedPage_feed_feedBlock" companyId="1234124">-->
-                <!--<div class="feedPage_feed_feedBlock_info">-->
-                    <!--<div class="feedPage_feed_feedBlock_info_title">-->
-                        <!--JavaScript/HTML5 Developer Intern-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                        <!--<a href="">Google</a>  |   <a href="">Київ</a>  |   <a href="">Вчора</a>-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                        <!--Рекрутингова компанія Google| Google EXperts спеціалізується на пошуку й оцінці фахівців за напрямками «Інформаційні технології» та «Телекомунікації». Для нашого партнера - розробника сет-топ боксів та рішень для Smart TV - ми шукаємо JavaScript...-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="feedPage_feed_feedBlock_logo">-->
-                    <!--<img src="/images/feed/feedLogos/2.png">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="feedPage_feed_feedBlock" companyId="1234124">-->
-                <!--<div class="feedPage_feed_feedBlock_info">-->
-                    <!--<div class="feedPage_feed_feedBlock_info_title">-->
-                        <!--Web Developer (Angular, Node.js)-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                        <!--<a href="">Wargaming</a>  |   <a href="">Київ</a>  |   <a href="">Сьогодні</a>-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                        <!--Торгова компанія Wargaming є однією з найбільших українських дистрибуторських компаній. Останні декілька років Wargaming входить в ТОП-10 рейтингу «200 найбільших компаній України» за версією журналу Forbes діяльності є дистрибуція тютюнових виробів та супутніх товарів... Протягом багатьох років компанія успішно співпрацює із провідними виробниками тютюнової продукції: Philip Morris International, Japan Tobacco International, Imperial Tobacco Group, British American Tobacco.-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="feedPage_feed_feedBlock_logo">-->
-                    <!--<img src="/images/feed/feedLogos/3.png">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="feedPage_feed_feedBlock" companyId="1234124">-->
-                <!--<div class="feedPage_feed_feedBlock_info">-->
-                    <!--<div class="feedPage_feed_feedBlock_info_title">-->
-                        <!--JavaScript/HTML5 Developer Intern-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                        <!--<a href="">LinkedIN</a> |   <a href="">Київ</a>  |   <a href="">Вчора</a>-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                        <!--Рекрутингова компанія Google| Google EXperts спеціалізується на пошуку й оцінці фахівців за напрямками «Інформаційні технології» та «Телекомунікації». Для нашого партнера - розробника сет-топ боксів та рішень для Smart TV - ми шукаємо JavaScript...-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="feedPage_feed_feedBlock_logo">-->
-                    <!--<img src="/images/feed/feedLogos/4.png">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="feedPage_feed_feedBlock" companyId="1234124">-->
-                <!--<div class="feedPage_feed_feedBlock_info">-->
-                    <!--<div class="feedPage_feed_feedBlock_info_title">-->
-                        <!--JavaScript/HTML5 Developer Intern-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                        <!--<a href="">Kodak</a>  |   <a href="">Київ</a>  |   <a href="">Вчора</a>-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                        <!--Рекрутингова компанія Google| Google EXperts спеціалізується на пошуку й оцінці фахівців за напрямками «Інформаційні технології» та «Телекомунікації». Для нашого партнера - розробника сет-топ боксів та рішень для Smart TV - ми шукаємо JavaScript...-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="feedPage_feed_feedBlock_logo">-->
-                    <!--<img src="/images/feed/feedLogos/5.png">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="feedPage_feed_feedBlock" companyId="1234124">-->
-                <!--<div class="feedPage_feed_feedBlock_info">-->
-                    <!--<div class="feedPage_feed_feedBlock_info_title">-->
-                        <!--JavaScript/HTML5 Developer Intern-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                        <!--<a href="">Sony</a>  |   <a href="">Київ</a>  |   <a href="">Вчора</a>-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                        <!--Рекрутингова компанія Google| Google EXperts спеціалізується на пошуку й оцінці фахівців за напрямками «Інформаційні технології» та «Телекомунікації». Для нашого партнера - розробника сет-топ боксів та рішень для Smart TV - ми шукаємо JavaScript...-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="feedPage_feed_feedBlock_logo">-->
-                    <!--<img src="/images/feed/feedLogos/6.png">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="feedPage_feed_feedBlock" companyId="1234124">-->
-                <!--<div class="feedPage_feed_feedBlock_info">-->
-                    <!--<div class="feedPage_feed_feedBlock_info_title">-->
-                        <!--JavaScript/HTML5 Developer Intern-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_details">-->
-                        <!--<a href="">Panasonic</a>  |   <a href="">Київ</a>  |   <a href="">Вчора</a>-->
-                    <!--</div>-->
-                    <!--<div class="feedPage_feed_feedBlock_info_about">-->
-                        <!--Рекрутингова компанія Google| Google EXperts спеціалізується на пошуку й оцінці фахівців за напрямками «Інформаційні технології» та «Телекомунікації». Для нашого партнера - розробника сет-топ боксів та рішень для Smart TV - ми шукаємо JavaScript...-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="feedPage_feed_feedBlock_logo">-->
-                    <!--<img src="/images/feed/feedLogos/7.png">-->
-                <!--</div>-->
-            <!--</div>-->
-
-        </div>
 
     </div>
 
