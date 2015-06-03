@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install",
-    "start": "gulp"
+    "start": "node app.js"
   },
   "dependencies": {
     "6to5": "^2.13.7",

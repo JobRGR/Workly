@@ -11,7 +11,7 @@ var http = require('http');
 
 //var app = express();
 var app = module.exports.app = exports.app = express();
-app.use(require('connect-livereload')());
+//app.use(require('connect-livereload')());
 
 app.set('port', config.get('port'));
 
