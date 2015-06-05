@@ -17,7 +17,6 @@
 
 <div class="header" ng-controller="HeaderCtrl">
     <div class="header-box">
-        <a href="/"><div class="header__logo"><span>W</span>orkly</div></a>
         <div class="menu" ng-show="client">
             <div class="menu-nav">
                 <a href="{{'/'+client.role+'/'+client.id}}">
@@ -52,5 +51,6 @@
                 <img src="/images/sign-in.png"> Увійти
             </div>
         </div>
+        <a href="/"><div class="header__logo"><span>W</span>orkly</div></a>
     </div>
 </div>
