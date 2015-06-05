@@ -8,7 +8,6 @@ var mongoose = require('../lib/mongoose'),
 var schema = new Schema({
     mail: {
         type: String,
-        unique: true,
         required: true,
         default: " "
     },

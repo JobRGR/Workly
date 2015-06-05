@@ -116,12 +116,12 @@ feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
 			$http.get('/api/get-posts')
 				.success(function(res){
 					$scope.posts = res.posts || [];
-					$scope.posts.forEach(function(el){
-						$http.get("/api/company/"+el.authorId)
-							.success(function(resp){
-								$scope.img = resp.company.img;
-							});
-					});
+					//$scope.posts.forEach(function(el){
+					//	$http.get("/api/company/"+el.authorId)
+					//		.success(function(resp){
+					//			$scope.img = resp.company.img;
+					//		});
+					//});
 				});
 		}
 		else{
@@ -131,7 +131,10 @@ feedControllers.controller('feedGeneration',['$scope', '$http', '$attrs',
 				});
 		}
 
-
+		$scope.getLog = function (src) {
+			if (!src || !src.length) return '/images/logo-company.png'
+			return src
+		};
 
 
 		$scope.postClick = function(e) {

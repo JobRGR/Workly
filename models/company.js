@@ -10,7 +10,6 @@ var User = require('./user').User;
 var schema = new Schema({
     companyName: {
         type: String,
-        unique: true,
         required: true,
         default: " "
     },
