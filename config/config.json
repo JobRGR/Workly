@@ -1,7 +1,7 @@
 {
     "port": 3000,
     "mongoose": {
-        "uri": "mongodb://nodejitsu:a8778ea1abc35b9d5d56ae7d93964e05@troup.mongohq.com:10016/nodejitsudb5046189131",
+        "uri": "mongodb://nodejitsu:9815b1a6fc17a5cd5db74d7db7197267@troup.mongohq.com:10085/nodejitsudb8995699018",
         "options": {
             "server": {
                 "socketOptions": {
