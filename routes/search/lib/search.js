@@ -47,6 +47,7 @@ exports.searchModel = function(keyObj,req, next) {
         .or(searchArray)
         .exec(function(err, items){
             if(err) return next(err,null);
+            if(items) items.reverse()
             sortItems(items,keyArray,regex);
         });
 
