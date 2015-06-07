@@ -6,8 +6,11 @@ var companyPageControllers = angular.module('companyPageControllers', ['Authenti
 
 companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', '$location','AuthService',
     function($scope, $http, $location, AuthService) {
+        var client =  AuthService.getCredentials();
+        if (!client) document.location.pathname = '/';
+
         var id = $location.$$absUrl.split('company/')[1];
-        $scope.subscribe = false;
+        $scope.subscribe =  client.role != 'company';
         $scope.subscribeCompany = function(){
             $http.get("/api/subscribe/"+id)
                 .success(function(){
@@ -30,7 +33,7 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
                 $scope.tel = resp.company.tel;
                 $scope.website = resp.company.website;
                 $scope.about = resp.company.about;
-                $scope.subscribe = resp.subscribe;
+                $scope.subscribe = !resp.user ? true : resp.subscribe;
               if (!$scope.img) $scope.img = "standartImg.png";
 
                 var client = AuthService.getCredentials();
@@ -38,7 +41,7 @@ companyPageControllers.controller('companyPageProfileCtrl', ['$scope', '$http', 
                     query: client.name
                 };
                 var url = "/api/search-" + client.role;
-                $scope.followText = "Підписатись";
+                $scope.followText = !resp.user ? '' : "Підписатись";
                 $http.post(url,data)
                     .success(function (res){
                         $scope.showFollowButton = (resp.company.subscribe.indexOf(client.id) > -1);
