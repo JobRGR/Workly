@@ -14,5 +14,4 @@ module.exports = function(app) {
     var AdminEditModel = require('./edit-admin-model')(app);
 
     var CMS = require('./cms')(app);
-    var Competence = require('./competence')(app);
 };
