@@ -53,7 +53,6 @@ app.use(session({
 
 app.use(require('./middleware/loadUser'));
 app.use(require('./middleware/loadCompany'));
-app.use(require('./middleware/loadAdmin'));
 
 var routes = require('./routes')(app);
 
