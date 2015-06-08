@@ -14,10 +14,6 @@ adminApp.
                 templateUrl: "./admin/partials/main/main.html",
                 controller: 'mainCtrl'
             }).
-            when('/cms', {
-              templateUrl: "./admin/partials/cms/cms.html",
-              controller: 'cmsCtrl'
-            }).
             when('/sign-in', {
               templateUrl: "./admin/partials/sign/sign.html",
               controller: 'mainCtrl'
@@ -25,10 +21,6 @@ adminApp.
             when('/sign-up', {
               templateUrl: "./admin/partials/sign/sign.html",
               controller: 'mainCtrl'
-            }).
-            when('/competence', {
-              templateUrl: "./admin/partials/competence/competence.html",
-              controller: 'competenceCtrl'
             }).
             otherwise({
                 redirectTo: '/'
