@@ -263,32 +263,6 @@ adminDirectives.directive("cmsEdit", function () {
     };
 });
 
-/*Competence*/
-
-adminDirectives.directive("competenceList", function () {
-    return {
-        restrict: 'E',
-        templateUrl: "./admin/partials/competence/competence-list.html",
-        controller: 'competenceCtrl'
-    };
-});
-
-adminDirectives.directive("competenceAdd", function () {
-    return {
-        restrict: 'E',
-        templateUrl: "./admin/partials/competence/competence-add.html",
-        controller: 'competenceCtrl'
-    };
-});
-
-adminDirectives.directive("competenceEdit", function () {
-    return {
-        restrict: 'E',
-        templateUrl: "./admin/partials/competence/competence-edit.html",
-        controller: 'competenceCtrl'
-    };
-});
-
 adminDirectives.directive("ngFileread", [function () {
     return {
         scope: {
