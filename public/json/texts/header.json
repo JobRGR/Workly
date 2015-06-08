@@ -9,12 +9,6 @@
                 "text":"Редагувати резюме",
                 "url":"/edit"
             }
-        ],
-        "vacancyList":[
-            {
-                "text":"Нові вакансії",
-                "url":"/feed"
-            }
         ]
     },
     "company":{
@@ -26,16 +20,6 @@
             {
                 "text":"Редагувати дані",
                 "url":"/edit"
-            }
-        ],
-        "vacancyList":[
-            {
-                "text":"Створити вакансію",
-                "url":"/create-post"
-            },
-            {
-                "text":"Мої вакансії",
-                "url":"/my-vacancy"
             }
         ]
     }
