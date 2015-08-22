@@ -79,7 +79,7 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
     $scope.test.getTitles()
 
     function updateCategory() {
-      request('post', '/api/test/update', $scope.test.tests)
+      request('post', '/api/test/update-category', $scope.test.tests)
     }
 
     function request(type, url, data, success, error) {
