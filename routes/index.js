@@ -15,4 +15,6 @@ module.exports = function(app) {
 
     var CMS = require('./cms')(app);
     var Competence = require('./competence')(app);
+
+    var TestData = require('./test-data')(app);
 };
