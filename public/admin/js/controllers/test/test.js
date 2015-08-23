@@ -64,7 +64,7 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
     $scope.test.getTests = function() {
       $http.post('/api/test/get-tests', $scope.test.category[$scope.test.current])
         .success(function(data) {
-          $scope.test.tests = data.tests
+          $scope.test.questions = data
         })
         .error(function(err) {
           console.log(err)
@@ -77,6 +77,103 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
         item.active = index == $scope.test.current
       })
       $scope.test.getTests()
+    }
+
+    $scope.test.tmpTest = {
+      question: '',
+      correct: '',
+      answers: [],
+      index: undefined,
+    }
+
+    $scope.test.tmpOpen = {
+      correct: '',
+      question: '',
+      isChecked: true,
+      index: undefined,
+    }
+
+    $scope.test.addTest = function() {
+      $scope.test.isAddTest = true
+      $scope.test.tmpTest = {
+        question: '',
+        correct: '',
+        answers: [],
+        index: undefined,
+      }
+    }
+
+    $scope.test.addOpen = function() {
+      $scope.test.isAddOpen = true
+      $scope.test.tmpOpen = {
+        correct: '',
+        question: '',
+        isChecked: true,
+        index: undefined,
+      }
+    }
+
+    $scope.test.closeAddTest = function() {
+      $scope.test.isAddTest = false
+    }
+
+    $scope.test.closeAddOpen = function() {
+      $scope.test.isAddOpen = false
+    }
+
+    $scope.test.saveAddTest = function() {
+      delete $scope.test.tmpTest.index
+      $scope.test.questions.test.push($scope.test.tmpTest)
+      updateCategory()
+    }
+
+    $scope.test.saveAddOpen = function() {
+      delete $scope.test.tmpOpen.index
+      $scope.test.questions.open.push($scope.test.tmpOpen)
+      updateCategory()
+    }
+
+
+    $scope.test.editTest = function(index) {
+      $scope.test.isEditTest = true
+      $scope.test.tmpTest = {
+        question: '',
+        correct: '',
+        answers: [],
+        index: index,
+      }
+    }
+
+    $scope.test.editOpen = function(index) {
+      $scope.test.isEditOpen = true
+      $scope.test.tmpOpen = {
+        correct: '',
+        question: '',
+        isChecked: true,
+        index: index,
+      }
+    }
+
+    $scope.test.closeEditTest = function() {
+      $scope.test.isEditTest = false
+    }
+
+    $scope.test.closeEditOpen = function() {
+      $scope.test.isEditOpen = false
+    }
+
+    $scope.test.saveEditTest = function() {
+      var index = $scope.test.tmpTest.index
+      delete $scope.test.tmpTest.index
+      $scope.test.questions.test[index] = $scope.test.tmpTest
+      updateCategory()
+    }
+
+    $scope.test.saveEditOpen = function() {
+      var index = $scope.test.tmpOpen.index
+      delete $scope.test.tmpOpen.index
+      $scope.test.questions.open[index] = $scope.test.tmpOpen
+      updateCategory()
     }
 
 
