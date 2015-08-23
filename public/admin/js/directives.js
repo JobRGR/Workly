@@ -307,3 +307,29 @@ adminDirectives.directive("ngFileread", [function () {
         }
     }
 }]);
+
+/* Test Data */
+
+adminDirectives.directive("testNav", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-nav.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testCategoryAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-category-add.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testCategoryEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-category-edit.html",
+        controller: 'testCtrl'
+    };
+});

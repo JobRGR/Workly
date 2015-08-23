@@ -30,6 +30,10 @@ adminApp.
               templateUrl: "./admin/partials/competence/competence.html",
               controller: 'competenceCtrl'
             }).
+            when('/test', {
+              templateUrl: "./admin/partials/test/test.html",
+              controller: 'testCtrl'
+            }).
             otherwise({
                 redirectTo: '/'
             });
@@ -54,7 +58,7 @@ adminApp.
 
       $rootScope.$watch(function(){
           if (!$rootScope.loggedAdmin) {
-            var urlList = ['/', '/cms', '/competence']
+            var urlList = ['/', '/cms', '/competence', 'test']
               , curUrl = $location.path()
               , isList = urlList.indexOf(curUrl) > -1;
 
