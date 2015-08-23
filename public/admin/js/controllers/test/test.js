@@ -176,6 +176,15 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
       updateCategory()
     }
 
+    $scope.test.removeOpen = function (index) {
+      $scope.test.question.open.splice(index, 1)
+      updateCategory()
+    }
+
+    $scope.test.removeTest = function (index) {
+      $scope.test.question.test.splice(index, 1)
+      updateCategory()
+    }
 
     $scope.test.getTitles()
 
