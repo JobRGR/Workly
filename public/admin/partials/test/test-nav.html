@@ -1,8 +1,8 @@
 <ul class="nav nav-tabs">
-    <li ng-repeat="title in test.nav"
+    <li ng-repeat="title in test.category"
         role="presentation"
         ng-class="{active: title.active}"
-        ng-click="">
+        ng-click="test.changeCategory($index)">
         <a>{{title.title}}</a>
     </li>
 </ul>

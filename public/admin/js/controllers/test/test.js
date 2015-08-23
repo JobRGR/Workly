@@ -33,8 +33,9 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
     $scope.test.closeAddCategory = function() {
       $scope.test.isAddCategory = false
     }
-    $scope.test.saveCategory = function() {
+    $scope.test.saveAddCategory = function() {
       delete $scope.test.tmpCategory.index
+      if (!$scope.test.category.length) $scope.test.tmpCategory.active = true
       $scope.test.category.push($scope.test.tmpCategory)
       request('post','/api/test/add-category', $scope.test.tmpCategory)
     }
@@ -52,6 +53,7 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
     $scope.test.saveEditCategory = function() {
       var index = $scope.test.tmpCategory.index
       delete $scope.test.tmpCategory.index
+      $scope.test.tmpCategory.active = true
       $scope.test.category[index] = $scope.test.tmpCategory
       request('post','/api/test/edit-category', $scope.test.tmpCategory)
     }
@@ -59,7 +61,6 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
       request('post','/api/test/remove-category', $scope.test.category[index])
       $scope.test.category.splice(index, 1)
     }
-
     $scope.test.getTests = function() {
       $http.post('/api/test/get-tests', $scope.test.category[$scope.test.current])
         .success(function(data) {
@@ -70,8 +71,11 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
         })
     }
 
-    $scope.test.changeCategory = function(index) {
-      $scope.test.current = index
+    $scope.test.changeCategory = function($index) {
+      $scope.test.current = $index
+      $scope.test.category.forEach(function (item, index) {
+        item.active = index == $scope.test.current
+      })
       $scope.test.getTests()
     }
 

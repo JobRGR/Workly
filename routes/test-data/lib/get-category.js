@@ -6,5 +6,5 @@ exports.get = function(req, res, next) {
     , file = exist ? fs.readFileSync(filePath) : null
     , text= file ? file.toString() : '{"category": []}';
 
-  return res.send({'json': text})
+  return res.send(JSON.parse(text))
 };

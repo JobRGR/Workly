@@ -5,12 +5,12 @@ exports.post = function(req, res, next) {
     , exist = fs.existsSync(filePath)
     , data = exist ? JSON.parse(fs.readFileSync(filePath)) : {category: []}
 
-  data.push({title: req.body.title, filename: req.body.filename})
+  data.category.push({title: req.body.title, filename: req.body.filename})
   data = JSON.stringify(data, null, '\t')
   fs.writeFile(filePath, data, 'utf8', function(err) {
     if(err) return res.send(err)
-    fs.write(
-      __dirname + '/../../../public/test-data/tests/' + req.body.filename +' .json',
+    fs.writeFile(
+      __dirname + '/../../../public/test-data/tests/' + req.body.filename +'.json',
       JSON.stringify({
         title: req.body.title,
         filename: req.body.filename,

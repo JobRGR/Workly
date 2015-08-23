@@ -5,5 +5,18 @@
         <a href="/admin/#/">Model</a>
         <a href="/admin/#/cms">CMS</a>
     </div>
+    <div class="test-btn">
+        <button type="button"
+                class="btn btn-success add-model-btn ng-binding"
+                ng-click="test.addCategory()">Add Category</button>
+        <button type="button"
+                class="btn btn-warning drop-model-btn ng-binding"
+                ng-click="test.editCategory(test.current)">Edit Category</button>
+        <button type="button"
+                class="btn btn-danger drop-model-btn ng-binding"
+                ng-click="test.removeCategory(test.current)">Remove Category</button>
+    </div>
     <test-nav></test-nav>
+    <test-category-add></test-category-add>
+    <test-category-edit></test-category-edit>
 </div>
