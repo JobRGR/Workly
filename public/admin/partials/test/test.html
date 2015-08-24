@@ -7,6 +7,12 @@
     </div>
     <div class="test-btn">
         <button type="button"
+                class="btn btn-info add-model-btn ng-binding"
+                ng-click="test.addTest()">Add Test Question</button>
+        <button type="button"
+                class="btn btn-primary add-model-btn ng-binding"
+                ng-click="test.addOpen()">Add Open Question</button>
+        <button type="button"
                 class="btn btn-success add-model-btn ng-binding"
                 ng-click="test.addCategory()">Add Category</button>
         <button type="button"
@@ -17,6 +23,12 @@
                 ng-click="test.removeCategory(test.current)">Remove Category</button>
     </div>
     <test-nav></test-nav>
+    <test-list></test-list>
     <test-category-add></test-category-add>
     <test-category-edit></test-category-edit>
+    <test-open-add></test-open-add>
+    <test-open-edit></test-open-edit>
+    <test-test-add></test-test-add>
+    <test-test-edit></test-test-edit>
+
 </div>
