@@ -1,0 +1,57 @@
+<div class="edit" ng-if="test.isEditTest">
+    <div class="edit-bg" ng-click="test.closeEditTest()"></div>
+
+    <div class="edit-div">
+        <span class="glyphicon glyphicon-remove edit-close" ng-click="test.closeEditTest()"></span>
+
+        <div class="container">
+            <div class="page-header">
+                <h2>Edit Test Question</h2>
+            </div>
+        </div>
+        <form class="form-horizontal login-form" name="login-form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Question</label>
+
+                <div class="col-lg-8">
+                    <input name='question'
+                           type="text"
+                           ng-model='test.tmpTest.question'
+                           class="form-control"
+                           placeholder="Add question">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Answer</label>
+                <a ng-click="test.addTestAnswer()" class="add-test-answer">Add Answer</a>
+            </div>
+
+            <div class="form-group" ng-repeat="answer in test.tmpTest.answers track by $index">
+                <label class="col-lg-2 control-label"></label>
+                <span class="glyphicon glyphicon-remove pull-right remove-test-answer" ng-click="test.removeTestAnswer($index)"></span>
+                <input type="checkbox"
+                       class="pull-left test-input"
+                       ng-model="test.tmpTestAnswers[$index]"
+                       ng-change="test.changeCheck(answer, $index)"
+                        >
+                <div class="col-lg-8">
+                    <input name='{{answer}}'
+                           type="text"
+                           ng-model='test.tmpTest.answers[$index]'
+                           class="{{answer}} form-control"
+                           placeholder="Add answer">
+                </div>
+            </div>
+        </form>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit"
+                        class="btn btn-success"
+                        data-loading-text="Sending..."
+                        ng-click="test.saveTestOpen()">Save Data</button>
+            </div>
+        </div>
+    </div>
+</div>

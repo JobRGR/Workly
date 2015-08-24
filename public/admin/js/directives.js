@@ -333,3 +333,43 @@ adminDirectives.directive("testCategoryEdit", function () {
         controller: 'testCtrl'
     };
 });
+
+adminDirectives.directive("testOpenAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-open-add.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testOpenEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-open-edit.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testTestAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-test-add.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testTestEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-test-edit.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testList", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-list.html",
+        controller: 'testCtrl'
+    };
+});

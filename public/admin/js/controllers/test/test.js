@@ -86,6 +86,8 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
       index: undefined,
     }
 
+    $scope.test.tmpTestAnswers = []
+
     $scope.test.tmpOpen = {
       correct: '',
       question: '',
@@ -105,6 +107,7 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
 
     $scope.test.addOpen = function() {
       $scope.test.isAddOpen = true
+      $scope.test.tmpTestAnswers = []
       $scope.test.tmpOpen = {
         correct: '',
         question: '',
@@ -119,6 +122,23 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
 
     $scope.test.closeAddOpen = function() {
       $scope.test.isAddOpen = false
+    }
+
+    $scope.test.changeCheck = function(answer, $index) {
+      $scope.test.tmpTest.correct = answer
+      $scope.test.tmpTestAnswers = $scope.test.tmpTestAnswers.map(function(item, index) {
+        return index == $index
+      })
+    }
+
+    $scope.test.addTestAnswer = function() {
+      $scope.test.tmpTestAnswers.push(false)
+      $scope.test.tmpTest.answers.push('')
+    }
+
+    $scope.test.removeTestAnswer = function (index) {
+      $scope.test.tmpTestAnswers.splice(index, 1)
+      $scope.test.tmpTest.answers.splice(index, 1)
     }
 
     $scope.test.saveAddTest = function() {
@@ -136,10 +156,13 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
 
     $scope.test.editTest = function(index) {
       $scope.test.isEditTest = true
+      $scope.test.tmpTestAnswers =  $scope.test.questions.test[index].answers.map(function(item){
+        return item == $scope.test.questions.test[index].correct
+      })
       $scope.test.tmpTest = {
-        question: '',
-        correct: '',
-        answers: [],
+        question: $scope.test.questions.test[index].question,
+        correct: $scope.test.questions.test[index].correct,
+        answers: $scope.test.questions.test[index].answers,
         index: index,
       }
     }
@@ -147,9 +170,9 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
     $scope.test.editOpen = function(index) {
       $scope.test.isEditOpen = true
       $scope.test.tmpOpen = {
-        correct: '',
-        question: '',
-        isChecked: true,
+        question: $scope.test.questions.open[index].question,
+        correct: $scope.test.questions.open[index].correct,
+        isChecked: $scope.test.questions.open[index].isChecked,
         index: index,
       }
     }
@@ -189,7 +212,7 @@ adminControllers.controller('testCtrl', ['$scope', '$http', '$rootScope',
     $scope.test.getTitles()
 
     function updateCategory() {
-      request('post', '/api/test/update-category', $scope.test.tests)
+      request('post', '/api/test/update-category', $scope.test.questions)
     }
 
     function request(type, url, data, success, error) {

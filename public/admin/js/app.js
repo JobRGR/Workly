@@ -47,6 +47,8 @@ adminApp.
         editModel: []
       };
 
+      $rootScope.startPath = $location.path()
+
       $http.get('/api/admin/get-status').
         success(function(data, status, headers, config) {
           console.log(arguments);
@@ -58,7 +60,7 @@ adminApp.
 
       $rootScope.$watch(function(){
           if (!$rootScope.loggedAdmin) {
-            var urlList = ['/', '/cms', '/competence', 'test']
+            var urlList = ['/', '/cms', '/competence', '/test']
               , curUrl = $location.path()
               , isList = urlList.indexOf(curUrl) > -1;
 
@@ -68,7 +70,7 @@ adminApp.
               , curUrl = $location.path()
               , isList = urlList.indexOf(curUrl) > -1;
 
-            if (isList) $location.path('/');
+            if (isList) $location.path($rootScope.startPath);
           }
       })
     }]);
