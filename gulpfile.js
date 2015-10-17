@@ -37,7 +37,7 @@ gulp.task('styl', function () {
         .pipe(autoprefixer('last 15 versions'))
         .pipe(minifyCSS())
         .pipe(gulp.dest('public/css'))
-        .pipe(livereload());
+        .pipe(server.notify);
 });
 
 
