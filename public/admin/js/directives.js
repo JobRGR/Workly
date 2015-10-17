@@ -307,3 +307,69 @@ adminDirectives.directive("ngFileread", [function () {
         }
     }
 }]);
+
+/* Test Data */
+
+adminDirectives.directive("testNav", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-nav.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testCategoryAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-category-add.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testCategoryEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-category-edit.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testOpenAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-open-add.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testOpenEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-open-edit.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testTestAdd", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-test-add.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testTestEdit", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-test-edit.html",
+        controller: 'testCtrl'
+    };
+});
+
+adminDirectives.directive("testList", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "./admin/partials/test/test-list.html",
+        controller: 'testCtrl'
+    };
+});

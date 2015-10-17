@@ -1,0 +1,35 @@
+<div>
+    <h3>Open Question</h3>
+
+    <h4 ng-if="!test.questions.open.length">No open questions</h4>
+    <div class="panel panel-default" ng-if="test.questions.open.length">
+        <ul class="list-group">
+            <li class="list-group-item"  ng-repeat="open in test.questions.open">
+                <span>{{open.question}}</span>
+                <div class="pull-right">
+                    <span class = "glyphicon glyphicon-pencil"
+                          ng-click="test.editOpen($index)"></span>
+                    <span class = "glyphicon glyphicon-remove"
+                          ng-click="test.removeOpen($index)"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <h3>Test Question</h3>
+
+    <h4 ng-if="!test.questions.test.length">No test questions</h4>
+    <div class="panel panel-default" ng-if="test.questions.test.length">
+        <ul class="list-group">
+            <li class="list-group-item"  ng-repeat="open in test.questions.test">
+                <span>{{open.question}}</span>
+                <div class="pull-right">
+                    <span class = "glyphicon glyphicon-pencil"
+                          ng-click="test.editTest($index)"></span>
+                    <span class = "glyphicon glyphicon-remove"
+                          ng-click="test.removeOpen($index)"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

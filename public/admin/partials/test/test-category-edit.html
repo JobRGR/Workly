@@ -1,0 +1,33 @@
+<div class="edit" ng-if="test.isEditCategory">
+    <div class="edit-bg" ng-click="test.closeEditCategory()"></div>
+
+    <div class="edit-div">
+        <span class="glyphicon glyphicon-remove edit-close" ng-click="test.closeEditCategory()"></span>
+
+        <div class="container">
+            <div class="page-header">
+                <h2>Add Category</h2>
+            </div>
+        </div>
+        <form class="form-horizontal login-form" name="login-form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label sign-label">title</label>
+                <div class="col-lg-8">
+                    <input name='title'
+                           type="text"
+                           ng-model='test.tmpCategory.title'
+                           class="title form-control"
+                           placeholder="Add title">
+                </div>
+            </div>
+        </form>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit"
+                        class="btn btn-success"
+                        data-loading-text="Sending..."
+                        ng-click="test.saveEditCategory()">Save Data</button>
+            </div>
+        </div>
+    </div>
+</div>
